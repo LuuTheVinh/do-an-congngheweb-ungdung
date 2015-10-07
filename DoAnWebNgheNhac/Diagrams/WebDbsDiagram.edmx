@@ -1,0 +1,1301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="WebDBsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008">
+        <EntityType Name="AccountInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="FirstName" Nullable="false" MaxLength="50" Type="nvarchar" />
+          <Property Name="LastName" Nullable="false" MaxLength="50" Type="nvarchar" />
+          <Property Name="Gender" Nullable="false" MaxLength="16" Type="nvarchar" />
+          <Property Name="PhoneNumber" Nullable="false" MaxLength="16" Type="nchar" />
+          <Property Name="Email" Nullable="false" MaxLength="128" Type="nchar" />
+          <Property Name="Birthday" Nullable="false" Type="smalldatetime" />
+          <Property Name="IdentifyCard" Nullable="false" MaxLength="16" Type="nchar" />
+          <Property Name="Address" Nullable="false" Type="nvarchar(max)" />
+          <Property Name="Description" Nullable="false" Type="nvarchar(max)" />
+          <Property Name="Thumbnail" Nullable="false" MaxLength="256" Type="nchar" />
+        </EntityType>
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Nullable="false" Type="int" />
+          <Property Name="CategoryId" Nullable="false" Type="int" />
+          <Property Name="Year" Type="int" />
+        </EntityType>
+        <EntityType Name="AlbumCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Tittle" Nullable="false" MaxLength="32" Type="nvarchar" />
+          <Property Name="ParentId" Nullable="false" Type="int" />
+          <Property Name="Level" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="Artist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="CategoryId" Nullable="false" Type="int" />
+          <Property Name="StageName" Nullable="false" MaxLength="128" Type="nvarchar" />
+          <Property Name="RealName" Nullable="false" MaxLength="128" Type="nvarchar" />
+          <Property Name="BirthDay" Nullable="false" Type="smalldatetime" />
+          <Property Name="Gender" Nullable="false" MaxLength="32" Type="nvarchar" />
+          <Property Name="Country" Nullable="false" MaxLength="128" Type="nvarchar" />
+          <Property Name="Specialization" Nullable="false" MaxLength="128" Type="nvarchar" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="Description" Nullable="false" Type="nvarchar(max)" />
+          <Property Name="Thumbnail" Nullable="false" MaxLength="256" Type="nchar" />
+        </EntityType>
+        <EntityType Name="ArtistCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Tittle" Nullable="false" MaxLength="32" Type="nvarchar" />
+          <Property Name="ParentId" Nullable="false" Type="int" />
+          <Property Name="Level" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="Music">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Nullable="false" Type="int" />
+          <Property Name="AlbumId" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="Playlist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="UserId" Nullable="false" Type="int" />
+          <Property Name="Name" Nullable="false" MaxLength="128" Type="nvarchar" />
+          <Property Name="Desciption" Nullable="false" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Nullable="false" Type="smalldatetime" />
+          <Property Name="ModifiedDate" Nullable="false" Type="smalldatetime" />
+          <Property Name="Views" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="PlaylistMusic">
+          <Key>
+            <PropertyRef Name="PLaylistId" />
+            <PropertyRef Name="MusicId" />
+          </Key>
+          <Property Name="PLaylistId" Nullable="false" Type="int" />
+          <Property Name="MusicId" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Name" Nullable="false" MaxLength="128" Type="nvarchar" />
+          <Property Name="Category" Nullable="false" MaxLength="32" Type="nvarchar" />
+          <Property Name="Description" Nullable="false" Type="nvarchar(max)" />
+          <Property Name="URL" Nullable="false" MaxLength="256" Type="nchar" />
+          <Property Name="Thumbnail" Nullable="false" MaxLength="256" Type="nchar" />
+          <Property Name="Views" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductDetail">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="ArtistId" />
+          </Key>
+          <Property Name="ProductId" Nullable="false" Type="int" />
+          <Property Name="ArtistId" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Info" Nullable="false" Type="int" />
+          <Property Name="UserName" Nullable="false" MaxLength="32" Type="nchar" />
+          <Property Name="Password" Nullable="false" MaxLength="32" Type="nchar" />
+          <Property Name="SecQuest1" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="SecAnswer1" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="SecQuest2" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="SecAnswer2" Nullable="false" MaxLength="256" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="UserArtist">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ArtistId" />
+          </Key>
+          <Property Name="UserId" Nullable="false" Type="int" />
+          <Property Name="ArtistId" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="UserComment">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="UserId" Nullable="false" Type="int" />
+          <Property Name="ProductId" Nullable="false" Type="int" />
+          <Property Name="CommentText" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserLike">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="UserId" Nullable="false" Type="int" />
+          <Property Name="ProductId" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Nullable="false" Type="int" />
+          <Property Name="CategoryId" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="VideoCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Tittle" Nullable="false" MaxLength="32" Type="nvarchar" />
+          <Property Name="ParentId" Nullable="false" Type="int" />
+          <Property Name="Level" Nullable="false" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\STEVIE\SOURCE\REPOS\WEBNGHENHAC\DOANWEBNGHENHAC\APP_DATA\WEBDBS.MDF.dbo.AlbumView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AlbumView">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="URL" />
+            <PropertyRef Name="Thumbnail" />
+            <PropertyRef Name="Views" />
+          </Key>
+          <Property Name="ProductId" Nullable="false" Type="int" />
+          <Property Name="CategoryId" Nullable="false" Type="int" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Id" Nullable="false" Type="int" />
+          <Property Name="Name" Nullable="false" MaxLength="128" Type="nvarchar" />
+          <Property Name="Category" Nullable="false" MaxLength="32" Type="nchar" />
+          <Property Name="Description" Nullable="false" Type="nvarchar(max)" />
+          <Property Name="URL" Nullable="false" MaxLength="256" Type="nchar" />
+          <Property Name="Thumbnail" Nullable="false" MaxLength="256" Type="nchar" />
+          <Property Name="Views" Nullable="false" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\STEVIE\SOURCE\REPOS\WEBNGHENHAC\DOANWEBNGHENHAC\APP_DATA\WEBDBS.MDF.dbo.MusicView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MusicView">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="AlbumId" />
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="URL" />
+            <PropertyRef Name="Thumbnail" />
+            <PropertyRef Name="Views" />
+          </Key>
+          <Property Name="ProductId" Nullable="false" Type="int" />
+          <Property Name="AlbumId" Nullable="false" Type="int" />
+          <Property Name="Id" Nullable="false" Type="int" />
+          <Property Name="Name" Nullable="false" MaxLength="128" Type="nvarchar" />
+          <Property Name="Category" Nullable="false" MaxLength="32" Type="nvarchar" />
+          <Property Name="Description" Nullable="false" Type="nvarchar(max)" />
+          <Property Name="URL" Nullable="false" MaxLength="256" Type="nchar" />
+          <Property Name="Thumbnail" Nullable="false" MaxLength="256" Type="nchar" />
+          <Property Name="Views" Nullable="false" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\STEVIE\SOURCE\REPOS\WEBNGHENHAC\DOANWEBNGHENHAC\APP_DATA\WEBDBS.MDF.dbo.VideoView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VideoView">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="URL" />
+            <PropertyRef Name="Thumbnail" />
+            <PropertyRef Name="Views" />
+          </Key>
+          <Property Name="ProductId" Nullable="false" Type="int" />
+          <Property Name="CategoryId" Nullable="false" Type="int" />
+          <Property Name="Id" Nullable="false" Type="int" />
+          <Property Name="Name" Nullable="false" MaxLength="128" Type="nvarchar" />
+          <Property Name="Category" Nullable="false" MaxLength="32" Type="nvarchar" />
+          <Property Name="Description" Nullable="false" Type="nvarchar(max)" />
+          <Property Name="URL" Nullable="false" MaxLength="256" Type="nchar" />
+          <Property Name="Thumbnail" Nullable="false" MaxLength="256" Type="nchar" />
+          <Property Name="Views" Nullable="false" Type="int" />
+        </EntityType>
+        <Association Name="FK_Album_ToAlbumCategory">
+          <End Type="Self.AlbumCategory" Multiplicity="1" Role="AlbumCategory" />
+          <End Type="Self.Album" Multiplicity="*" Role="Album" />
+          <ReferentialConstraint>
+            <Principal Role="AlbumCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Album">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Album_ToProduct">
+          <End Type="Self.Product" Multiplicity="1" Role="Product" />
+          <End Type="Self.Album" Multiplicity="0..1" Role="Album" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Album">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Artist_ToArtistCategoory">
+          <End Type="Self.ArtistCategory" Multiplicity="1" Role="ArtistCategory" />
+          <End Type="Self.Artist" Multiplicity="*" Role="Artist" />
+          <ReferentialConstraint>
+            <Principal Role="ArtistCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Artist">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Music_ToAlbum">
+          <End Type="Self.Album" Multiplicity="1" Role="Album" />
+          <End Type="Self.Music" Multiplicity="*" Role="Music" />
+          <ReferentialConstraint>
+            <Principal Role="Album">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Music">
+              <PropertyRef Name="AlbumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Music_ToProduct">
+          <End Type="Self.Product" Multiplicity="1" Role="Product" />
+          <End Type="Self.Music" Multiplicity="0..1" Role="Music" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Music">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Playlist_ToUser">
+          <End Type="Self.User" Multiplicity="1" Role="User" />
+          <End Type="Self.Playlist" Multiplicity="*" Role="Playlist" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Playlist">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlaylistMusic_ToMusic">
+          <End Type="Self.Music" Multiplicity="1" Role="Music" />
+          <End Type="Self.PlaylistMusic" Multiplicity="*" Role="PlaylistMusic" />
+          <ReferentialConstraint>
+            <Principal Role="Music">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="PlaylistMusic">
+              <PropertyRef Name="MusicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlaylistMusic_ToPlaylist">
+          <End Type="Self.Playlist" Multiplicity="1" Role="Playlist" />
+          <End Type="Self.PlaylistMusic" Multiplicity="*" Role="PlaylistMusic" />
+          <ReferentialConstraint>
+            <Principal Role="Playlist">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlaylistMusic">
+              <PropertyRef Name="PLaylistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDetail_ToArtist">
+          <End Type="Self.Artist" Multiplicity="1" Role="Artist" />
+          <End Type="Self.ProductDetail" Multiplicity="*" Role="ProductDetail" />
+          <ReferentialConstraint>
+            <Principal Role="Artist">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="ArtistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDetail_ToProduct">
+          <End Type="Self.Product" Multiplicity="1" Role="Product" />
+          <End Type="Self.ProductDetail" Multiplicity="*" Role="ProductDetail" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_ToAccountInfo">
+          <End Type="Self.AccountInfo" Multiplicity="1" Role="AccountInfo" />
+          <End Type="Self.User" Multiplicity="*" Role="User" />
+          <ReferentialConstraint>
+            <Principal Role="AccountInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Info" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserArtist_ToArtist">
+          <End Type="Self.Artist" Multiplicity="1" Role="Artist" />
+          <End Type="Self.UserArtist" Multiplicity="*" Role="UserArtist" />
+          <ReferentialConstraint>
+            <Principal Role="Artist">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserArtist">
+              <PropertyRef Name="ArtistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserArtist_ToUser">
+          <End Type="Self.User" Multiplicity="1" Role="User" />
+          <End Type="Self.UserArtist" Multiplicity="*" Role="UserArtist" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserArtist">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserComment_ToProduct">
+          <End Type="Self.Product" Multiplicity="1" Role="Product" />
+          <End Type="Self.UserComment" Multiplicity="*" Role="UserComment" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserComment">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserComment_ToUser">
+          <End Type="Self.User" Multiplicity="1" Role="User" />
+          <End Type="Self.UserComment" Multiplicity="*" Role="UserComment" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserComment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLike_ToProduct">
+          <End Type="Self.Product" Multiplicity="1" Role="Product" />
+          <End Type="Self.UserLike" Multiplicity="*" Role="UserLike" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserLike">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLike_ToUser">
+          <End Type="Self.User" Multiplicity="1" Role="User" />
+          <End Type="Self.UserLike" Multiplicity="*" Role="UserLike" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserLike">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Video_ToProduct">
+          <End Type="Self.Product" Multiplicity="1" Role="Product" />
+          <End Type="Self.Video" Multiplicity="0..1" Role="Video" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Video_ToVideoCategory">
+          <End Type="Self.VideoCategory" Multiplicity="1" Role="VideoCategory" />
+          <End Type="Self.Video" Multiplicity="*" Role="Video" />
+          <ReferentialConstraint>
+            <Principal Role="VideoCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebDBsModelStoreContainer">
+          <EntitySet Name="AccountInfo" EntityType="Self.AccountInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AlbumCategory" EntityType="Self.AlbumCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Artist" EntityType="Self.Artist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArtistCategory" EntityType="Self.ArtistCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Music" EntityType="Self.Music" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Playlist" EntityType="Self.Playlist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlaylistMusic" EntityType="Self.PlaylistMusic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductDetail" EntityType="Self.ProductDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserArtist" EntityType="Self.UserArtist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserComment" EntityType="Self.UserComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLike" EntityType="Self.UserLike" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Video" EntityType="Self.Video" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VideoCategory" EntityType="Self.VideoCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AlbumView" EntityType="Self.AlbumView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[AlbumView].[ProductId] AS [ProductId], 
+[AlbumView].[CategoryId] AS [CategoryId], 
+[AlbumView].[Year] AS [Year], 
+[AlbumView].[Id] AS [Id], 
+[AlbumView].[Name] AS [Name], 
+[AlbumView].[Category] AS [Category], 
+[AlbumView].[Description] AS [Description], 
+[AlbumView].[URL] AS [URL], 
+[AlbumView].[Thumbnail] AS [Thumbnail], 
+[AlbumView].[Views] AS [Views]
+FROM [dbo].[AlbumView] AS [AlbumView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MusicView" EntityType="Self.MusicView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[MusicView].[ProductId] AS [ProductId], 
+[MusicView].[AlbumId] AS [AlbumId], 
+[MusicView].[Id] AS [Id], 
+[MusicView].[Name] AS [Name], 
+[MusicView].[Category] AS [Category], 
+[MusicView].[Description] AS [Description], 
+[MusicView].[URL] AS [URL], 
+[MusicView].[Thumbnail] AS [Thumbnail], 
+[MusicView].[Views] AS [Views]
+FROM [dbo].[MusicView] AS [MusicView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VideoView" EntityType="Self.VideoView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[VideoView].[ProductId] AS [ProductId], 
+[VideoView].[CategoryId] AS [CategoryId], 
+[VideoView].[Id] AS [Id], 
+[VideoView].[Name] AS [Name], 
+[VideoView].[Category] AS [Category], 
+[VideoView].[Description] AS [Description], 
+[VideoView].[URL] AS [URL], 
+[VideoView].[Thumbnail] AS [Thumbnail], 
+[VideoView].[Views] AS [Views]
+FROM [dbo].[VideoView] AS [VideoView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Album_ToAlbumCategory" Association="Self.FK_Album_ToAlbumCategory">
+            <End EntitySet="AlbumCategory" Role="AlbumCategory" />
+            <End EntitySet="Album" Role="Album" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Album_ToProduct" Association="Self.FK_Album_ToProduct">
+            <End EntitySet="Product" Role="Product" />
+            <End EntitySet="Album" Role="Album" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Artist_ToArtistCategoory" Association="Self.FK_Artist_ToArtistCategoory">
+            <End EntitySet="ArtistCategory" Role="ArtistCategory" />
+            <End EntitySet="Artist" Role="Artist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Music_ToAlbum" Association="Self.FK_Music_ToAlbum">
+            <End EntitySet="Album" Role="Album" />
+            <End EntitySet="Music" Role="Music" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Music_ToProduct" Association="Self.FK_Music_ToProduct">
+            <End EntitySet="Product" Role="Product" />
+            <End EntitySet="Music" Role="Music" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Playlist_ToUser" Association="Self.FK_Playlist_ToUser">
+            <End EntitySet="User" Role="User" />
+            <End EntitySet="Playlist" Role="Playlist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlaylistMusic_ToMusic" Association="Self.FK_PlaylistMusic_ToMusic">
+            <End EntitySet="Music" Role="Music" />
+            <End EntitySet="PlaylistMusic" Role="PlaylistMusic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlaylistMusic_ToPlaylist" Association="Self.FK_PlaylistMusic_ToPlaylist">
+            <End EntitySet="Playlist" Role="Playlist" />
+            <End EntitySet="PlaylistMusic" Role="PlaylistMusic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDetail_ToArtist" Association="Self.FK_ProductDetail_ToArtist">
+            <End EntitySet="Artist" Role="Artist" />
+            <End EntitySet="ProductDetail" Role="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDetail_ToProduct" Association="Self.FK_ProductDetail_ToProduct">
+            <End EntitySet="Product" Role="Product" />
+            <End EntitySet="ProductDetail" Role="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_ToAccountInfo" Association="Self.FK_User_ToAccountInfo">
+            <End EntitySet="AccountInfo" Role="AccountInfo" />
+            <End EntitySet="User" Role="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserArtist_ToArtist" Association="Self.FK_UserArtist_ToArtist">
+            <End EntitySet="Artist" Role="Artist" />
+            <End EntitySet="UserArtist" Role="UserArtist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserArtist_ToUser" Association="Self.FK_UserArtist_ToUser">
+            <End EntitySet="User" Role="User" />
+            <End EntitySet="UserArtist" Role="UserArtist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserComment_ToProduct" Association="Self.FK_UserComment_ToProduct">
+            <End EntitySet="Product" Role="Product" />
+            <End EntitySet="UserComment" Role="UserComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserComment_ToUser" Association="Self.FK_UserComment_ToUser">
+            <End EntitySet="User" Role="User" />
+            <End EntitySet="UserComment" Role="UserComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLike_ToProduct" Association="Self.FK_UserLike_ToProduct">
+            <End EntitySet="Product" Role="Product" />
+            <End EntitySet="UserLike" Role="UserLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLike_ToUser" Association="Self.FK_UserLike_ToUser">
+            <End EntitySet="User" Role="User" />
+            <End EntitySet="UserLike" Role="UserLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Video_ToProduct" Association="Self.FK_Video_ToProduct">
+            <End EntitySet="Product" Role="Product" />
+            <End EntitySet="Video" Role="Video" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Video_ToVideoCategory" Association="Self.FK_Video_ToVideoCategory">
+            <End EntitySet="VideoCategory" Role="VideoCategory" />
+            <End EntitySet="Video" Role="Video" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebDBsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WebDBsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountInfoes" EntityType="WebDBsModel.AccountInfo" />
+          <EntitySet Name="Albums" EntityType="WebDBsModel.Album" />
+          <EntitySet Name="AlbumCategories" EntityType="WebDBsModel.AlbumCategory" />
+          <EntitySet Name="Artists" EntityType="WebDBsModel.Artist" />
+          <EntitySet Name="ArtistCategories" EntityType="WebDBsModel.ArtistCategory" />
+          <EntitySet Name="Musics" EntityType="WebDBsModel.Music" />
+          <EntitySet Name="Playlists" EntityType="WebDBsModel.Playlist" />
+          <EntitySet Name="Products" EntityType="WebDBsModel.Product" />
+          <EntitySet Name="Users" EntityType="WebDBsModel.User" />
+          <EntitySet Name="UserComments" EntityType="WebDBsModel.UserComment" />
+          <EntitySet Name="Videos" EntityType="WebDBsModel.Video" />
+          <EntitySet Name="VideoCategories" EntityType="WebDBsModel.VideoCategory" />
+          <EntitySet Name="AlbumViews" EntityType="WebDBsModel.AlbumView" />
+          <EntitySet Name="MusicViews" EntityType="WebDBsModel.MusicView" />
+          <EntitySet Name="VideoViews" EntityType="WebDBsModel.VideoView" />
+          <AssociationSet Name="FK_User_ToAccountInfo" Association="WebDBsModel.FK_User_ToAccountInfo">
+            <End Role="AccountInfo" EntitySet="AccountInfoes" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Album_ToAlbumCategory" Association="WebDBsModel.FK_Album_ToAlbumCategory">
+            <End Role="AlbumCategory" EntitySet="AlbumCategories" />
+            <End Role="Album" EntitySet="Albums" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Album_ToProduct" Association="WebDBsModel.FK_Album_ToProduct">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Album" EntitySet="Albums" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Music_ToAlbum" Association="WebDBsModel.FK_Music_ToAlbum">
+            <End Role="Album" EntitySet="Albums" />
+            <End Role="Music" EntitySet="Musics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Artist_ToArtistCategoory" Association="WebDBsModel.FK_Artist_ToArtistCategoory">
+            <End Role="ArtistCategory" EntitySet="ArtistCategories" />
+            <End Role="Artist" EntitySet="Artists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Music_ToProduct" Association="WebDBsModel.FK_Music_ToProduct">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Music" EntitySet="Musics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Playlist_ToUser" Association="WebDBsModel.FK_Playlist_ToUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Playlist" EntitySet="Playlists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserComment_ToProduct" Association="WebDBsModel.FK_UserComment_ToProduct">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="UserComment" EntitySet="UserComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserComment_ToUser" Association="WebDBsModel.FK_UserComment_ToUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserComment" EntitySet="UserComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Video_ToVideoCategory" Association="WebDBsModel.FK_Video_ToVideoCategory">
+            <End Role="VideoCategory" EntitySet="VideoCategories" />
+            <End Role="Video" EntitySet="Videos" />
+          </AssociationSet>
+          <AssociationSet Name="PlaylistMusic" Association="WebDBsModel.PlaylistMusic">
+            <End Role="Music" EntitySet="Musics" />
+            <End Role="Playlist" EntitySet="Playlists" />
+          </AssociationSet>
+          <AssociationSet Name="ProductDetail" Association="WebDBsModel.ProductDetail">
+            <End Role="Artist" EntitySet="Artists" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="UserArtist" Association="WebDBsModel.UserArtist">
+            <End Role="Artist" EntitySet="Artists" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="UserLike" Association="WebDBsModel.UserLike">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="Video1" Association="WebDBsModel.Video1">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="VideoCategory" EntitySet="VideoCategories" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AccountInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="128" FixedLength="true" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdentifyCard" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Thumbnail" Type="String" Nullable="false" MaxLength="256" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="WebDBsModel.FK_User_ToAccountInfo" FromRole="AccountInfo" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int32" />
+          <NavigationProperty Name="AlbumCategory" Relationship="WebDBsModel.FK_Album_ToAlbumCategory" FromRole="Album" ToRole="AlbumCategory" />
+          <NavigationProperty Name="Product" Relationship="WebDBsModel.FK_Album_ToProduct" FromRole="Album" ToRole="Product" />
+          <NavigationProperty Name="Musics" Relationship="WebDBsModel.FK_Music_ToAlbum" FromRole="Album" ToRole="Music" />
+        </EntityType>
+        <EntityType Name="AlbumCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tittle" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Albums" Relationship="WebDBsModel.FK_Album_ToAlbumCategory" FromRole="AlbumCategory" ToRole="Album" />
+        </EntityType>
+        <EntityType Name="Artist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="StageName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RealName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDay" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Specialization" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Thumbnail" Type="String" Nullable="false" MaxLength="256" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ArtistCategory" Relationship="WebDBsModel.FK_Artist_ToArtistCategoory" FromRole="Artist" ToRole="ArtistCategory" />
+          <NavigationProperty Name="Products" Relationship="WebDBsModel.ProductDetail" FromRole="Artist" ToRole="Product" />
+          <NavigationProperty Name="Users" Relationship="WebDBsModel.UserArtist" FromRole="Artist" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ArtistCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tittle" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Artists" Relationship="WebDBsModel.FK_Artist_ToArtistCategoory" FromRole="ArtistCategory" ToRole="Artist" />
+        </EntityType>
+        <EntityType Name="Music">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="AlbumId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Album" Relationship="WebDBsModel.FK_Music_ToAlbum" FromRole="Music" ToRole="Album" />
+          <NavigationProperty Name="Product" Relationship="WebDBsModel.FK_Music_ToProduct" FromRole="Music" ToRole="Product" />
+          <NavigationProperty Name="Playlists" Relationship="WebDBsModel.PlaylistMusic" FromRole="Music" ToRole="Playlist" />
+        </EntityType>
+        <EntityType Name="Playlist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Desciption" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Views" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="WebDBsModel.FK_Playlist_ToUser" FromRole="Playlist" ToRole="User" />
+          <NavigationProperty Name="Musics" Relationship="WebDBsModel.PlaylistMusic" FromRole="Playlist" ToRole="Music" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" Nullable="false" MaxLength="256" FixedLength="true" Unicode="true" />
+          <Property Name="Thumbnail" Type="String" Nullable="false" MaxLength="256" FixedLength="true" Unicode="true" />
+          <Property Name="Views" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Album" Relationship="WebDBsModel.FK_Album_ToProduct" FromRole="Product" ToRole="Album" />
+          <NavigationProperty Name="Music" Relationship="WebDBsModel.FK_Music_ToProduct" FromRole="Product" ToRole="Music" />
+          <NavigationProperty Name="UserComments" Relationship="WebDBsModel.FK_UserComment_ToProduct" FromRole="Product" ToRole="UserComment" />
+          <NavigationProperty Name="Artists" Relationship="WebDBsModel.ProductDetail" FromRole="Product" ToRole="Artist" />
+          <NavigationProperty Name="Users" Relationship="WebDBsModel.UserLike" FromRole="Product" ToRole="User" />
+          <NavigationProperty Name="VideoCategory" Relationship="WebDBsModel.Video1" FromRole="Product" ToRole="VideoCategory" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Info" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="true" />
+          <Property Name="SecQuest1" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="SecAnswer1" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="SecQuest2" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="SecAnswer2" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AccountInfo" Relationship="WebDBsModel.FK_User_ToAccountInfo" FromRole="User" ToRole="AccountInfo" />
+          <NavigationProperty Name="Playlists" Relationship="WebDBsModel.FK_Playlist_ToUser" FromRole="User" ToRole="Playlist" />
+          <NavigationProperty Name="UserComments" Relationship="WebDBsModel.FK_UserComment_ToUser" FromRole="User" ToRole="UserComment" />
+          <NavigationProperty Name="Artists" Relationship="WebDBsModel.UserArtist" FromRole="User" ToRole="Artist" />
+          <NavigationProperty Name="Products" Relationship="WebDBsModel.UserLike" FromRole="User" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="UserComment">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="CommentText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="WebDBsModel.FK_UserComment_ToProduct" FromRole="UserComment" ToRole="Product" />
+          <NavigationProperty Name="User" Relationship="WebDBsModel.FK_UserComment_ToUser" FromRole="UserComment" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="VideoCategory" Relationship="WebDBsModel.FK_Video_ToVideoCategory" FromRole="Video" ToRole="VideoCategory" />
+        </EntityType>
+        <EntityType Name="VideoCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tittle" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Videos" Relationship="WebDBsModel.FK_Video_ToVideoCategory" FromRole="VideoCategory" ToRole="Video" />
+          <NavigationProperty Name="Products" Relationship="WebDBsModel.Video1" FromRole="VideoCategory" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="AlbumView">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="URL" />
+            <PropertyRef Name="Thumbnail" />
+            <PropertyRef Name="Views" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" Nullable="false" MaxLength="256" FixedLength="true" Unicode="true" />
+          <Property Name="Thumbnail" Type="String" Nullable="false" MaxLength="256" FixedLength="true" Unicode="true" />
+          <Property Name="Views" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MusicView">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="AlbumId" />
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="URL" />
+            <PropertyRef Name="Thumbnail" />
+            <PropertyRef Name="Views" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="AlbumId" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" Nullable="false" MaxLength="256" FixedLength="true" Unicode="true" />
+          <Property Name="Thumbnail" Type="String" Nullable="false" MaxLength="256" FixedLength="true" Unicode="true" />
+          <Property Name="Views" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VideoView">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="URL" />
+            <PropertyRef Name="Thumbnail" />
+            <PropertyRef Name="Views" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" Nullable="false" MaxLength="256" FixedLength="true" Unicode="true" />
+          <Property Name="Thumbnail" Type="String" Nullable="false" MaxLength="256" FixedLength="true" Unicode="true" />
+          <Property Name="Views" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_User_ToAccountInfo">
+          <End Type="WebDBsModel.AccountInfo" Role="AccountInfo" Multiplicity="1" />
+          <End Type="WebDBsModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Info" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Album_ToAlbumCategory">
+          <End Type="WebDBsModel.AlbumCategory" Role="AlbumCategory" Multiplicity="1" />
+          <End Type="WebDBsModel.Album" Role="Album" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AlbumCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Album">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Album_ToProduct">
+          <End Type="WebDBsModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="WebDBsModel.Album" Role="Album" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Album">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Music_ToAlbum">
+          <End Type="WebDBsModel.Album" Role="Album" Multiplicity="1" />
+          <End Type="WebDBsModel.Music" Role="Music" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Album">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Music">
+              <PropertyRef Name="AlbumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Artist_ToArtistCategoory">
+          <End Type="WebDBsModel.ArtistCategory" Role="ArtistCategory" Multiplicity="1" />
+          <End Type="WebDBsModel.Artist" Role="Artist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArtistCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Artist">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Music_ToProduct">
+          <End Type="WebDBsModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="WebDBsModel.Music" Role="Music" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Music">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Playlist_ToUser">
+          <End Type="WebDBsModel.User" Role="User" Multiplicity="1" />
+          <End Type="WebDBsModel.Playlist" Role="Playlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Playlist">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserComment_ToProduct">
+          <End Type="WebDBsModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="WebDBsModel.UserComment" Role="UserComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserComment">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserComment_ToUser">
+          <End Type="WebDBsModel.User" Role="User" Multiplicity="1" />
+          <End Type="WebDBsModel.UserComment" Role="UserComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserComment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Video_ToVideoCategory">
+          <End Type="WebDBsModel.VideoCategory" Role="VideoCategory" Multiplicity="1" />
+          <End Type="WebDBsModel.Video" Role="Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PlaylistMusic">
+          <End Type="WebDBsModel.Music" Role="Music" Multiplicity="*" />
+          <End Type="WebDBsModel.Playlist" Role="Playlist" Multiplicity="*" />
+        </Association>
+        <Association Name="ProductDetail">
+          <End Type="WebDBsModel.Artist" Role="Artist" Multiplicity="*" />
+          <End Type="WebDBsModel.Product" Role="Product" Multiplicity="*" />
+        </Association>
+        <Association Name="UserArtist">
+          <End Type="WebDBsModel.Artist" Role="Artist" Multiplicity="*" />
+          <End Type="WebDBsModel.User" Role="User" Multiplicity="*" />
+        </Association>
+        <Association Name="UserLike">
+          <End Type="WebDBsModel.Product" Role="Product" Multiplicity="*" />
+          <End Type="WebDBsModel.User" Role="User" Multiplicity="*" />
+        </Association>
+        <Association Name="Video1">
+          <End Type="WebDBsModel.Product" Role="Product" Multiplicity="*" />
+          <End Type="WebDBsModel.VideoCategory" Role="VideoCategory" Multiplicity="0..1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebDBsModelStoreContainer" CdmEntityContainer="WebDBsEntities">
+          <EntitySetMapping Name="AccountInfoes">
+            <EntityTypeMapping TypeName="WebDBsModel.AccountInfo">
+              <MappingFragment StoreEntitySet="AccountInfo">
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="IdentifyCard" ColumnName="IdentifyCard" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Albums">
+            <EntityTypeMapping TypeName="WebDBsModel.Album">
+              <MappingFragment StoreEntitySet="Album">
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AlbumCategories">
+            <EntityTypeMapping TypeName="WebDBsModel.AlbumCategory">
+              <MappingFragment StoreEntitySet="AlbumCategory">
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Tittle" ColumnName="Tittle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Artists">
+            <EntityTypeMapping TypeName="WebDBsModel.Artist">
+              <MappingFragment StoreEntitySet="Artist">
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Specialization" ColumnName="Specialization" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="StageName" ColumnName="StageName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArtistCategories">
+            <EntityTypeMapping TypeName="WebDBsModel.ArtistCategory">
+              <MappingFragment StoreEntitySet="ArtistCategory">
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Tittle" ColumnName="Tittle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Musics">
+            <EntityTypeMapping TypeName="WebDBsModel.Music">
+              <MappingFragment StoreEntitySet="Music">
+                <ScalarProperty Name="AlbumId" ColumnName="AlbumId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Playlists">
+            <EntityTypeMapping TypeName="WebDBsModel.Playlist">
+              <MappingFragment StoreEntitySet="Playlist">
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Desciption" ColumnName="Desciption" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="WebDBsModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="WebDBsModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="SecAnswer2" ColumnName="SecAnswer2" />
+                <ScalarProperty Name="SecQuest2" ColumnName="SecQuest2" />
+                <ScalarProperty Name="SecAnswer1" ColumnName="SecAnswer1" />
+                <ScalarProperty Name="SecQuest1" ColumnName="SecQuest1" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Info" ColumnName="Info" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserComments">
+            <EntityTypeMapping TypeName="WebDBsModel.UserComment">
+              <MappingFragment StoreEntitySet="UserComment">
+                <ScalarProperty Name="CommentText" ColumnName="CommentText" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Videos">
+            <EntityTypeMapping TypeName="WebDBsModel.Video">
+              <MappingFragment StoreEntitySet="Video">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VideoCategories">
+            <EntityTypeMapping TypeName="WebDBsModel.VideoCategory">
+              <MappingFragment StoreEntitySet="VideoCategory">
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Tittle" ColumnName="Tittle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AlbumViews">
+            <EntityTypeMapping TypeName="WebDBsModel.AlbumView">
+              <MappingFragment StoreEntitySet="AlbumView">
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MusicViews">
+            <EntityTypeMapping TypeName="WebDBsModel.MusicView">
+              <MappingFragment StoreEntitySet="MusicView">
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AlbumId" ColumnName="AlbumId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VideoViews">
+            <EntityTypeMapping TypeName="WebDBsModel.VideoView">
+              <MappingFragment StoreEntitySet="VideoView">
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="PlaylistMusic" TypeName="WebDBsModel.PlaylistMusic" StoreEntitySet="PlaylistMusic">
+            <EndProperty Name="Playlist">
+              <ScalarProperty Name="Id" ColumnName="PLaylistId" />
+            </EndProperty>
+            <EndProperty Name="Music">
+              <ScalarProperty Name="ProductId" ColumnName="MusicId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ProductDetail" TypeName="WebDBsModel.ProductDetail" StoreEntitySet="ProductDetail">
+            <EndProperty Name="Product">
+              <ScalarProperty Name="Id" ColumnName="ProductId" />
+            </EndProperty>
+            <EndProperty Name="Artist">
+              <ScalarProperty Name="Id" ColumnName="ArtistId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="UserArtist" TypeName="WebDBsModel.UserArtist" StoreEntitySet="UserArtist">
+            <EndProperty Name="User">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="Artist">
+              <ScalarProperty Name="Id" ColumnName="ArtistId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="UserLike" TypeName="WebDBsModel.UserLike" StoreEntitySet="UserLike">
+            <EndProperty Name="User">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="Product">
+              <ScalarProperty Name="Id" ColumnName="ProductId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Video1" TypeName="WebDBsModel.Video1" StoreEntitySet="Video">
+            <EndProperty Name="VideoCategory">
+              <ScalarProperty Name="Id" ColumnName="CategoryId" />
+            </EndProperty>
+            <EndProperty Name="Product">
+              <ScalarProperty Name="Id" ColumnName="ProductId" />
+            </EndProperty>
+            <Condition ColumnName="CategoryId" IsNull="false" />
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -44,6 +44,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -183,6 +185,21 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Diagrams\WebDbsDiagram.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebDbsDiagram.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrams\WebDbsDiagram.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebDbsDiagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrams\WebDbsDiagram.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebDbsDiagram.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -251,6 +268,23 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <EntityDeploy Include="Diagrams\WebDbsDiagram.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WebDbsDiagram.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Diagrams\WebDbsDiagram.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebDbsDiagram.edmx</DependentUpon>
+      <LastGenOutput>WebDbsDiagram.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Diagrams\WebDbsDiagram.edmx.diagram">
+      <DependentUpon>WebDbsDiagram.edmx</DependentUpon>
+    </Content>
+    <Content Include="Diagrams\WebDbsDiagram.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebDbsDiagram.edmx</DependentUpon>
+      <LastGenOutput>WebDbsDiagram.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
