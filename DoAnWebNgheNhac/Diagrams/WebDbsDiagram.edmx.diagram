@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f80f263a62aa4e2d9488edd9dbc6c35b" Name="Diagram1">
+      <Diagram DiagramId="f80f263a62aa4e2d9488edd9dbc6c35b" Name="Diagram1" ZoomLevel="25">
         <EntityTypeShape EntityType="WebDBsModel.AccountInfo" Width="1.5" PointX="8.25" PointY="8.5" />
         <EntityTypeShape EntityType="WebDBsModel.Album" Width="1.5" PointX="7.5" PointY="2.125" />
         <EntityTypeShape EntityType="WebDBsModel.AlbumCategory" Width="1.5" PointX="5.25" PointY="1.25" />
@@ -15,7 +15,7 @@
         <EntityTypeShape EntityType="WebDBsModel.Product" Width="1.5" PointX="5.25" PointY="4.5" />
         <EntityTypeShape EntityType="WebDBsModel.User" Width="1.5" PointX="10.5" PointY="4.375" />
         <EntityTypeShape EntityType="WebDBsModel.UserComment" Width="1.5" PointX="7.5" PointY="5.25" />
-        <EntityTypeShape EntityType="WebDBsModel.Video" Width="1.5" PointX="3" PointY="10.125" />
+        <EntityTypeShape EntityType="WebDBsModel.Video" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="WebDBsModel.VideoCategory" Width="1.5" PointX="0.75" PointY="9.875" />
         <EntityTypeShape EntityType="WebDBsModel.AlbumView" Width="1.5" PointX="10.75" PointY="8.75" />
         <EntityTypeShape EntityType="WebDBsModel.MusicView" Width="1.5" PointX="0.75" PointY="0.75" />
@@ -34,7 +34,7 @@
         <AssociationConnector Association="WebDBsModel.ProductDetail" />
         <AssociationConnector Association="WebDBsModel.UserArtist" />
         <AssociationConnector Association="WebDBsModel.UserLike" />
-        <AssociationConnector Association="WebDBsModel.Video1" ></AssociationConnector>
+        <AssociationConnector Association="WebDBsModel.Video1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
