@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bf93141509e548a19ecd76740c65aab2" Name="Diagram1">
+        <EntityTypeShape EntityType="WebNgheNhacDb1Model.AccountInfo" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebNgheNhacDb1Model.Album" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebNgheNhacDb1Model.AlbumProduct" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebNgheNhacDb1Model.Artist" Width="1.5" PointX="1.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebNgheNhacDb1Model.ArtistProduct" Width="1.5" PointX="3.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebNgheNhacDb1Model.Playlist" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebNgheNhacDb1Model.Product" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebNgheNhacDb1Model.sysdiagram" Width="1.5" PointX="10.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebNgheNhacDb1Model.User" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebNgheNhacDb1Model.UserArtist" Width="1.5" PointX="8.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebNgheNhacDb1Model.UserComment" Width="1.5" PointX="8.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebNgheNhacDb1Model.UserLike" Width="1.5" PointX="8.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebNgheNhacDb1Model.Video" Width="1.5" PointX="6" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebNgheNhacDb1Model.VideoProduct" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="WebNgheNhacDb1Model.FK_User_AccountInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="WebNgheNhacDb1Model.FK_AlbumProduct_Album" ManuallyRouted="false" />
+        <AssociationConnector Association="WebNgheNhacDb1Model.FK_AlbumProduct_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="WebNgheNhacDb1Model.FK_Playlist_AlbumProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="WebNgheNhacDb1Model.FK_ArtistProduct_Artist" ManuallyRouted="false" />
+        <AssociationConnector Association="WebNgheNhacDb1Model.FK_Product_ArtistProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="WebNgheNhacDb1Model.FK_UserArtist_UserArtist" ManuallyRouted="false" />
+        <AssociationConnector Association="WebNgheNhacDb1Model.FK_Playlist_User" ManuallyRouted="false" />
+        <AssociationConnector Association="WebNgheNhacDb1Model.FK_UserComment_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="WebNgheNhacDb1Model.FK_UserLike_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="WebNgheNhacDb1Model.FK_VideoProduct_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="WebNgheNhacDb1Model.FK_UserArtist_User" ManuallyRouted="false" />
+        <AssociationConnector Association="WebNgheNhacDb1Model.FK_UserComment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="WebNgheNhacDb1Model.FK_UserLike_User" ManuallyRouted="false" />
+        <AssociationConnector Association="WebNgheNhacDb1Model.FK_VideoProduct_Video" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

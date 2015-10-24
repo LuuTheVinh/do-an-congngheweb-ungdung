@@ -1,0 +1,5 @@
+D:\DoAnWebNgheNhac\BusinessEntities\bin\Debug\BusinessEntities.dll
+D:\DoAnWebNgheNhac\BusinessEntities\bin\Debug\BusinessEntities.pdb
+D:\DoAnWebNgheNhac\BusinessEntities\obj\Debug\BusinessEntities.dll
+D:\DoAnWebNgheNhac\BusinessEntities\obj\Debug\BusinessEntities.pdb
+D:\DoAnWebNgheNhac\BusinessEntities\obj\Debug\BusinessEntities.csprojResolveAssemblyReference.cache

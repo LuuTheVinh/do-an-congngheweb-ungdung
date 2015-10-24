@@ -1,0 +1,14 @@
+D:\DoAnWebNgheNhac\BusinessServices\bin\Debug\BusinessServices.dll
+D:\DoAnWebNgheNhac\BusinessServices\bin\Debug\BusinessServices.pdb
+D:\DoAnWebNgheNhac\BusinessServices\bin\Debug\BusinessEntities.dll
+D:\DoAnWebNgheNhac\BusinessServices\bin\Debug\DataModel.dll
+D:\DoAnWebNgheNhac\BusinessServices\bin\Debug\EntityFramework.dll
+D:\DoAnWebNgheNhac\BusinessServices\bin\Debug\BusinessEntities.pdb
+D:\DoAnWebNgheNhac\BusinessServices\bin\Debug\DataModel.pdb
+D:\DoAnWebNgheNhac\BusinessServices\bin\Debug\EntityFramework.xml
+D:\DoAnWebNgheNhac\BusinessServices\obj\Debug\BusinessServices.csprojResolveAssemblyReference.cache
+D:\DoAnWebNgheNhac\BusinessServices\obj\Debug\BusinessServices.dll
+D:\DoAnWebNgheNhac\BusinessServices\obj\Debug\BusinessServices.pdb
+D:\DoAnWebNgheNhac\BusinessServices\bin\Debug\AutoMapper.dll
+D:\DoAnWebNgheNhac\BusinessServices\bin\Debug\System.dll
+D:\DoAnWebNgheNhac\BusinessServices\bin\Debug\AutoMapper.xml
