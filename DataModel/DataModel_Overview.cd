@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Các property của UnitOfWork là các thể hiện của GenericRepositor&lt;&gt;&#xD;&#xA;với TEntity">
+    <Position X="13.25" Y="7" Height="1.279" Width="2.695" />
+  </Comment>
+  <Class Name="DataModel.GenericRepository.GenericRepository&lt;TEntity&gt;" Collapsed="true">
+    <Position X="13" Y="5.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAkAAAgAgAABAAAAAAAAAAAEIAAAAAgAAAQEAgoA=</HashCode>
+      <FileName>GenericRepository\GenericRepository.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Context" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DataModel.UnitOfWork.UnitOfWork" BaseTypeListCollapsed="true">
+    <Position X="15.5" Y="3.75" Width="2" />
+    <Members>
+      <Field Name="_albumProductRepository" Hidden="true" />
+      <Field Name="_albumRepository" Hidden="true" />
+      <Field Name="_artistProductRepository" Hidden="true" />
+      <Field Name="_artistRepository" Hidden="true" />
+      <Field Name="_context" Hidden="true" />
+      <Field Name="_productRepository" Hidden="true" />
+      <Field Name="_videoProductRepository" Hidden="true" />
+      <Field Name="_videoRepository" Hidden="true" />
+      <Field Name="disposed" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAKIAIAAICAABAQEAAAAACCAAQAkAAIAACEAAgAAAAA=</HashCode>
+      <FileName>UnitOfWork\UnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataModel.WebNgheNhacDb1Entities" Collapsed="true">
+    <Position X="13" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQACAAADAAAAAAAAAAIAgAEAAAAAgAAGAIGAAAAAw=</HashCode>
+      <FileName>WebNgheNhacDataModel.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.AccountInfo" Collapsed="true">
+    <Position X="4.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAGAAACAgAACAAAAASAAAAAAIAAAKAAAAAAAAAAg=</HashCode>
+      <FileName>AccountInfo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Users" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DataModel.Album">
+    <Position X="4.75" Y="13.25" Width="1.5" />
+    <AssociationLine Name="AlbumProducts" Type="DataModel.AlbumProduct" FixedToPoint="true">
+      <Path>
+        <Point X="5.188" Y="13.25" />
+        <Point X="5.188" Y="11.882" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAABAgAIAAAAAAg=</HashCode>
+      <FileName>Album.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="AlbumProducts" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DataModel.AlbumProduct">
+    <Position X="4.75" Y="9.75" Width="1.5" />
+    <AssociationLine Name="Product" Type="DataModel.Product" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="9.75" />
+        <Point X="5.75" Y="7.778" />
+        <Point X="7.25" Y="7.778" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Album" Type="DataModel.Album">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.472" Y="0.049" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>EAASAAAABAAAAAAAAAAAAAAAgAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>AlbumProduct.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Product" />
+      <Property Name="Album" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Playlists" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DataModel.Artist">
+    <Position X="10" Y="13.25" Width="1.5" />
+    <AssociationLine Name="ArtistProducts" Type="DataModel.ArtistProduct" FixedToPoint="true">
+      <Path>
+        <Point X="11.125" Y="13.25" />
+        <Point X="11.125" Y="12.42" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.412" Y="0.152" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAAAAAAAAAAAAAAAAAAAABAgAAAAAAAAg=</HashCode>
+      <FileName>Artist.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="ArtistProducts" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DataModel.ArtistProduct">
+    <Position X="10" Y="8.75" Width="1.5" />
+    <AssociationLine Name="Products" Type="DataModel.Product" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="10.438" Y="8.75" />
+        <Point X="10.438" Y="8.207" />
+        <Point X="8.75" Y="8.207" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAAAgAACAACAAGAgAAIIIAAgAAAAAAAAAAEQ=</HashCode>
+      <FileName>ArtistProduct.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Artist" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Products" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DataModel.Playlist">
+    <Position X="2" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgADQQAAAAAAAAAAAAAAAAwAAgAgAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Playlist.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AlbumProduct" />
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DataModel.Product">
+    <Position X="7.25" Y="6" Width="1.5" />
+    <AssociationLine Name="AlbumProducts" Type="DataModel.AlbumProduct" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.25" Y="8.242" />
+        <Point X="6" Y="8.242" />
+        <Point X="6" Y="9.75" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="VideoProducts" Type="DataModel.VideoProduct">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.182" Y="0.06" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ArtistProduct" Type="DataModel.ArtistProduct" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.75" Y="7.783" />
+        <Point X="11" Y="7.783" />
+        <Point X="11" Y="8.75" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.094" Y="0.089" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AgACAAAAABAgAAAAAAAAKAYAACAAAAAAACAIABAACAA=</HashCode>
+      <FileName>Product.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ArtistProduct" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="AlbumProducts" />
+      <Property Name="VideoProducts" />
+      <Property Name="UserLikes" />
+      <Property Name="UserComments" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DataModel.sysdiagram" Collapsed="true">
+    <Position X="12.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAIAAAAAAAAAAAAAAAQAAAFAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>sysdiagram.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataModel.User" Collapsed="true">
+    <Position X="4.25" Y="3.5" Width="1.5" />
+    <AssociationLine Name="AccountInfo" Type="DataModel.AccountInfo" FixedToPoint="true">
+      <Path>
+        <Point X="4.75" Y="3.5" />
+        <Point X="4.75" Y="2.062" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="UserComments" Type="DataModel.UserComment" FixedFromPoint="true">
+      <Path>
+        <Point X="4.688" Y="4.062" />
+        <Point X="4.688" Y="5.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.158" Y="0.142" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Playlists" Type="DataModel.Playlist">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.578" Y="0.092" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAASAAAAABAAAAAAAAAAYAgAAAAAAAACQQAAAAADAAA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AccountInfo" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="UserLikes" />
+      <Property Name="UserComments" />
+      <Property Name="Playlists" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DataModel.UserComment">
+    <Position X="4.25" Y="5.5" Width="1.5" />
+    <AssociationLine Name="User" Type="DataModel.User" FixedToPoint="true">
+      <Path>
+        <Point X="5.375" Y="5.5" />
+        <Point X="5.375" Y="4.062" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>EAADAAAABAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UserComment.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Product" />
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DataModel.UserLike">
+    <Position X="10.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAADAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UserLike.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Product" />
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DataModel.Video">
+    <Position X="7.5" Y="13.25" Width="1.5" />
+    <AssociationLine Name="VideoProducts" Type="DataModel.VideoProduct" FixedFromPoint="true">
+      <Path>
+        <Point X="8.5" Y="13.25" />
+        <Point X="8.5" Y="11.738" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAABAiAAAAAAAAg=</HashCode>
+      <FileName>Video.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="VideoProducts" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DataModel.VideoProduct">
+    <Position X="7.5" Y="10.25" Width="1.5" />
+    <AssociationLine Name="Video" Type="DataModel.Video" FixedFromPoint="true">
+      <Path>
+        <Point X="8.125" Y="11.738" />
+        <Point X="8.125" Y="13.25" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>EAACAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>VideoProduct.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Video" />
+      <Property Name="Product" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
