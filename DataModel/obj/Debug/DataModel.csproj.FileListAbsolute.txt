@@ -1,0 +1,8 @@
+D:\DoAnWebNgheNhac\DataModel\obj\Debug\DataModel.csprojResolveAssemblyReference.cache
+D:\DoAnWebNgheNhac\DataModel\bin\Debug\DataModel.dll.config
+D:\DoAnWebNgheNhac\DataModel\bin\Debug\DataModel.dll
+D:\DoAnWebNgheNhac\DataModel\bin\Debug\DataModel.pdb
+D:\DoAnWebNgheNhac\DataModel\bin\Debug\EntityFramework.dll
+D:\DoAnWebNgheNhac\DataModel\bin\Debug\EntityFramework.xml
+D:\DoAnWebNgheNhac\DataModel\obj\Debug\DataModel.dll
+D:\DoAnWebNgheNhac\DataModel\obj\Debug\DataModel.pdb
