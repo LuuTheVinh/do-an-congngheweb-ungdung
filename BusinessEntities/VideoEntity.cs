@@ -17,7 +17,8 @@ namespace BusinessEntities
         public string Tittle { get; set; }
         public int ParentId { get; set; }
         public int Level { get; set; }
-    
+
+        public ICollection<VideoEntity> VideoLevel { get; set; }
         public virtual ICollection<VideoProductEntity> VideoProducts { get; set; }
     }
 }

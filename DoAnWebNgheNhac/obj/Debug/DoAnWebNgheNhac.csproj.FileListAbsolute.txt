@@ -91,3 +91,10 @@ D:\DoAnWebNgheNhac\DoAnWebNgheNhac\bin\DataModel.dll
 D:\DoAnWebNgheNhac\DoAnWebNgheNhac\bin\AutoMapper.dll
 D:\DoAnWebNgheNhac\DoAnWebNgheNhac\bin\DataModel.pdb
 D:\DoAnWebNgheNhac\DoAnWebNgheNhac\bin\AutoMapper.xml
+D:\DoAnWebNgheNhac\DoAnWebNgheNhac\bin\Ninject.dll
+D:\DoAnWebNgheNhac\DoAnWebNgheNhac\bin\Ninject.Web.Common.dll
+D:\DoAnWebNgheNhac\DoAnWebNgheNhac\bin\Ninject.Web.Mvc.dll
+D:\DoAnWebNgheNhac\DoAnWebNgheNhac\bin\WebActivatorEx.dll
+D:\DoAnWebNgheNhac\DoAnWebNgheNhac\bin\Ninject.xml
+D:\DoAnWebNgheNhac\DoAnWebNgheNhac\bin\Ninject.Web.Common.xml
+D:\DoAnWebNgheNhac\DoAnWebNgheNhac\bin\Ninject.Web.Mvc.xml

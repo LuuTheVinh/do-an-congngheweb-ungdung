@@ -1,7 +1,8 @@
-﻿@model DataModel.Album
+﻿@model BusinessEntities.AlbumEntity
 
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>Create</h2>
@@ -25,7 +26,8 @@
             @Html.LabelFor(model => model.ParentId)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ParentId)
+            @*@Html.EditorFor(model => model.ParentId)*@
+            @Html.DropDownListFor(m => m.ParentId, Model.AlbumList)
             @Html.ValidationMessageFor(model => model.ParentId)
         </div>
 
@@ -44,7 +46,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List",  null, null, null, new { href = Request.UrlReferrer})
 </div>
 
 @section Scripts {

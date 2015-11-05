@@ -11,7 +11,7 @@ namespace DoAnWebNgheNhac.Models
     public class UsersContext : DbContext
     {
         public UsersContext()
-            : base("DefaultConnection")
+            : base("WebNgheNhacDb1Entities")
         {
         }
 

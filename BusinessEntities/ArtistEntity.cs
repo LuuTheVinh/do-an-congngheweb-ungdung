@@ -17,7 +17,8 @@ namespace BusinessEntities
         public string Tittle { get; set; }
         public int ParentId { get; set; }
         public int Level { get; set; }
-    
+
+        public ICollection<ArtistEntity> ArtistLevel;
         public virtual ICollection<ArtistProductEntity> ArtistProducts { get; set; }
     }
 }

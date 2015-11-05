@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace BusinessEntities
 {
@@ -17,7 +18,16 @@ namespace BusinessEntities
         public string Tittle { get; set; }
         public int ParentId { get; set; }
         public int Level { get; set; }
+
+        public ICollection<AlbumEntity> AlbumLevel2 { get; set; }
     
         public virtual ICollection<AlbumProductEntity> AlbumProducts { get; set; }
+
+       //
+        public IEnumerable<SelectListItem> AlbumList
+        {
+            get;
+            set;
+        }
     }
 }

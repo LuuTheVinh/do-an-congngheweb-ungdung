@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,11 +9,17 @@ namespace DoAnWebNgheNhac.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+        private readonly IServices _iServices;
 
-            return View();
+        public HomeController(IServices iServices)
+        {
+            this._iServices = iServices;
+        }
+
+        public ActionResult Index(int id = 0)
+        {
+            var albums = _iServices.GetListAlbumByParentId(id).Where(a => a.Level == 1).ToList();
+            return View(albums);
         }
 
         public ActionResult About()

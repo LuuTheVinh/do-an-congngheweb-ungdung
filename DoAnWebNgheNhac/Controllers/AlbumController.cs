@@ -5,20 +5,27 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using DataModel;
+using BusinessServices;
+using BusinessEntities;
 
 namespace DoAnWebNgheNhac.Controllers
 {
     public class AlbumController : Controller
     {
-        private WebNgheNhacDb1Entities db = new WebNgheNhacDb1Entities();
+        private readonly IAlbumServices _iAlbumServices;
 
+        public AlbumController(IAlbumServices iAlbumServices)
+        {
+            this._iAlbumServices = iAlbumServices;
+        }
         //
         // GET: /Album/
 
         public ActionResult Index()
         {
-            return View(db.Albums.ToList());
+            var model = _iAlbumServices.GetAllAlbums().Where(a => a.Level ==1).ToList();
+
+            return View(model);
         }
 
         //
@@ -26,12 +33,15 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Album album = db.Albums.Find(id);
-            if (album == null)
+            AlbumEntity album = _iAlbumServices.GetAlbumById(id);
+
+            album.AlbumLevel2 = _iAlbumServices.GetAllAlbums().Where(a => a.ParentId == album.Id).ToList();
+
+            if (album.AlbumLevel2 == null)
             {
                 return HttpNotFound();
             }
-            return View(album);
+            return View(album.AlbumLevel2);
         }
 
         //
@@ -39,7 +49,14 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var model = new AlbumEntity();
+            var getAlbumList = _iAlbumServices.GetAllAlbums().ToList();
+            var albumEntity = new AlbumEntity { Id = 0, Tittle = "-Select Parent-" };
+           // var list = getAlbumList;
+           // list.Add(albumEntity);
+            getAlbumList.Add(albumEntity);
+            model.AlbumList = new SelectList(getAlbumList, "Id", "Tittle");
+            return View(model);
         }
 
         //
@@ -47,15 +64,18 @@ namespace DoAnWebNgheNhac.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Album album)
+        public ActionResult Create(AlbumEntity album)
         {
+            //if(String.IsNullOrEmpty(album.ParentId.ToString()))
+            //{
+            //    album.ParentId = 0;
+            //}
             if (ModelState.IsValid)
             {
-                db.Albums.Add(album);
-                db.SaveChanges();
+                _iAlbumServices.CreateAlbum(album);
                 return RedirectToAction("Index");
+               // return Redirect(Request.UrlReferrer.ToString());
             }
-
             return View(album);
         }
 
@@ -64,7 +84,11 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Album album = db.Albums.Find(id);
+            //var model = new AlbumEntity();
+            //var getAlbumList = _iAlbumServices.GetAllAlbums().ToList();
+            AlbumEntity album = _iAlbumServices.GetAlbumById(id);
+            //getAlbumList.Add(album);
+            //model.AlbumList = new SelectList(getAlbumList, "Id", "Tittle");
             if (album == null)
             {
                 return HttpNotFound();
@@ -77,12 +101,11 @@ namespace DoAnWebNgheNhac.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Album album)
+        public ActionResult Edit(AlbumEntity album)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(album).State = EntityState.Modified;
-                db.SaveChanges();
+                _iAlbumServices.UpdateAlbum(album.Id, album);
                 return RedirectToAction("Index");
             }
             return View(album);
@@ -93,7 +116,7 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Album album = db.Albums.Find(id);
+            AlbumEntity album = _iAlbumServices.GetAlbumById(id);
             if (album == null)
             {
                 return HttpNotFound();
@@ -108,16 +131,14 @@ namespace DoAnWebNgheNhac.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Album album = db.Albums.Find(id);
-            db.Albums.Remove(album);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+            bool success = _iAlbumServices.DeleteAlbum(id);
 
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
+            if (!success)
+            {
+                ModelState.AddModelError("error", "delete fail");
+                return View();
+            }
+            return RedirectToAction("Index");
         }
     }
 }

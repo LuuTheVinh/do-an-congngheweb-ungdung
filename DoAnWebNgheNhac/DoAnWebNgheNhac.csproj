@@ -40,6 +40,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc">
+      <HintPath>..\packages\Ninject.MVC3.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -116,6 +125,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
     <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
@@ -181,71 +193,15 @@
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AlbumController.cs" />
+    <Compile Include="Controllers\ArtistController.cs" />
+    <Compile Include="Controllers\ArtistProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Diagrams\AccountInfo.cs">
-      <DependentUpon>WebDbsDiagram.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Diagrams\Album.cs">
-      <DependentUpon>WebDbsDiagram.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Diagrams\AlbumCategory.cs">
-      <DependentUpon>WebDbsDiagram.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Diagrams\AlbumView.cs">
-      <DependentUpon>WebDbsDiagram.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Diagrams\Artist.cs">
-      <DependentUpon>WebDbsDiagram.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Diagrams\ArtistCategory.cs">
-      <DependentUpon>WebDbsDiagram.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Diagrams\Music.cs">
-      <DependentUpon>WebDbsDiagram.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Diagrams\MusicView.cs">
-      <DependentUpon>WebDbsDiagram.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Diagrams\Playlist.cs">
-      <DependentUpon>WebDbsDiagram.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Diagrams\Product.cs">
-      <DependentUpon>WebDbsDiagram.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Diagrams\User.cs">
-      <DependentUpon>WebDbsDiagram.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Diagrams\UserComment.cs">
-      <DependentUpon>WebDbsDiagram.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Diagrams\Video.cs">
-      <DependentUpon>WebDbsDiagram.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Diagrams\VideoCategory.cs">
-      <DependentUpon>WebDbsDiagram.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Diagrams\VideoView.cs">
-      <DependentUpon>WebDbsDiagram.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Diagrams\WebDbsDiagram.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebDbsDiagram.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Diagrams\WebDbsDiagram.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebDbsDiagram.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Diagrams\WebDbsDiagram.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebDbsDiagram.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -310,23 +266,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <EntityDeploy Include="Diagrams\WebDbsDiagram.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WebDbsDiagram.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Diagrams\WebDbsDiagram.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebDbsDiagram.edmx</DependentUpon>
-      <LastGenOutput>WebDbsDiagram.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Diagrams\WebDbsDiagram.edmx.diagram">
-      <DependentUpon>WebDbsDiagram.edmx</DependentUpon>
-    </Content>
-    <Content Include="Diagrams\WebDbsDiagram.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebDbsDiagram.edmx</DependentUpon>
-      <LastGenOutput>WebDbsDiagram.cs</LastGenOutput>
-    </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -388,6 +327,22 @@
     <Content Include="Views\Album\Create.cshtml" />
     <Content Include="Views\Album\Edit.cshtml" />
     <Content Include="Views\Album\Delete.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Video\Index.cshtml" />
+    <Content Include="Views\Video\Details.cshtml" />
+    <Content Include="Views\Video\Create.cshtml" />
+    <Content Include="Views\Video\Edit.cshtml" />
+    <Content Include="Views\Video\Delete.cshtml" />
+    <Content Include="Views\Artist\Index.cshtml" />
+    <Content Include="Views\Artist\Details.cshtml" />
+    <Content Include="Views\Artist\Create.cshtml" />
+    <Content Include="Views\Artist\Edit.cshtml" />
+    <Content Include="Views\Artist\Delete.cshtml" />
+    <Content Include="Views\ArtistProduct\Index.cshtml" />
+    <Content Include="Views\ArtistProduct\Details.cshtml" />
+    <Content Include="Views\ArtistProduct\Create.cshtml" />
+    <Content Include="Views\ArtistProduct\Edit.cshtml" />
+    <Content Include="Views\ArtistProduct\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj">

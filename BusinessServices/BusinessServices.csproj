@@ -45,9 +45,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlbumProductServices.cs" />
     <Compile Include="AlbumServices.cs" />
+    <Compile Include="ArtistProductServices.cs" />
+    <Compile Include="ArtistServices.cs" />
+    <Compile Include="IAlbumProductServices.cs" />
     <Compile Include="IAlbumServices.cs" />
+    <Compile Include="IArtistProductServices.cs" />
+    <Compile Include="IArtistServices.cs" />
+    <Compile Include="IProductServices.cs" />
+    <Compile Include="IServices.cs" />
+    <Compile Include="IVideoProductServices.cs" />
+    <Compile Include="IVideoServices.cs" />
+    <Compile Include="ProductServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services.cs" />
+    <Compile Include="VideoServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj">

@@ -1,36 +1,52 @@
-﻿@model DataModel.Album
+﻿@model IEnumerable<BusinessEntities.AlbumEntity>
 
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>Details</h2>
 
-<fieldset>
-    <legend>Album</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Tittle)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Tittle)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ParentId)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ParentId)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Level)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Level)
-    </div>
-</fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Create New", "Create", new { })
 </p>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tittle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Level)
+        </th>
+        <th></th>
+    </tr>
+@if (Model!= null)
+{
+    foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tittle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Level)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                </td>
+            </tr>
+        }
+}
+
+</table>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>

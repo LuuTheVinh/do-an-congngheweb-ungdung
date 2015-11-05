@@ -50,6 +50,7 @@ namespace BusinessServices
         public IEnumerable<BusinessEntities.AlbumEntity> GetAllAlbums()
         {
             var albums = _unitOfWork.AlbumRepository.GetAll().ToList();
+
             if (albums.Any())
             {
                 Mapper.CreateMap<Album, AlbumEntity>();
@@ -68,10 +69,14 @@ namespace BusinessServices
         {
             using (var scope = new TransactionScope())
             {
-                var album = new Album
-                {
-                    Tittle = albumEntity.Tittle
-                };
+                //var album = new Album
+                //{
+                //    Tittle = albumEntity.Tittle,
+                //    ParentId = albumEntity.ParentId,
+                //    Level = albumEntity.Level
+                //};
+                Mapper.CreateMap<AlbumEntity, Album>();
+                var album = Mapper.Map<AlbumEntity, Album>(albumEntity);
                 _unitOfWork.AlbumRepository.Insert(album);
                 _unitOfWork.Save();
                 scope.Complete();
@@ -92,15 +97,12 @@ namespace BusinessServices
             {
                 using (var scope = new TransactionScope())
                 {
-                    var album = _unitOfWork.AlbumRepository.GetById(albumId);
-                    if (album != null)
-                    {
-                        album.Tittle = albumEntity.Tittle;
-                        _unitOfWork.AlbumRepository.Update(album);
-                        _unitOfWork.Save();
-                        scope.Complete();
-                        success = true;
-                    }
+                    Mapper.CreateMap<AlbumEntity, Album>();
+                    var album = Mapper.Map<AlbumEntity, Album>(albumEntity);
+                    _unitOfWork.AlbumRepository.Update(album);
+                    _unitOfWork.Save();
+                    scope.Complete();
+                    success = true;
                 }
             }
             return success;
