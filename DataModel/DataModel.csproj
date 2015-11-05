@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <None Include="DataModel_Overview.cd" />
     <None Include="packages.config" />
     <EntityDeploy Include="WebNgheNhacDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
