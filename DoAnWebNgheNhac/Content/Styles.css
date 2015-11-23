@@ -1,0 +1,292 @@
+﻿/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	text-decoration: none;
+    color: #333;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* MAIN SETTING */
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+body {
+	background-color: #ffffff;
+	color: #333333;
+	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.4;
+	margin: 0;
+}
+
+a:visited {
+	color: #333333;
+}
+
+a:hover {
+	color: #2582be;
+}
+
+.box_left, .box_right {
+    margin: 30px 0;
+}
+
+.content-wrapper {
+	max-width: 1180px;
+	margin: 0 auto;
+    height: 100%;
+}
+
+.content {
+    overflow: hidden;
+}
+
+.top-menu {
+    background-color: #2582be;
+    color: #fff;
+    padding: 5px 10px;
+    height: 50px;
+    width: auto;
+}
+
+.second-menu {
+    background-color: #dddddd;
+    z-index: 1;
+    height: 45px;
+}
+
+.second-menu ul.level-1-menu {
+    display: inline-block;
+    height: 100%;
+}
+
+.second-menu ul li {
+    float: left;
+    list-style: outside none none;
+    position: relative;
+    height: 100%;
+}
+
+ul.level-1-menu > li > a {
+    font-size: 15px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0 15px;
+    display: block;
+}
+
+ul.level-1-menu > li:hover {
+    background-color: #f2f2f2;
+}
+
+.second-menu li:hover .level-2-menu {
+    display: block;
+}
+
+.level-2-menu {
+    padding: 20px 15px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    transition: opacity linear 0.15s;
+    background-color: #fff;
+    min-width: 180px;
+    border: 1px solid #d9d9d9;
+    box-shadow: 0 3px 8px #d9d9d9;
+}
+    .level-2-menu a {
+        float: left;
+    }
+
+    .level-2-menu li {
+        display: block;
+        clear: both;
+    }
+
+.menu-col-1 {
+    width: 170px;
+}
+
+.menu-col-2 {
+    width: 342px;
+}
+
+.menu-col-3 {
+    width: 512px;
+}
+
+.subcol {
+    float: left;
+}
+
+.sub-title {
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+.sub-item {
+    font-size: 15px;
+    font-weight: 300;
+}
+
+ul.sub-item li
+{
+    padding: 5px 0px;
+}
+
+.box_left {
+    width: 860px;
+    float: left;
+}
+
+.box_right {
+    width: 300px;
+    float: right;
+}
+
+.title_box {
+    font-size: 25px;
+    font-weight: 300;
+}
+
+    .title_box a {
+        color: #ff6a00;
+    }
+
+    .title_box a:hover {
+        color: #2582be;
+    }
+
+.slider {
+    height: 360px;
+    background-color: #dddddd;
+    margin-bottom: 10px;
+}
+
+.list_music, .list_album, list_video {
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.list_music ul {
+    margin-bottom: 10px;
+}
+
+.info_song, .chart_info_song  {
+    border-bottom: 1px solid #f2f2f2;
+    overflow: hidden;
+    padding: 15px 0;
+    font-size: 15px;
+}
+
+.info_song h3 {
+    float: left;
+}
+
+.info_song span {
+    float: right;
+}
+
+.list_album ul li, .list_video ul li {
+    float: left;
+    margin-right: 20px;
+    position: relative;
+}
+
+.thumbnail {
+    display: block;
+}
+
+.list_album a.thumbnail img, .list_video a.thumbnail img  {
+    width: 190px;
+    height: auto;
+}
+
+.list_album .thumbnail {
+    width: 190px;
+    height: 190px;
+}
+
+.description h3 a {
+    font-size: 18px;
+}
+
+.description h4 a {
+    color: #8e8e8e;
+    font-size: 14px;
+}
+
+.chart_info_song h3 {
+    clear: both;
+}
+
+.chart_info_song > a {
+    font-size: 13px;
+    color: #888;
+}
+
+.chart_info_song span {
+    font-size: 14px;
+    float: right;
+}
+
+footer {
+    background: #222428;
+    padding: 20px 0;
+}
+
+footer p {
+    color: #fff;
+}
