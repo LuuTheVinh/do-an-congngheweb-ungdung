@@ -28,6 +28,13 @@ namespace DoAnWebNgheNhac.Controllers
             return View(model);
         }
 
+
+        public ActionResult ViewIndex()
+        {
+            var model = _iVideoServices.GetAllVideos();
+            return View(model);
+        }
+
         //
         // GET: /Video/Details/5
 

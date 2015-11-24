@@ -347,6 +347,9 @@
     <Content Include="Views\ArtistProduct\Create.cshtml" />
     <Content Include="Views\ArtistProduct\Edit.cshtml" />
     <Content Include="Views\ArtistProduct\Delete.cshtml" />
+    <Content Include="Views\Album\ViewIndex.cshtml" />
+    <Content Include="Views\Artist\ViewIndex.cshtml" />
+    <Content Include="Views\Video\ViewIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj">

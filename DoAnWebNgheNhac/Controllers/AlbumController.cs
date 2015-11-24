@@ -28,6 +28,11 @@ namespace DoAnWebNgheNhac.Controllers
             return View(model);
         }
 
+        public ActionResult ViewIndex()
+        {
+            return View();
+        }
+
         //
         // GET: /Album/Details/5
 

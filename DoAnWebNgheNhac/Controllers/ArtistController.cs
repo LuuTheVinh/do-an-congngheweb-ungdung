@@ -28,6 +28,12 @@ namespace DoAnWebNgheNhac.Controllers
             return View(model);
         }
 
+        public ActionResult ViewIndex()
+        {
+            var model = _iArtistServices.GetAllArtists();
+            return View(model);
+        }
+
         //
         // GET: /Artist/Details/5
 
