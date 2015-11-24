@@ -15,6 +15,6 @@ namespace BusinessServices
         bool UpdateArtistProduct(int artistProductId, ArtistProductEntity artistProductEntity);
         bool DeleteArtistProduct(int artistProductId);
 
-        IEnumerable<ArtistEntity> GetAllArtists();
+        //IEnumerable<ArtistEntity> GetAllArtists();
     }
 }
