@@ -1,0 +1,91 @@
+﻿<div class="content-wrapper">
+    <div class="nav-account">
+
+        <!--http://andwecode.com/create-popup-login-and-signup-form-->
+
+        <a id="login-btn" href="#modal">Đăng nhập</a>
+        <span>/</span>
+        <a href="#">Đăng ký</a>
+
+        <div id="modal" class="popupContainer" style="display:none;">
+		<header class="popupHeader">
+			<span class="header_title">Đăng nhập</span>
+			<span class="modal_close"><i class="fa fa-times"></i></span>
+		</header>
+		
+		<section class="popupBody">
+			<!-- Username & Password Login form -->
+			<div class="user_login">
+				<form>
+					<label>Email / Tên tài khoản</label>
+					<input type="text" />
+					<br />
+
+					<label>Mật khẩu</label>
+					<input type="password" />
+					<br />
+
+					<div class="checkbox">
+						<input id="remember" type="checkbox" />
+						<label for="remember">Ghi nhớ</label>
+					</div>
+
+					<div class="action_btns">
+						<div class="one_half"><a id="register-btn" href="#" class="btn"><i class=""></i>Đăng ký</a></div>
+						<div class="one_half last"><a href="#" class="btn btn_red">Đăng nhập</a></div>
+					</div>
+				</form>
+
+				<a href="#" class="forgot_password">Quên mật khẩu?</a>
+			</div>
+
+			<!-- Register Form -->
+			<div class="user_register">
+				<form>
+					<label>Họ Tên</label>
+					<input type="text" />
+					<br />
+
+					<label>Email</label>
+					<input type="email" />
+					<br />
+
+					<label>Mật khẩu</label>
+					<input type="password" />
+					<br />
+
+					<div class="action_btns">
+						<div class="one_half"><a href="#" class="btn back_btn"><i class=""></i>Quay lại</a></div>
+						<div class="one_half last"><a href="#" class="btn btn_red">Đăng ký</a></div>
+					</div>
+				</form>
+			</div>
+		</section>
+	    </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#login-btn").leanModal({ top: 100, overlay: 0.6, closeButton: ".modal_close" });
+    $(function () {
+        $("#login-btn").click(function () {
+            $(".user_login").show();
+        });
+
+		// Calling Register Form
+		$("#register-btn").click(function () {
+		    $(".user_register").show();
+		    $(".user_login").hide();
+			$(".header_title").text('Đăng ký');
+			return false;
+		});
+
+		// Going back to Social Forms
+		$(".back_btn").click(function(){
+			$(".user_login").show();
+			$(".user_register").hide();
+			$(".header_title").text('Đăng nhập');
+			return false;
+		});
+	})
+</script>
