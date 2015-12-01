@@ -11,6 +11,7 @@ namespace BusinessServices
     {
         ArtistProductEntity GetArtistProductById(int artistProductId);
         IEnumerable<ArtistProductEntity> GetAllArtistProducts();
+       // IQueryable<ArtistProductEntity> GetAllArtistProductsWithInclude();
         int CreateArtistProduct(ArtistProductEntity artistProductEntity);
         bool UpdateArtistProduct(int artistProductId, ArtistProductEntity artistProductEntity);
         bool DeleteArtistProduct(int artistProductId);

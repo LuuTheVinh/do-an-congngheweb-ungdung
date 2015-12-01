@@ -22,7 +22,6 @@ namespace DoAnWebNgheNhac.Controllers
             this._iArtistServices = iArtistServices;
         }
 
-        private readonly WebNgheNhacDb1Entities db = new WebNgheNhacDb1Entities();
         //
         // GET: /ArtistProduct/
 
@@ -31,7 +30,7 @@ namespace DoAnWebNgheNhac.Controllers
             //var artistproducts = db.ArtistProducts.Include(a => a.Artist);
            // var model = new ArtistProductEntity();
             var artistproducts = _iArtistProductServices.GetAllArtistProducts();
-            var artists = _iArtistServices.GetAllArtists();
+            //var artists = _iArtistServices.GetAllArtists();
             return View(artistproducts.ToList());
         }
 
@@ -40,7 +39,7 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            ArtistProduct artistproduct = db.ArtistProducts.Find(id);
+            ArtistProductEntity artistproduct = _iArtistProductServices.GetArtistProductById(id);
             if (artistproduct == null)
             {
                 return HttpNotFound();
@@ -53,7 +52,8 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.ArtistId = new SelectList(db.Artists, "Id", "Tittle");
+            var artists = _iArtistServices.GetAllArtists().Where(a => a.Level == 3);
+            ViewBag.ArtistId = new SelectList(artists, "Id", "Tittle");
             return View();
         }
 
@@ -62,17 +62,16 @@ namespace DoAnWebNgheNhac.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ArtistProduct artistproduct)
+        public ActionResult Create(ArtistProductEntity artistproductEntity)
         {
             if (ModelState.IsValid)
             {
-                db.ArtistProducts.Add(artistproduct);
-                db.SaveChanges();
+                _iArtistProductServices.CreateArtistProduct(artistproductEntity);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ArtistId = new SelectList(db.Artists, "Id", "Tittle", artistproduct.ArtistId);
-            return View(artistproduct);
+          //  ViewBag.ArtistId = new SelectList(db.Artists, "Id", "Tittle", artistproduct.ArtistId);
+            return View(artistproductEntity);
         }
 
         //
@@ -80,12 +79,14 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            ArtistProduct artistproduct = db.ArtistProducts.Find(id);
+            var artists = _iArtistServices.GetAllArtists().Where(a => a.Level == 3);
+            ArtistProductEntity artistproduct = _iArtistProductServices.GetArtistProductById(id);
             if (artistproduct == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ArtistId = new SelectList(db.Artists, "Id", "Tittle", artistproduct.ArtistId);
+            
+            ViewBag.ArtistId = new SelectList(artists, "Id", "Tittle", artistproduct.ArtistId);
             return View(artistproduct);
         }
 
@@ -94,16 +95,17 @@ namespace DoAnWebNgheNhac.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(ArtistProduct artistproduct)
+        public ActionResult Edit(ArtistProductEntity artistproductEntity)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(artistproduct).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(artistproduct).State = EntityState.Modified;
+                //db.SaveChanges();
+                _iArtistProductServices.UpdateArtistProduct(artistproductEntity.Id, artistproductEntity);
                 return RedirectToAction("Index");
             }
-            ViewBag.ArtistId = new SelectList(db.Artists, "Id", "Tittle", artistproduct.ArtistId);
-            return View(artistproduct);
+           // ViewBag.ArtistId = new SelectList(db.Artists, "Id", "Tittle", artistproduct.ArtistId);
+            return View(artistproductEntity);
         }
 
         //
@@ -111,7 +113,7 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            ArtistProduct artistproduct = db.ArtistProducts.Find(id);
+            ArtistProductEntity artistproduct = _iArtistProductServices.GetArtistProductById(id);
             if (artistproduct == null)
             {
                 return HttpNotFound();
@@ -126,16 +128,16 @@ namespace DoAnWebNgheNhac.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ArtistProduct artistproduct = db.ArtistProducts.Find(id);
-            db.ArtistProducts.Remove(artistproduct);
-            db.SaveChanges();
+            //ArtistProductEntity artistproduct = _iArtistProductServices.GetArtistProductById(id);
+            bool success = _iArtistProductServices.DeleteArtistProduct(id);
+
+            if (!success)
+            {
+                ModelState.AddModelError("error", "delete fail");
+                return View();
+            }
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
     }
 }

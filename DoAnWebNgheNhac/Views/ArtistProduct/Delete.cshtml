@@ -1,7 +1,9 @@
-﻿@model DataModel.ArtistProduct
+﻿@model BusinessEntities.ArtistProductEntity
+
 
 @{
     ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>Delete</h2>
@@ -10,12 +12,12 @@
 <fieldset>
     <legend>ArtistProduct</legend>
 
-    <div class="display-label">
+@*    <div class="display-label">
          @Html.DisplayNameFor(model => model.Artist.Tittle)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Artist.Tittle)
-    </div>
+    </div>*@
 
     <div class="display-label">
          @Html.DisplayNameFor(model => model.StageName)
