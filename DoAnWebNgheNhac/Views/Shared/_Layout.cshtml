@@ -2,15 +2,28 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <title>@ViewBag.Title - Web Nghe Nhạc</title>
+
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+        @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />*@
         <link rel="stylesheet" type="text/css" href="~/Content/Styles.css" />
+
+        
+        <script type="text/javascript" src="~/Scripts/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.leanModal.min.js"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
     </head>
     <body>
+        
         <header>
             <nav class="top-menu">
-
+                @RenderPage("~/Views/Shared/_TopMenu.cshtml")
 		    </nav>
 
 		    <nav class="second-menu">
@@ -29,5 +42,7 @@
                 </div>
             </div>
         </footer>
+        
+        <!-- SCRIPT -->
     </body>
 </html>

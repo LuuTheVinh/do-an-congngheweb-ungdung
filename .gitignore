@@ -3,3 +3,12 @@
 ################################################################################
 
 /DoAnWebNgheNhac.v12.suo
+/DoAnWebNgheNhac/bin
+/DoAnWebNgheNhac/obj
+/BusinessServices/bin
+/BusinessServices/obj
+/BusinessEntities/bin
+/BusinessEntities/obj
+*.filters
+*.sln
+DoAnWebNgheNhac.v11.suo
