@@ -5,6 +5,7 @@ using DataModel.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
@@ -25,7 +26,7 @@ namespace BusinessServices
             var artistProduct = _unitOfWork.ArtistProductRepository.GetById(artistProductId);
             if (artistProduct != null)
             {
-                Mapper.CreateMap<ArtistProduct, ArtistProductEntity>();
+                Mapper.CreateMap<ArtistProduct, ArtistProductEntity>().ForMember(x => x.Artist, option => option.Ignore() );
                 var artistProductModel = Mapper.Map<ArtistProduct, ArtistProductEntity>(artistProduct);
                 return artistProductModel;
             }
@@ -37,12 +38,24 @@ namespace BusinessServices
             var artistProduct = _unitOfWork.ArtistProductRepository.GetAll().ToList();
             if (artistProduct.Any())
             {
-                Mapper.CreateMap<ArtistProduct, ArtistProductEntity>();
+                Mapper.CreateMap<ArtistProduct, ArtistProductEntity>().ForMember(x => x.Artist, option => option.Ignore()).ForMember(x=>x.Products,option=>option.Ignore());//.ForAllMembers(option => option.Ignore());
                 var artistProductModel = Mapper.Map<List<ArtistProduct>, List<ArtistProductEntity>>(artistProduct);
                 return artistProductModel;
             }
             return null;
         }
+
+        //public IQueryable<BusinessEntities.ArtistProductEntity> GetAllArtistProductsWithInclude()
+        //{
+        //    var artistProduct = _unitOfWork.ArtistProductRepository.GetWithInclude();
+        //    if (artistProduct.Any())
+        //    {
+        //        Mapper.CreateMap<ArtistProduct, ArtistProductEntity>().ForMember(x => x.Artist, option => option.Ignore()).ForMember(x => x.Products, option => option.Ignore());//.ForAllMembers(option => option.Ignore());
+        //        var artistProductModel = Mapper.Map<List<ArtistProduct>, List<ArtistProductEntity>>(artistProduct);
+        //        return artistProductModel;
+        //    }
+        //    return null;
+        //}
 
         public int CreateArtistProduct(BusinessEntities.ArtistProductEntity artistProductEntity)
         {

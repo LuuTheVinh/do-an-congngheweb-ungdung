@@ -18,6 +18,8 @@ namespace BusinessEntities
         public int ParentId { get; set; }
         public int Level { get; set; }
 
+        public ICollection<ArtistEntity> ArtistLevel2 { get; set; }
+
         public ICollection<ArtistEntity> ArtistLevel;
         public virtual ICollection<ArtistProductEntity> ArtistProducts { get; set; }
     }

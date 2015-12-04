@@ -1,11 +1,11 @@
-﻿@model BusinessEntities.ArtistProductEntity
+﻿@model DataModel.ArtistProduct
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Create</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -13,8 +13,6 @@
 
     <fieldset>
         <legend>ArtistProduct</legend>
-
-        @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.ArtistId, "Artist")
@@ -97,7 +95,7 @@
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Create" />
         </p>
     </fieldset>
 }

@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using AutoMapper;
 
 namespace DoAnWebNgheNhac
 {
@@ -24,5 +25,14 @@ namespace DoAnWebNgheNhac
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
         }
+
+        //protected void CreateMaps()
+        //{
+        //    Mapper.CreateMap<Data.Client, ClientModel>();
+        //    Mapper.CreateMap<ClientModel, Data.Client>();
+
+        //    Mapper.CreateMap<Data.Client, ClientSettingsModel>();
+        //    Mapper.CreateMap<ClientSettingsModel, Data.Client>();
+        //}
     }
 }

@@ -24,7 +24,7 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Index()
         {
-            var model = _iArtistServices.GetAllArtists();
+            var model = _iArtistServices.GetAllArtists().Where(a => a.Level == 1);
             return View(model);
         }
 
@@ -40,11 +40,12 @@ namespace DoAnWebNgheNhac.Controllers
         public ActionResult Details(int id = 0)
         {
             ArtistEntity artist = _iArtistServices.GetArtistById(id);
-            if (artist == null)
+            artist.ArtistLevel2 = _iArtistServices.GetAllArtists().Where(a => a.ParentId == artist.Id).ToList();
+            if (artist.ArtistLevel2 == null)
             {
                 return HttpNotFound();
             }
-            return View(artist);
+            return View(artist.ArtistLevel2);
         }
 
         //
@@ -52,6 +53,8 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Create()
         {
+            var artists = _iArtistServices.GetAllArtists().Where(a => a.Level <= 2);
+            ViewBag.ParentId = new SelectList(artists, "Id", "Tittle");
             return View();
         }
 
@@ -76,11 +79,14 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Edit(int id = 0)
         {
+            var artists = _iArtistServices.GetAllArtists().Where(a => a.Level <= 2);
             ArtistEntity artist = _iArtistServices.GetArtistById(id);
             if (artist == null)
             {
                 return HttpNotFound();
             }
+
+            ViewBag.ParentId = new SelectList(artists, "Id", "Tittle", artist.ParentId);
             return View(artist);
         }
 
@@ -96,6 +102,7 @@ namespace DoAnWebNgheNhac.Controllers
                 _iArtistServices.UpdateArtist(artist.Id, artist);
                 return RedirectToAction("Index");
             }
+
             return View(artist);
         }
 
