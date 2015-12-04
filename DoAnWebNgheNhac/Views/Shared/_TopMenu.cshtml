@@ -1,13 +1,16 @@
-﻿<div class="content-wrapper">
+﻿<div class="container">
     <div class="nav-account">
 
         <!--http://andwecode.com/create-popup-login-and-signup-form-->
-
+        
+        <span class="fa fa-user"></span>
         <a id="login-btn" href="#modal">Đăng nhập</a>
         <span>/</span>
-        <a href="#">Đăng ký</a>
+        <a id="register" href="#modal">Đăng ký</a>
+    </div>
+</div>
 
-        <div id="modal" class="popupContainer" style="display:none;">
+<div id="modal" class="popupContainer" style="display:none;">
 		<header class="popupHeader">
 			<span class="header_title">Đăng nhập</span>
 			<span class="modal_close"><i class="fa fa-times"></i></span>
@@ -62,14 +65,23 @@
 			</div>
 		</section>
 	    </div>
-    </div>
-</div>
 
 <script type="text/javascript">
     $("#login-btn").leanModal({ top: 100, overlay: 0.6, closeButton: ".modal_close" });
+
+    $("#register").leanModal({ top: 100, overlay: 0.6, closeButton: ".modal_close" });
+
     $(function () {
         $("#login-btn").click(function () {
             $(".user_login").show();
+            $(".user_register").hide();
+            $(".header_title").text('Đăng nhập');
+        });
+
+        $("#register").click(function () {
+            $(".user_register").show();
+            $(".user_login").hide();
+            $(".header_title").text('Đăng ký');
         });
 
 		// Calling Register Form

@@ -16,7 +16,7 @@
         
         <script type="text/javascript" src="~/Scripts/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="~/Scripts/jquery.leanModal.min.js"></script>
-        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        @*<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>*@
 
     </head>
     <body>
@@ -26,17 +26,21 @@
                 @RenderPage("~/Views/Shared/_TopMenu.cshtml")
 		    </nav>
 
-		    <nav class="second-menu">
+		    <nav class="second-menu navbar navbar-default">
                 @RenderPage("~/Views/Shared/_SecondMenu.cshtml")
             </nav>
         </header>
 
-        <div class="content-wrapper content">
+        <div class="container">
             @RenderBody()
         </div>
 
+        <div class="play-control">
+
+        </div>
+
         <footer>
-            <div class="content-wrapper">
+            <div class="">
                 <div class="float-left">
                     <p>&copy; @DateTime.Now.Year - Web nghe nhạc</p>
                 </div>
@@ -44,5 +48,15 @@
         </footer>
         
         <!-- SCRIPT -->
+        <script type="text/javascript">
+            //$(window).scroll(function () {
+            //    if ($(".second-menu").offset().top > 10) {
+            //        $(".second-menu").addClass("is-fixed-top");
+            //    }
+            //    else {
+            //        $(".second-menu").removeClass("is-fixed-top");
+            //    }
+            //});
+        </script>
     </body>
 </html>
