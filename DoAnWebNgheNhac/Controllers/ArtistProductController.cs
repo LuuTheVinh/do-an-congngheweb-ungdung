@@ -27,10 +27,7 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Index()
         {
-            //var artistproducts = db.ArtistProducts.Include(a => a.Artist);
-           // var model = new ArtistProductEntity();
             var artistproducts = _iArtistProductServices.GetAllArtistProducts();
-            //var artists = _iArtistServices.GetAllArtists();
             return View(artistproducts.ToList());
         }
 

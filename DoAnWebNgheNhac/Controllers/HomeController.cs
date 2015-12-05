@@ -18,8 +18,8 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Index(int id = 0)
         {
-            var albums = _iServices.GetListAlbumByParentId(id).Where(a => a.Level == 2).ToList();
-            return View(albums);
+            //var albums = _iServices.GetListAlbumByParentId(id).Where(a => a.Level == 2).ToList();
+            return View();
         }
 
         public ActionResult About()

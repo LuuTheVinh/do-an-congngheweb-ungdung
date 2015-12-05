@@ -30,7 +30,8 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult ViewIndex()
         {
-            return View();
+            var model = _iAlbumServices.GetAllAlbums().Where(a => a.Level == 3).ToList();
+            return View(model);
         }
 
         //
@@ -89,15 +90,14 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            //var model = new AlbumEntity();
-            //var getAlbumList = _iAlbumServices.GetAllAlbums().ToList();
             AlbumEntity album = _iAlbumServices.GetAlbumById(id);
-            //getAlbumList.Add(album);
-            //model.AlbumList = new SelectList(getAlbumList, "Id", "Tittle");
+            var albums = _iAlbumServices.GetAllAlbums();
             if (album == null)
             {
                 return HttpNotFound();
             }
+
+            ViewBag.ParentId = new SelectList(albums, "ParentId", "Tittle", album.ParentId);
             return View(album);
         }
 

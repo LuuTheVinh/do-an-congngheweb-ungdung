@@ -25,7 +25,6 @@ namespace BusinessServices
             var albumProduct = _unitOfWork.AlbumProductRepository.GetById(albumProductId);
             if (albumProduct != null)
             {
-                Mapper.CreateMap<AlbumProduct, AlbumProductEntity>();
                 var albumProductModel = Mapper.Map<AlbumProduct, AlbumProductEntity>(albumProduct);
                 return albumProductModel;
             }
@@ -34,11 +33,10 @@ namespace BusinessServices
 
         public IEnumerable<BusinessEntities.AlbumProductEntity> GetAllAlbumProducts()
         {
-            var albumProduct = _unitOfWork.AlbumProductRepository.GetAll().ToList();
+            var albumProduct = _unitOfWork.AlbumProductRepository.GetAll();
             if (albumProduct.Any())
             {
-                Mapper.CreateMap<AlbumProduct, AlbumProductEntity>();
-                var albumProductModel = Mapper.Map<List<AlbumProduct>, List<AlbumProductEntity>>(albumProduct);
+                var albumProductModel = Mapper.Map<IEnumerable<AlbumProduct>, IEnumerable<AlbumProductEntity>>(albumProduct);
                 return albumProductModel;
             }
             return null;
@@ -48,7 +46,6 @@ namespace BusinessServices
         {
             using (var scope = new TransactionScope())
             {
-                Mapper.CreateMap<AlbumProductEntity, AlbumProduct>();
                 var albumProductModel = Mapper.Map<AlbumProductEntity, AlbumProduct>(albumProductEntity);
                 _unitOfWork.AlbumProductRepository.Insert(albumProductModel);
                 _unitOfWork.Save();
@@ -64,7 +61,6 @@ namespace BusinessServices
             {
                 using (var scope = new TransactionScope())
                 {
-                    Mapper.CreateMap<AlbumProductEntity, AlbumProduct>();
                     var albumProduct = Mapper.Map<AlbumProductEntity, AlbumProduct>(albumProductEntity);
                     _unitOfWork.AlbumProductRepository.Update(albumProduct);
                     _unitOfWork.Save();

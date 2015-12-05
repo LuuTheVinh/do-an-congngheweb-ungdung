@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<BusinessEntities.AlbumEntity> 
+@{
     ViewBag.Title = "ViewIndex";
 }
 
@@ -10,7 +11,20 @@
 
 <div class="album-page">
     <ul class="album-list">
-	    <li>
+        @foreach (var item in Model)
+        {
+             <li>
+                 <a class="thumbnail" href="#" onmouseover="">
+                <span class="fa fa-play-circle play-icon"> </span>
+			    <img src="../../Images/0c2b0067691ef5521afcebe2887028dc_1443425336.jpg" >                       
+		    </a>
+             <div class="description">
+			    <h3><a href="#">@Html.DisplayFor(modelItem => item.Tittle)</a></h3>
+			    <h4><a href="#">Karik</a></h4>
+            </div>
+                 </li>
+        }
+	    @*<li>
 		    <a class="thumbnail" href="#" onmouseover="">
                 <!--<span class="fa fa-heart like-icon"></span>
                 <span class="fa fa-share-alt share-icon"></span>-->
@@ -100,7 +114,7 @@
 			    <h3><a href="#">Enjoy Your Life</a></h3>
 			    <h4><a href="#">Karik</a></h4>
             </div>
-	    </li>
+	    </li>*@
     </ul>
 </div>
 

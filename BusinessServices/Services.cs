@@ -27,7 +27,6 @@ namespace BusinessServices
             var albums = _unitOfWork.AlbumRepository.GetAll().ToList();
             if (albums.Any())
             {
-                Mapper.CreateMap<Album, AlbumEntity>();
                 var albumsModel = Mapper.Map<List<Album>, List<AlbumEntity>>(albums);
                 return albumsModel;
             }
@@ -51,7 +50,6 @@ namespace BusinessServices
             }
             if (list.Any())
             {
-                Mapper.CreateMap<Album, AlbumEntity>();
                 var albumsModel = Mapper.Map<List<Album>, List<AlbumEntity>>(list);
                 return albumsModel;
             }

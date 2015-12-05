@@ -25,7 +25,6 @@ namespace BusinessServices
             var artist = _unitOfWork.ArtistRepository.GetById(artistId);
             if(artist!=null)
             {
-                Mapper.CreateMap<Artist, ArtistEntity>().ForMember(x => x.ArtistProducts, option => option.Ignore());
                 var artistModel = Mapper.Map<Artist, ArtistEntity>(artist);
                 return artistModel;
             }
@@ -37,7 +36,6 @@ namespace BusinessServices
             var artists = _unitOfWork.ArtistRepository.GetAll();
             if (artists.Any())
             {
-                Mapper.CreateMap<Artist, ArtistEntity>().ForMember(x => x.ArtistProducts, option => option.Ignore());
                 var artistsModel = Mapper.Map<IEnumerable<Artist>, IEnumerable<ArtistEntity>>(artists);
                 return artistsModel;
             }
@@ -48,7 +46,6 @@ namespace BusinessServices
         {
             using (var scope = new TransactionScope())
             {
-                Mapper.CreateMap<ArtistEntity, Artist>();
                 var artistModel = Mapper.Map<ArtistEntity, Artist>(artistEntity);
                 _unitOfWork.ArtistRepository.Insert(artistModel);
                 _unitOfWork.Save();
@@ -64,16 +61,11 @@ namespace BusinessServices
             {
                 using (var scope = new TransactionScope())
                 {
-                    var artist = _unitOfWork.ArtistRepository.GetById(artistId);
-                    if (artist != null)
-                    {
-                        Mapper.CreateMap<ArtistEntity, Artist>();//.ForMember(x => x.ArtistProducts, option =>option.Ignore());
                         var artists = Mapper.Map<ArtistEntity, Artist>(artistEntity);
                         _unitOfWork.ArtistRepository.Update(artists);
                         _unitOfWork.Save();
                         scope.Complete();
                         success = true;
-                    }
                 }
             }
             return success;

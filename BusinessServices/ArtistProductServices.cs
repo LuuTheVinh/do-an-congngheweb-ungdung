@@ -26,7 +26,6 @@ namespace BusinessServices
             var artistProduct = _unitOfWork.ArtistProductRepository.GetById(artistProductId);
             if (artistProduct != null)
             {
-                Mapper.CreateMap<ArtistProduct, ArtistProductEntity>().ForMember(x => x.Artist, option => option.Ignore() );
                 var artistProductModel = Mapper.Map<ArtistProduct, ArtistProductEntity>(artistProduct);
                 return artistProductModel;
             }
@@ -38,7 +37,6 @@ namespace BusinessServices
             var artistProduct = _unitOfWork.ArtistProductRepository.GetAll().ToList();
             if (artistProduct.Any())
             {
-                Mapper.CreateMap<ArtistProduct, ArtistProductEntity>().ForMember(x => x.Artist, option => option.Ignore()).ForMember(x=>x.Products,option=>option.Ignore());//.ForAllMembers(option => option.Ignore());
                 var artistProductModel = Mapper.Map<List<ArtistProduct>, List<ArtistProductEntity>>(artistProduct);
                 return artistProductModel;
             }
@@ -61,7 +59,6 @@ namespace BusinessServices
         {
             using (var scope = new TransactionScope())
             {
-                Mapper.CreateMap<ArtistProductEntity, ArtistProduct>();
                 var artistProduct = Mapper.Map<ArtistProductEntity, ArtistProduct>(artistProductEntity);
                 _unitOfWork.ArtistProductRepository.Insert(artistProduct);
                 _unitOfWork.Save();
@@ -77,7 +74,6 @@ namespace BusinessServices
             {
                 using (var scope = new TransactionScope())
                 {
-                    Mapper.CreateMap<ArtistProductEntity, ArtistProduct>();
                     var artistProduct = Mapper.Map<ArtistProductEntity, ArtistProduct>(artistProductEntity);
                     _unitOfWork.ArtistProductRepository.Update(artistProduct);
                     _unitOfWork.Save();

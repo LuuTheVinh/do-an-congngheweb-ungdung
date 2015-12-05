@@ -1,4 +1,4 @@
-﻿@model BusinessEntities.AlbumEntity
+﻿@model BusinessEntities.AlbumProductEntity
 
 @{
     ViewBag.Title = "Edit";
@@ -12,32 +12,32 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Album</legend>
+        <legend>AlbumProduct</legend>
 
         @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Tittle)
+            @Html.LabelFor(model => model.ProductId, "Product")
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Tittle)
-            @Html.ValidationMessageFor(model => model.Tittle)
+            @Html.DropDownList("ProductId", String.Empty)
+            @Html.ValidationMessageFor(model => model.ProductId)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ParentId, "ParentId")
+            @Html.LabelFor(model => model.AlbumId, "Album")
         </div>
         <div class="editor-field">
-            @Html.DropDownList("ParentId", string.Empty)
-            @Html.ValidationMessageFor(model => model.ParentId)
+            @Html.DropDownList("AlbumId", String.Empty)
+            @Html.ValidationMessageFor(model => model.AlbumId)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Level)
+            @Html.LabelFor(model => model.Year)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Level)
-            @Html.ValidationMessageFor(model => model.Level)
+            @Html.EditorFor(model => model.Year)
+            @Html.ValidationMessageFor(model => model.Year)
         </div>
 
         <p>

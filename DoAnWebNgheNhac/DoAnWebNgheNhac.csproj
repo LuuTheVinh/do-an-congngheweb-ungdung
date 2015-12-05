@@ -202,12 +202,14 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AlbumController.cs" />
+    <Compile Include="Controllers\AlbumProductController.cs" />
     <Compile Include="Controllers\ArtistController.cs" />
     <Compile Include="Controllers\ArtistProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
+    <Compile Include="Controllers\VideoProductController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -366,6 +368,16 @@
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\AlbumProduct\Index.cshtml" />
+    <Content Include="Views\AlbumProduct\Details.cshtml" />
+    <Content Include="Views\AlbumProduct\Create.cshtml" />
+    <Content Include="Views\AlbumProduct\Edit.cshtml" />
+    <Content Include="Views\AlbumProduct\Delete.cshtml" />
+    <Content Include="Views\VideoProduct\Index.cshtml" />
+    <Content Include="Views\VideoProduct\Details.cshtml" />
+    <Content Include="Views\VideoProduct\Create.cshtml" />
+    <Content Include="Views\VideoProduct\Edit.cshtml" />
+    <Content Include="Views\VideoProduct\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj">
