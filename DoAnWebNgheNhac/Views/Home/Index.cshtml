@@ -4,9 +4,16 @@
 }
 
 <div class="content col-left">
-	<div class="slider">
+	<div class="home-slider">
         <!--SLIDER-->
+        <!--http://kenwheeler.github.io/slick/-->
+        <a href="#"><img  src="../../Images/1449121076568_org.jpg" /> </a>
+        <a href="#"><img  src="../../Images/1449225786937_org.jpg" /></a>
+        <a href="#"><img  src="../../Images/1449048191492_org.jpg" /></a>
+        <a href="#"><img  src="../../Images/1449048191492_org.jpg" /></a>
+        <a href="#"><img  src="../../Images/1449048191492_org.jpg" /></a>
 	</div>
+
 	<div class="list_music">
 		<div class="">
 			<div class="title_box">
@@ -247,3 +254,14 @@
 	</div>
 </div>
 <div class="clear"></div>
+
+<script type="text/javascript" >
+    $(document).ready(function(){
+        $('.home-slider').slick({
+            dots: true,
+            autoplay: true,
+            autoplaySpeed: 5000,
+            infinite: true,
+    });
+    });
+</script>

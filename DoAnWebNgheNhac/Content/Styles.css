@@ -245,11 +245,31 @@ ul.sub-item li a
         color: #2582be;
     }
 
-.slider {
-    height: 360px;
-    background-color: #dddddd;
+/* SLIDER */
+
+.home-slider {
+    background-color: #000;
     margin-bottom: 10px;
+    border: 1px solid #f2f2f2;
 }
+
+.home-slider img {
+    width: 100%;
+    z-index: 0;
+    transition: all 500ms;
+}
+
+    .home-slider:hover img {
+        opacity: .75;
+    }
+
+    .home-slider:hover .slick-prev {
+        transform: translateX(70px) translateY(-50%);
+    }
+
+    .home-slider:hover .slick-next {
+        transform: translateX(-70px) translateY(-50%);
+    }
 
 .list_music, .list_album, list_video {
     overflow: hidden;
