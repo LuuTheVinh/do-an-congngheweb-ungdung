@@ -662,3 +662,203 @@ a.btn_red {
     position: fixed;
     top: 0;
 }
+
+/* ADMIN PAGE */
+
+/*** Table Styles **/
+
+.table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 320px;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+th {
+    color: #D5DDE5;
+    background: #1b1e24;
+    border-bottom: 4px solid #9ea7af;
+    border-right: 1px solid #343a45;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 10px 25px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th:first-child {
+    border-top-left-radius: 3px;
+}
+ 
+th:last-child {
+    border-top-right-radius: 3px;
+    border-right: none;
+}
+  
+tr {
+    border-top: 1px solid #C1C3D1;
+    border-bottom: 1px solid #C1C3D1;
+    color:#666B85;
+    font-size:16px;
+    font-weight:normal;
+}
+ 
+tr:hover td {
+    background: #E4E4E2;
+}
+ 
+tr:first-child {
+    border-top:none;
+}
+
+tr:last-child {
+    border-bottom:none;
+}
+ 
+tr:nth-child(odd) td {
+    background:#EBEBEB;
+}
+ 
+tr:nth-child(odd):hover td {
+    background:#4E5066;
+}
+
+tr:last-child td:first-child {
+    border-bottom-left-radius:3px;
+}
+ 
+tr:last-child td:last-child {
+    border-bottom-right-radius:3px;
+}
+ 
+td {
+    background: #FFFFFF;
+    padding: 10px 25px;
+    text-align:left;
+    vertical-align:middle;
+    font-weight:300;
+    font-size:16px;
+    border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+  border-right: 0px;
+}
+
+th.text-left {
+  text-align: left;
+}
+
+th.text-center {
+  text-align: center;
+}
+
+th.text-right {
+  text-align: right;
+}
+
+td.text-left {
+  text-align: left;
+}
+
+td.text-center {
+  text-align: center;
+}
+
+td.text-right {
+  text-align: right;
+}
+
+.setting-panel {
+    background: #1b1e24;
+    color: #fff;
+    margin-right: 20px;
+    margin-top: -20px;
+    min-height: 300px;
+    width: 240px;
+}
+
+.setting-panel a {
+    color: #fff;
+}
+    .setting-panel a.expand-btn {
+        font-size: 12px;
+        position: absolute;
+        text-align: center;
+        right: 0;
+        top: 0;
+        width: 40px;
+        margin: 0;
+    }
+    
+    .setting-panel a.expand-btn:hover {
+        background: #333;
+    }
+
+        .setting-panel a.expand-btn span {
+            transition: all 100ms;
+            color: #fff;
+            transform-origin: 50% 50% 0;
+            text-align: center;
+            width: 12px;
+            height: 12px;
+        }
+
+
+    .setting-panel ul li {
+        overflow:hidden;
+        position: relative;
+    }
+
+    .setting-panel ul li ul {
+        display: none;
+    }
+
+    .setting-panel ul li ul li {
+        background: #111;
+    }
+
+    .setting-panel ul li:hover {
+        background: #222428;
+    }
+
+    .setting-panel ul li ul li:hover {
+        background: #222;
+    }
+
+    .setting-panel ul li a {
+        line-height: 50px;
+        display: block;
+        margin-left: 20px;
+    }
+
+.setting-content {
+    overflow: hidden;
+}
+
+.setting-top-panel {
+
+}
+
+.setting-top-panel a {
+    text-transform: uppercase;
+}
+
+.home-button {
+    width: 239px; 
+    border-right: 1px solid rgba(0, 0, 0, 0.1); 
+}
+
+.setting-top-panel .home-icon {
+    font-size: 25px;
+    float: left;
+    line-height: 45px;
+    margin: 0 8px;
+}
+
