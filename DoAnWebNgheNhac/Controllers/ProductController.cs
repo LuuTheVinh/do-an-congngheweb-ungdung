@@ -30,8 +30,9 @@ namespace DoAnWebNgheNhac.Controllers
         {
            // var products = db.Products.Include(p => p.ArtistProduct);
            // var artistproducts = _iProductServices.GetAllProducts();
-            var products = _iProductServices.GetAllProducts();
-            return View(products.ToList());
+            
+            IEnumerable<ProductEntity> products = _iProductServices.GetAllProducts(); 
+            return View(products);
         }
 
         //

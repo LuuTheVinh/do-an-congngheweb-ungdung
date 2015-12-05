@@ -25,7 +25,6 @@ namespace BusinessServices
             var video = _unitOfWork.VideoRepository.GetById(videoId);
             if (video != null)
             {
-                Mapper.CreateMap<Video, VideoEntity>();
                 var videoModel = Mapper.Map<Video, VideoEntity>(video);
                 return videoModel;
             }
@@ -37,7 +36,6 @@ namespace BusinessServices
             var videos = _unitOfWork.VideoRepository.GetAll();
             if (videos.Any())
             {
-                Mapper.CreateMap<Video, VideoEntity>();
                 var videosModel = Mapper.Map<IEnumerable<Video>, IEnumerable<VideoEntity>>(videos);
                 return videosModel;
             }
@@ -48,7 +46,6 @@ namespace BusinessServices
         {
             using (var scope = new TransactionScope())
             {
-                Mapper.CreateMap<VideoEntity, Video>();
                 var video = Mapper.Map<VideoEntity, Video>(videoEntity);
                 _unitOfWork.VideoRepository.Insert(video);
                 _unitOfWork.Save();

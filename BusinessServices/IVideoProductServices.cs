@@ -10,9 +10,9 @@ namespace BusinessServices
     public interface IVideoProductServices
     {
         VideoProductEntity GetVideoProductById(int videoProductId);
-        IEnumerable<VideoProductEntity> GetAllVideoroducts();
+        IEnumerable<VideoProductEntity> GetAllVideoProducts();
         int CreateVideoProduct(VideoProductEntity videoProductEntity);
-        bool UpdateVideoProduct(int videoProductId, ProductEntity videoProductEntity);
+        bool UpdateVideoProduct(int videoProductId, VideoProductEntity videoProductEntity);
         bool DeleteVideoProduct(int videoProductId);
     }
 }

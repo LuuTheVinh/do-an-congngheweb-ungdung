@@ -36,7 +36,6 @@ namespace BusinessServices
             var album = _unitOfWork.AlbumRepository.GetById(albumId);
             if (album != null)
             {
-                Mapper.CreateMap<Album, AlbumEntity>();
                 var albumModel = Mapper.Map<Album, AlbumEntity>(album);
                 return albumModel;
             }
@@ -53,7 +52,6 @@ namespace BusinessServices
 
             if (albums.Any())
             {
-                Mapper.CreateMap<Album, AlbumEntity>();
                 var albumsModel = Mapper.Map<List<Album>, List<AlbumEntity>>(albums);
                 return albumsModel;
             }
@@ -69,12 +67,6 @@ namespace BusinessServices
         {
             using (var scope = new TransactionScope())
             {
-                //var album = new Album
-                //{
-                //    Tittle = albumEntity.Tittle,
-                //    ParentId = albumEntity.ParentId,
-                //    Level = albumEntity.Level
-                //};
                 Mapper.CreateMap<AlbumEntity, Album>();
                 var album = Mapper.Map<AlbumEntity, Album>(albumEntity);
                 _unitOfWork.AlbumRepository.Insert(album);
@@ -97,7 +89,6 @@ namespace BusinessServices
             {
                 using (var scope = new TransactionScope())
                 {
-                    Mapper.CreateMap<AlbumEntity, Album>();
                     var album = Mapper.Map<AlbumEntity, Album>(albumEntity);
                     _unitOfWork.AlbumRepository.Update(album);
                     _unitOfWork.Save();

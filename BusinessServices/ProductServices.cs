@@ -25,7 +25,6 @@ namespace BusinessServices
             var product = _unitOfWork.ProductRepository.GetById(productId);
             if (product != null)
             {
-                Mapper.CreateMap<Product, ProductEntity>().ForMember(x=>x.ArtistProduct,option=>option.Ignore()).ForMember(x=>x.AlbumProducts,option=>option.Ignore());
                 var productModel = Mapper.Map<Product, ProductEntity>(product);
                 return productModel;
             }
@@ -37,8 +36,7 @@ namespace BusinessServices
             var product = _unitOfWork.ProductRepository.GetAll().ToList();
             if (product.Any())
             {
-                Mapper.CreateMap<Product, ProductEntity>().ForMember(x => x.ArtistProduct, option =>option.Ignore()).ForMember(x=>x.AlbumProducts, option => option.Ignore());
-                var productModel = Mapper.Map<List<Product>, List<ProductEntity>>(product);
+                var productModel = Mapper.Map<List<Product>, List<ProductEntity>>(product);             
                 return productModel;
             }
             return null;
@@ -48,7 +46,6 @@ namespace BusinessServices
         {
             using (var scope = new TransactionScope())
             {
-                Mapper.CreateMap<ProductEntity, Product>();
                 var productModel = Mapper.Map<ProductEntity, Product>(productEntity);
                 _unitOfWork.ProductRepository.Insert(productModel);
                 _unitOfWork.Save();
@@ -64,7 +61,6 @@ namespace BusinessServices
             {
                 using (var scope = new TransactionScope())
                 {
-                    Mapper.CreateMap<ProductEntity, Product>();
                     var product = Mapper.Map<ProductEntity, Product>(productEntity);
                     _unitOfWork.ProductRepository.Update(product);
                     _unitOfWork.Save();
