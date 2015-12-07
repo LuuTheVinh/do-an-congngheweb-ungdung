@@ -17,6 +17,10 @@
         <script type="text/javascript" src="~/Scripts/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="~/Scripts/jquery.leanModal.min.js"></script>
         <script type="text/javascript" src="~/Scripts/slick.js"></script>
+		@if (IsSectionDefined("mediaplayerstyle"))
+        {
+            @RenderSection("mediaplayerstyle", required: false);
+        }
     </head>
     <body>
         
@@ -32,6 +36,10 @@
 
         <div class="container">
             @RenderBody()
+			@if (IsSectionDefined("playerscript"))
+            {
+                @RenderSection("playerscript", required: false);
+            }
         </div>
 
         <div class="play-control">
