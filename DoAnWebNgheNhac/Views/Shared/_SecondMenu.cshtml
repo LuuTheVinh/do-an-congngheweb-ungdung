@@ -1,16 +1,12 @@
 ﻿<div class="container">
     <ul class="level-1-menu">
         <li class="current-item">@Html.ActionLink("Trang chủ", "Index", "Home")</li>
-        <li><a class="genre-btn" href="#">Thể Loại</a></li>
-        <li>
-            @Html.ActionLink("Album", "ViewIndex", "Album")
+        <li><a class="genre-btn" href="#" onclick="categoryButtonClick('.genre-panel')">Thể Loại</a>
         </li>
-        <li>
-            <a href="#">Playlist</a>
-        </li>
-        <li>
-            @Html.ActionLink("Video", "ViewIndex", "Video")
-        </li>
+
+        <li><a class="album-btn" href="#" onclick="categoryButtonClick('.album-panel')">Album</a></li>
+        <li><a href="#">Playlist</a></li>
+        <li><a href="#" onclick="categoryButtonClick('.video-panel')" >Video</a></li>
         <li><a href="#">BXH</a></li>
         <li>
             @Html.ActionLink("Nghệ Sĩ", "ViewIndex", "Artist")
@@ -18,7 +14,7 @@
     </ul>
 </div>
 
-<div class="category-panel">
+<div class="category-panel genre-panel">
     <div class="container">
         <div class="category">
             <div class="sub-category">
@@ -55,10 +51,91 @@
         </div>
     </div>
 </div>
-    <div class="clear" />
+
+<div class="category-panel album-panel">
+    <div class="container">
+        <div class="category">
+            <div class="sub-category">
+                <a class="sub-title" href="#">Việt Nam</a>
+                <ul class="sub-item">
+                    <li><a href="#">Nhạc trẻ</a></li>
+                    <li><a href="#">Nhạc trữ tình</a></li>
+                    <li><a href="#">Rap</a></li>
+                    <li><a href="#">Rock</a></li>
+                    <li><a href="#">Nhạc trẻ</a></li>
+                    <li><a href="#">Nhạc trữ tình</a></li>
+                    <li><a href="#">Rap</a></li>
+                    <li><a href="#">Rock</a></li>
+                </ul>
+            </div>
+            <div class="sub-category">
+                <a class="sub-title" href="#">Châu Mỹ</a>
+                <ul class="sub-item">
+                    <li><a href="#">Nhạc trẻ</a></li>
+                    <li><a href="#">Rock</a></li>
+                    <li><a href="#">Rock</a></li>
+                    <li><a href="#">Nhạc trữ tình</a></li>
+                    <li><a href="#">Rap</a></li>
+                </ul>
+            </div>
+            <div class="sub-category">
+                <a class="sub-title" href="#">Châu Á</a>
+                <ul class="sub-item">
+                    <li><a href="#">Nhạc trẻ</a></li>
+                    <li><a href="#">Nhạc trữ tình</a></li>
+                    <li><a href="#">Rap</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="category-panel video-panel">
+    <div class="container">
+        <div class="category">
+            <div class="sub-category">
+                <a class="sub-title" href="#">Việt Nam</a>
+                <ul class="sub-item">
+                    <li><a href="#">Nhạc trẻ</a></li>
+                    <li><a href="#">Nhạc trữ tình</a></li>
+                    <li><a href="#">Dance Việt</a></li>
+                    <li><a href="#">Rock Việt</a></li>
+                    <li><a href="#">Rap / Hiphop</a></li>
+                    <li><a href="#">Nhạc Trịnh</a></li>
+                    <li><a href="#">Nhạc thiếu nhi</a></li>
+                </ul>
+            </div>
+            <div class="sub-category">
+                <a class="sub-title" href="#">Châu Mỹ</a>
+                <ul class="sub-item">
+                    <li><a href="#">Pop</a></li>
+                    <li><a href="#">Rock</a></li>
+                    <li><a href="#">Rap / Hiphop</a></li>
+                    <li><a href="#">Country</a></li>
+                    <li><a href="#">Electronic / Dance</a></li>
+                    <li><a href="#">R&B / Soul</a></li>
+                    <li><a href="#">Audiophile</a></li>
+                </ul>
+            </div>
+            <div class="sub-category">
+                <a class="sub-title" href="#">Châu Á</a>
+                <ul class="sub-item">
+                    <li><a href="#">Hàn Xẻng</a></li>
+                    <li><a href="#">Khựa</a></li>
+                    <li><a href="#">Nhật Bản</a></li>
+                    <li><a href="#">Thái Lan</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clear" />
 
 <script type="text/javascript">
-    $('.genre-btn').click(function () {
-        $('.category-panel').slideToggle(200);
-    });
+
+    function categoryButtonClick(panel, time = 200) {
+        $('.category-panel').not(panel).slideUp(time);
+        $(panel).delay(time).slideToggle(time);
+    }
 </script>

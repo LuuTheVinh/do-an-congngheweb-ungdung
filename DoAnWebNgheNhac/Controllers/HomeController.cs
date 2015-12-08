@@ -35,5 +35,10 @@ namespace DoAnWebNgheNhac.Controllers
 
             return View();
         }
+		
+        public ActionResult PlayMusic()
+        {
+            return View();
+        }
     }
 }

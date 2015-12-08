@@ -5,21 +5,21 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<div class="setting-title">
+    <h2 class="title_box">Editing Album Category</h2>
+</div>  
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Album</legend>
-
         @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Tittle)
         </div>
-        <div class="editor-field">
+        <div class="editor-field col-4">
             @Html.EditorFor(model => model.Tittle)
             @Html.ValidationMessageFor(model => model.Tittle)
         </div>
@@ -27,7 +27,7 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.ParentId, "ParentId")
         </div>
-        <div class="editor-field">
+        <div class="editor-field col-4">
             @Html.DropDownList("ParentId", string.Empty)
             @Html.ValidationMessageFor(model => model.ParentId)
         </div>
@@ -35,20 +35,18 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.Level)
         </div>
-        <div class="editor-field">
+        <div class="editor-field col-4">
             @Html.EditorFor(model => model.Level)
             @Html.ValidationMessageFor(model => model.Level)
         </div>
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
+        <div class="editor-field">
+            <input class="button" type="submit" value="Save" />
+            @Html.ActionLink("Cancel", "Index", null, new { @class = "button red-button"})
+        </div>
     </fieldset>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

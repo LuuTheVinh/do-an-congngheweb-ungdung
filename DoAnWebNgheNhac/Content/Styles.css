@@ -726,7 +726,7 @@ tr:nth-child(odd) td {
 }
  
 tr:nth-child(odd):hover td {
-    background:#4E5066;
+    background:#E4E4E2;
 }
 
 tr:last-child td:first-child {
@@ -842,6 +842,15 @@ td.text-right {
     overflow: hidden;
 }
 
+.setting-content table {
+    width: 95%;
+    margin: 10px 20px 10px 0;
+}
+
+.setting-content .wrap {
+    margin: 10px;
+}
+
 .setting-top-panel {
 
 }
@@ -862,3 +871,121 @@ td.text-right {
     margin: 0 8px;
 }
 
+
+.button {
+    background: #3b9ad8;
+    padding: 10px 20px;
+    border: none;
+    color: #fff !important;
+}
+
+.button:hover {
+    background: #E4E4E2;
+    color: #3b9ad8 !important;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.red-button:hover {
+    background: #d92626;
+    color: #fff;
+}
+
+.setting-title 
+{
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.setting-title h2, .setting-title .button
+{
+    float: left;
+}
+
+.setting-title h2 {
+    margin-right: 10px;
+}
+
+/* COLUMN */
+
+.col-1
+{
+    width: 10%;
+}
+
+.col-2
+{
+    width: 20%;
+}
+
+.col-3
+{
+    width: 30%;
+}
+
+.col-4
+{
+    width: 40%;
+}
+
+.col-5
+{
+    width: 50%;
+}
+
+.col-6
+{
+    width: 60%;
+}
+
+.col-7
+{
+    width: 70%;
+}
+
+.col-8
+{
+    width: 80%;
+}
+
+.col-9
+{
+    width: 90%;
+}
+
+.col-10
+{
+    width: 100%;
+}
+
+.editor-field input[type="text"], .editor-field input[type="number"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    border: none;
+    border-bottom: solid 2px #c9c9c9;
+    transition: border 0.3s;
+    background: #f1f1f1;
+}
+
+.editor-field input[type="text"]:focus,
+.editor-field input[type="text"].focus {
+    border-bottom: solid 2px #969696;
+}
+
+.editor-field select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    transition: border 0.3s;
+    background: #f1f1f1;
+}
+
+.editor-field .button {
+    margin: 20px 0;
+}
+
+.editor-field a.button {
+    padding-top: 12px;
+}

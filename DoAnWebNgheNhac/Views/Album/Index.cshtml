@@ -5,22 +5,24 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<div class="">
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
+<div class="wrap">
+    <div class="setting-title">
+        <h2 class="title_box">Album Categories</h2>
+        @Html.ActionLink("Create New", "Create", null , new {@class = "button"})
+    </div>  
     <table>
         <tr>
-            <th>
+            <th class="col-5">
                 @Html.DisplayNameFor(model => model.Tittle)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ParentId)
+            <th class="col-2">
+                @* @Html.DisplayNameFor(model => model.ParentId) *@
+                Parent
             </th>
-            <th>
+            <th class="col-1">
                 @Html.DisplayNameFor(model => model.Level)
             </th>
-            <th></th>
+            <th class="col-2">Actions</th>
         </tr>
         @if(Model!=null)
         {
