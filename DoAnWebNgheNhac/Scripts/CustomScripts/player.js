@@ -422,3 +422,98 @@ function loopbtnClick() {
         loopbtn.className = "controlbtn alignright loopbtn";
     }
 }
+
+
+
+//------------------------------------------------------------------------------
+// FUNCTION BAR
+
+// Tham chiếu đến nút share fabebook
+var fbshare = document.getElementById('fbshare');
+
+// Tham chiếu đến nút share trên g+
+var ggpluslogo = document.getElementById('ggpluslogo');
+
+var embedbox = document.getElementById('embedbox');
+var embedbtn = document.getElementById('embedbtn');
+
+// Tham chiếu đến nút report.
+var reportbtn = document.getElementById('reportbtn');
+
+// Tham chiếu đến khung form report.
+var reportpane = document.getElementById('reportpane');
+
+// Tham chiếu đến radio "Lỗi khác"
+var radio_other = document.getElementById('report7');
+
+// Tham chiếu đến box textarea lỗi khác
+var contentreport = document.getElementById('contentreport');
+
+
+// Sự kiện nhấn nút share facebook.
+fbshare.addEventListener("click", fbshareClick);
+
+// Sự kiện nhất nút share google.
+ggpluslogo.addEventListener("click", ggplusClick);
+
+// Sự kiện nhất nút lấy mã nhúng.
+embedbtn.addEventListener("click", embedbtnClick);
+
+// Sự kiện nhất nút báo cáo sự cố.
+reportbtn.addEventListener("click", reportbtnClick);
+
+function show(obj) {
+    obj.className = obj.className.replace("hide", "show");
+}
+function hide(obj) {
+    obj.className = obj.className.replace("show", "hide");
+}
+function isStringContains(str1, str2) {
+    if (str1.indexOf(str2) >= 0)
+        return true;
+    return false;
+}
+function fbshareClick() {
+    
+    var url = "http://www.facebook.com/sharer/sharer.php?u=";
+    url += "http://mp3.zing.vn/bai-hat/Nguoi-Dien-Yeu-Minh-Hang/ZWZ9Z699.html";
+    //url += document.URL;
+    window.open(url, "_blank", "fullscreen=no, width=500, height=350px, top=100, left=150,");
+    
+}
+
+function ggplusClick() {
+    var url = "https://plusone.google.com/_/+1/confirm?hl=ru&url=_URL_&title=_TITLE_";
+    url = url.replace("_URL_", "http://mp3.zing.vn/bai-hat/Nguoi-Dien-Yeu-Minh-Hang/ZWZ9Z699.html");
+    url = url.replace("_TITLE_", "Tên bài ha");
+    //url += document.URL;
+    var sharewindow = window.open(url, "_blank", "fullscreen=no, width=500, height=350px, top=100, left=150,");
+    
+}
+
+function embedbtnClick() {
+    if (embedbox.style.display == "none") {
+        embedbox.style.display = "block";
+    }
+    else if (embedbox.style.display == "block") {
+        embedbox.style.display = "none";
+    }
+}
+
+function reportbtnClick() {
+    if (isStringContains(reportpane.className, "hide") == true) {
+        show(reportpane);
+    }
+    else if (isStringContains(reportpane.className, "show") == true) {
+        hide(reportpane);
+    }
+}
+
+$('input:radio[name="report"]').change(function () {
+    if (radio_other.checked == true) {
+        show(contentreport);
+    }
+    else {
+        hide(contentreport);
+    }
+});

@@ -1,27 +1,79 @@
 ﻿@{
-    ViewBag.Title = "Tên bài hát - Ca sĩ";
+    // URL background của player.
+    var backgroundimg = "../../Images/256672f4eaf183e0385611721dcd1179_1411715540.jpg";
+        
+    // Thời gian đã play của một đoạn nhạc, đơn vị phần trăm so với đoạn text. dùng để vẽ đoạn nhạc đã qua.
+    var karapercent = "17";
+        
+    // Thời gain đã play của cả bài nhạc, đơn vị phần trăm so với cả bài nhạc.
+    var playedpercent = "10";
+    // Đoạn text kara lyric, được vẽ ở dòng trên.
+    var upperlyric = "Làm em cuồng điên vì khóc";
+        
+    // Đoạn text kara lyric, được vẽ ở dòng dưới.
+    var lowerlyric = "Làm em cuồng điên vì yêu";
+
+    var fulllyric = "Con tim em sao quá yêu anh\nCon tim em sao quá mong manh\nCon tim em sao quá đau lòng\nKhi em nhìn thấy anh cười\nvới ai";
+    // Số lượt view
+    var countviews = 2934021;
+
+    var artistthumbnail = "../../Images/af8438cb947f2e0d1a36c0cdc84c6574_1442377367.jpg";
+    var artisturl = "some url";
+    var artistname = "Minh Hằng";
+    var musicname = "Người Điên Yêu";
+    var albumname = "Một vòng trái đất";
+    var categorytype = "Việt Nam" + ", " + "Nhạc Trẻ";
+    
+    Dictionary<string, string> listReportProblem = new Dictionary<string, string>{
+        {"report1", "Không play được"},
+        {"report2", "Chất lượng kém"},
+        {"report3", "Không tải được"},
+        {"report4", "Thông tin bài hát chưa chính xác"},
+        {"report5", "Lời bài hát chưa chính xác"},
+        {"report6", "Karaoke chưa chính xác"},
+        {"report7", "Lỗi khác"}
+    };
+}
+@{
+    ViewBag.Title = @musicname + " - "  + @artistname;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section facebooksharepage{
+        <meta name="og:url"                content="http://localhost:61055/Home/PlayMusic" />
+        <meta name="og:type"               content="music.song" />
+        <meta name="og:title"              content="Tên bài hát - Ca sĩ" />
+        <meta name="og:description"        content="Description" />
+        <meta name="og:image"              content=@backgroundimg/>
+        <meta name="og:sitename"           content="Web Nghe Nhac" />
+}
 @section mediaplayerstyle{
     <link rel="stylesheet" type="text/css" href="../../Content/CustomStyle/mediaplayer.css">
 }
+
 <div class="box_left">
-    @{
-        // URL background của player.
-        var backgroundimg = "../../Images/256672f4eaf183e0385611721dcd1179_1411715540.jpg";
-        
-        // Thời gian đã play của một đoạn nhạc, đơn vị phần trăm so với đoạn text. dùng để vẽ đoạn nhạc đã qua.
-        var karapercent = "17";
-        
-        // Thời gain đã play của cả bài nhạc, đơn vị phần trăm so với cả bài nhạc.
-        var playedpercent = "10";
-        // Đoạn text kara lyric, được vẽ ở dòng trên.
-        var upperlyric = "Làm em cuồng điên vì khóc";
-        
-        // Đoạn text kara lyric, được vẽ ở dòng dưới.
-        var lowerlyric = "Làm em cuồng điên vì yêu";    
-    }
+    <div id="info-span" class="info-span">
+        <div id="artistthumbnail"class="thumbnail">
+            <a href="@artisturl" title="@artistname">
+                <img src="@artistthumbnail" alt="@artistname" class="thumbnail"/>
+            </a>
+        </div>
+        <div id="info-content" class="info-content">
+            <div class="info-text info-title">
+                <p class="inline">@musicname</p>
+                <span style="margin:0 5px">-</span>
+                <div class="inline" style="font-weight:300;">
+                    @Html.ActionLink(artistname, "ViewIndex", "Artist", 1, null)
+                </div>
+            </div>
+            <div class="info-text">
+                <p>Album: @albumname</p>
+            </div>
+            <div class="info-text">
+                <p>Thể loại: @categorytype</p>
+            </div>
+        </div>
+    </div>
     <div id="musicPlayer" class="player unselectable">
         <audio id="playingsong" autoplay>
             <source src="~/Audio/Pokemon_Season6.mp3" type="audio/mp3"/>
@@ -43,9 +95,9 @@
             </p>
         </div>
         <div id="timelinecontrol" class="timeslide" >
-            <div id="timeline" class="timeslideloaded" @*style="top: 6px; height:4px;"*@>
+            <div id="timeline" class="timeslideloaded">
             </div>
-            <div id="currentTimeSlider" class ="timeslidecurrent"@* style="width: 0%;top: -4px; height: 4px;"*@>
+            <div id="currentTimeSlider" class ="timeslidecurrent">
                 <div id="timenode" class="timeNode" >
                 </div>
             </div>
@@ -71,19 +123,84 @@
             <span id="volumebar" class="volumebar alignright">
                 <span id="volumeavaiable" class="volumeavaiable">
                     <span id="volumenode" class="volumenode ">
-
                     </span>
                 </span>
             </span>
             <span id="volumeicon" class="controlbtn alignright volume3">
-
             </span>
         </div>
     </div>
+
+    <div id="functionbar" class="functionbar">
+        <a href="~/Audio/Pokemon_Season6.mp3" download="Pokemon_Season6.mp3">
+            <div id="downloadbtn" class="controlbtn textbtn unselectable functionbtn embedbtn" style="float: left;" title="Download bài hát">Download
+            </div> 
+        </a>
+        <div id="reportbtn" class="controlbtn textbtn unselectable functionbtn embedbtn" style="float: left;" title="Báo cáo sự cố">
+            Báo Cáo
+        </div> 
+        <div id="comunitybar" class="comunitybar">
+
+            <div id="embedbtn" class="controlbtn textbtn unselectable functionbtn embedbtn" title="Mã nhúng">Embed</div>
+            <div id="fbshare" class="controlbtn functionbtn fbsharebtn" title="Chia sẽ trên facebook"></div>
+            <div id="ggpluslogo" class="controlbtn functionbtn ggpluslogo" title="Chia sẽ trên Google+"></div>
+            <div id="instarlogo" class="controlbtn functionbtn instarlogo" title="Vì lập trình viên không sử dụng instagram nên chức năng này không được kích hoạt"></div>
+            <p class="textviews">
+                <b style="font-size: 15px; font-weight: 300;">Lượt nghe: </b>
+                <b style="font-size: 20px; font-weight: bold;">@countviews</b>
+            </p>
+        </div>
+    </div>
+    <div id="reportpane" class="report-pane hide" >
+        <div id="reportitle" class ="report-title"> Phản hồi bài hát này </div>
+        <p class="report-elem"> Bạn gặp vấn đề gì?</p>
+        @{
+            foreach (var item in listReportProblem)
+            {
+                <div class="report-elem checkbox-elem">
+                    @Html.RadioButton("report",item.Value, new Dictionary<string, object> { {"id",item.Key}})
+                    @Html.Label(item.Value, new Dictionary<string, object> {{"for", item.Key}})
+                </div>
+            }
+        }
+        <div id="contentreport" class="contentreport hide">
+            <p  class="report-title">
+                Nội dung
+            </p>
+            <textarea id="reporttext" class="report-textareas">
+            </textarea>
+        </div>
+        <div id="submitrptbtn" class="controlbtn textbtn unselectable" style="float:none">
+            Gửi báo cáo
+        </div>
+    </div>
+    <div id="embedbox" class="outside-textarea" style="display:none">
+        <label class="labeltitle">Mã nhúng</label>
+        <textarea id="embedtext" class="embedarea">
+            This is embed text
+        </textarea>
+    </div>
+    <div id="lyricbox" class="lyricbox">
+        <div id="lyrictitle" class="lyrictitle">
+            <label style="font-weight:400">Lời bài hát</label>
+            <s>@musicname</s>
+        </div>
+        <div id="lyric-content" class="lyric-content">
+            @{
+                var lyric = fulllyric.Split('\n');
+                foreach (var item in lyric)
+	            {
+		            <p>@item</p>
+	            }
+            }
+        </div>
+    </div>
+
   @* <div id="playlist">
        Danh sách các bài hát
    </div> *@
-    @section playerscript{
+   
+     @section playerscript{
         <script type="text/javascript" src="~/Scripts/CustomScripts/player.js")" ></script>
     }
 </div>

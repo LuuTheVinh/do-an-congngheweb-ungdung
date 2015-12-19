@@ -10,7 +10,7 @@ namespace DoAnWebNgheNhac.Controllers
     public class HomeController : Controller
     {
         private readonly IServices _iServices;
-
+        
         public HomeController(IServices iServices)
         {
             this._iServices = iServices;
@@ -40,5 +40,7 @@ namespace DoAnWebNgheNhac.Controllers
         {
             return View();
         }
+
+
     }
 }
