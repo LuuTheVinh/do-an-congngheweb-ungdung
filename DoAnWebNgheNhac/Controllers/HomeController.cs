@@ -41,6 +41,9 @@ namespace DoAnWebNgheNhac.Controllers
             return View();
         }
 
-
+        public ActionResult PlayVideo()
+        {
+            return View();
+        }
     }
 }
