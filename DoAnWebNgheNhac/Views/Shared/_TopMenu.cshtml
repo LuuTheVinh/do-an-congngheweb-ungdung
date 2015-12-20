@@ -8,6 +8,11 @@
         <span>/</span>
         <a id="register" href="#modal">Đăng ký</a>
     </div>
+
+    <div style ="margin-top: 10px;">
+            <input type="text" id="txtSearch" />
+            <input type="button" class="submit-search" value="search" />
+    </div>
 </div>
 
 <div id="modal" class="popupContainer" style="display:none;">
@@ -101,3 +106,11 @@
 		});
 	})
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.submit-search').click(function () {
+            window.location = '/home/SearchIndex?searchString=' + $('#txtSearch').val();
+        });
+    });
+    </script>

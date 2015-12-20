@@ -11,6 +11,7 @@ namespace BusinessServices
     {
         IEnumerable<AlbumEntity> GetListAlbums();
         IEnumerable<ProductEntity> GetListProducts();
+        ProductEntity GetProductById(int id);
 
         IEnumerable<AlbumEntity> GetListAlbumByParentId(int parentId);
 

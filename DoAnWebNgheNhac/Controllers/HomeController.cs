@@ -22,7 +22,6 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Index()
         {
-
             HomeServices homealbums = new HomeServices();
             homealbums.NhacVietHot = _iServices.GetNhacVietHot();
             homealbums.NhacVietMoi = _iServices.GetNhacVietMoi();
@@ -70,9 +69,10 @@ namespace DoAnWebNgheNhac.Controllers
             return View();
         }
 		
-        public ActionResult PlayMusic()
+        public ActionResult PlayMusic(int? id)
         {
-            return View();
+            var product = _iServices.GetProductById(id.Value); 
+            return View(product);
         }
     }
 }

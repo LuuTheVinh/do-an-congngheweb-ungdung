@@ -1,4 +1,4 @@
-﻿@*@model IEnumerable<BusinessEntities.ProductEntity>*@
+﻿
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,6 +7,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        @if (IsSectionDefined("facebooksharepage"))
+        {
+            @RenderSection("facebooksharepage", required: false);
+        }
+        
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
         <title>@ViewBag.Title - Web Nghe Nhạc</title>
 
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -18,18 +24,17 @@
         <script type="text/javascript" src="~/Scripts/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="~/Scripts/jquery.leanModal.min.js"></script>
         <script type="text/javascript" src="~/Scripts/slick.js"></script>
+
 		@if (IsSectionDefined("mediaplayerstyle"))
         {
             @RenderSection("mediaplayerstyle", required: false);
         }
     </head>
     <body>
-  @*    @Html.Partial("SearchIndex");*@
         <header>
             <nav class="top-menu">
                 @RenderPage("~/Views/Shared/_TopMenu.cshtml")
 		    </nav>
-
 		    <nav class="second-menu navbar navbar-default">
                 @RenderPage("~/Views/Shared/_SecondMenu.cshtml")
             </nav>

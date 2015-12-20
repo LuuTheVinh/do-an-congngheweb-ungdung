@@ -3,6 +3,15 @@
 /* Media PLayer */
 
 /* main */
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
 .player {
     width: 860px;
     height: 240px;
@@ -15,6 +24,7 @@
     position: absolute;
     background-position-x: 50%;
     background-position-y: 50%;
+    background-image:url("../../Images/default_background_mp.jpg");
 }
 
 /*Nền phông đen mờ của player*/
@@ -252,4 +262,198 @@ p.current {
     left:100%;
     background-color: white;
     z-index: 10;
+}
+
+
+.functionbar {
+    position: relative;
+    height: 30px;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.comunitybar {
+    position:relative;
+    display:inline-block;
+    height: inherit;
+    float: right;
+}
+
+.functionbtn {
+    width: 30px;
+    height: inherit;
+    margin-top: 0px;
+}
+.fbsharebtn {
+    background-image: url("../../Images/functionbtn/fblogo.png");
+}
+.ggpluslogo {
+    background-image: url("../../Images/functionbtn/ggpluslogo.png");
+}
+.instarlogo {
+    background-image: url("../../Images/functionbtn/instarlogo.png");
+}
+
+.textbtn {
+    border: 4px;    
+    width: auto;
+    height: auto;
+    text-align: center;
+    padding: 7px;
+    border-style: ridge;
+    font-weight: bold;
+    border-color: rgba(110, 140, 210, 1);
+    color: rgba(110, 140, 210, 1);
+}
+.embedbtn {
+    line-height: 75%;
+    color: rgba(110, 140, 210, 1);
+}
+
+.outside-textarea {
+    display: none;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 100px;
+    overflow: hidden;
+}
+
+label.labeltitle {
+    margin-top: 8px;
+    margin-right: 10px;
+    width: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 17px;
+    float: left;
+}
+
+textarea.embedarea{
+    width: 560px;
+    float: left;
+    margin-top: 8px;
+}
+
+p.textviews {
+    position: relative;
+    float: right;
+    margin-top: 3px;
+    margin-left: 12px;
+    font-family: Consolas;
+}
+
+.report-pane {
+    position: relative;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #dedede;
+}
+
+.report-title {
+    font-size: 20px;
+    font-weight: bold;
+    font-family:  "Roboto",sans-serif !important;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #dedede;
+}
+
+.report-elem {
+    margin-bottom: 10px;
+    font-family:  "Roboto",sans-serif !important;
+    font-size: 17px;
+}
+
+.contentreport {
+    position: relative;
+    overflow: hidden;
+    height: 170px;
+}
+
+.report-textareas {
+    margin-left: 20px;
+    width: 95%;
+    float: left;
+    margin-top: 8px;
+    resize: vertical;
+}
+
+/*________Info_________*/
+
+.info-span {
+    margin-bottom:20px;
+    position:relative;
+    display: block;
+    height:  80px;
+}
+
+.thumbnail-artist {
+    width: 80px;
+    height: 100%;
+    float: left;
+    border:none;
+    background-size:cover;
+    background-image:url("../../Images/default_avatar.jpg");
+}
+
+.info-content {
+    margin-left: 20px;
+    height: 100%;
+    width: 760px;
+    float: left;
+    position: relative;
+}
+
+.info-text {
+    margin: 8px 0 8px 0;
+}
+
+.info-title {
+    font-size: 22px;
+    font-weight: 500;
+    margin-top: 0px;
+}
+
+.inline {
+    display: inline-block;
+}
+
+
+/* Lyric */
+.lyricbox {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 30px;
+    background: #f6f6f6;
+    position: relative;
+    line-height: 30px;
+
+}
+
+.lyrictitle {
+    display : inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom:10px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-color: #808080;
+}
+
+.lyric-content {
+    max-height: 480px;
+    overflow:scroll;
+    font-size: 14px;
+}
+
+.list_album_musicview {
+    margin-top: 32px;
+}
+
+.video_thumbnail {
+    height: 100px;
 }

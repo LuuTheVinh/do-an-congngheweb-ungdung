@@ -46,6 +46,17 @@ namespace BusinessServices
             return null;
         }
 
+        public ProductEntity GetProductById(int id)
+        {
+            var product = _unitOfWork.ProductRepository.GetById(id);
+            if (product != null)
+            {
+                var productModel = Mapper.Map<Product, ProductEntity>(product);
+                return productModel;
+            }
+            return null;
+        }
+
         /// <summary>
         /// Get list albums by parentId
         /// </summary>
