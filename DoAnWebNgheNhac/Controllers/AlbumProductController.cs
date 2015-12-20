@@ -5,7 +5,6 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using DataModel;
 using BusinessEntities;
 using BusinessServices;
 
@@ -13,10 +12,10 @@ namespace DoAnWebNgheNhac.Controllers
 {
     public class AlbumProductController : Controller
     {
-        private WebNgheNhacDb1Entities db = new WebNgheNhacDb1Entities();
         private readonly IAlbumProductServices _iAlbumProductServices;
         private readonly IAlbumServices _iAlbumServices;
         private readonly IProductServices _iProductServices;
+
         public AlbumProductController(IAlbumProductServices iAlbumProductServices, IAlbumServices iAlbumServices, IProductServices iProductServices)
         {
             this._iAlbumProductServices = iAlbumProductServices;
@@ -30,7 +29,13 @@ namespace DoAnWebNgheNhac.Controllers
         public ActionResult Index()
         {
             var albumproducts = _iAlbumProductServices.GetAllAlbumProducts();
-            return View(albumproducts.ToList());
+            return View(albumproducts);
+        }
+
+        public ActionResult ViewIndex()
+        {
+            var albumproducts = _iAlbumProductServices.GetAllAlbumProducts();
+            return View(albumproducts);
         }
 
         //
@@ -38,7 +43,7 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            AlbumProduct albumproduct = db.AlbumProducts.Find(id);
+            AlbumProductEntity albumproduct = _iAlbumProductServices.GetAlbumProductById(id);
             if (albumproduct == null)
             {
                 return HttpNotFound();
@@ -71,8 +76,6 @@ namespace DoAnWebNgheNhac.Controllers
                 return RedirectToAction("Index");
             }
 
-            //ViewBag.AlbumId = new SelectList(db.Albums, "Id", "Tittle", albumproduct.AlbumId);
-            //ViewBag.ProductId = new SelectList(db.Products, "Id", "Name", albumproduct.ProductId);
             return View(albumproduct);
         }
 
@@ -105,8 +108,6 @@ namespace DoAnWebNgheNhac.Controllers
                 _iAlbumProductServices.UpdateAlbumProduct(albumproduct.Id, albumproduct);
                 return RedirectToAction("Index");
             }
-            //ViewBag.AlbumId = new SelectList(db.Albums, "Id", "Tittle", albumproduct.AlbumId);
-            //ViewBag.ProductId = new SelectList(db.Products, "Id", "Name", albumproduct.ProductId);
             return View(albumproduct);
         }
 

@@ -15,7 +15,7 @@ namespace BusinessServices
         AlbumEntity GetAlbumById(int albumId);
         IEnumerable<AlbumEntity> GetAllAlbums();
         int CreateAlbum(AlbumEntity albumEntity);
-        bool UpdateAlbum(int albumId, AlbumEntity albumEntity);
+        bool UpdateAlbum(AlbumEntity albumEntity);
         bool DeleteAlbum(int albumId);
     }
 }

@@ -12,7 +12,7 @@ namespace BusinessServices
         VideoEntity GetVideoById(int videoId);
         IEnumerable<VideoEntity> GetAllVideos();
         int CreateVideo(VideoEntity videoEntity);
-        bool UpdateVideo(int videoId, VideoEntity videoEntity);
+        bool UpdateVideo(VideoEntity videoEntity);
         bool DeleteVideo(int videoId);
     }
 }

@@ -54,24 +54,18 @@ namespace BusinessServices
             }
         }
 
-        public bool UpdateVideo(int videoId, BusinessEntities.VideoEntity videoEntity)
+        public bool UpdateVideo(BusinessEntities.VideoEntity videoEntity)
         {
             var success = false;
             if (videoEntity != null)
             {
                 using (var scope = new TransactionScope())
                 {
-                    var video = _unitOfWork.VideoRepository.GetById(videoId);
-                    if (video != null)
-                    {
-                        video.Tittle = videoEntity.Tittle;
-                        video.ParentId = videoEntity.ParentId;
-                        video.Level = videoEntity.Level;
+                       var video = Mapper.Map<VideoEntity, Video>(videoEntity);
                         _unitOfWork.VideoRepository.Update(video);
                         _unitOfWork.Save();
                         scope.Complete();
                         success = true;
-                    }
                 }
             }
             return success;

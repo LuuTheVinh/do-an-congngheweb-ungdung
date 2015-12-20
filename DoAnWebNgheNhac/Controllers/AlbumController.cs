@@ -21,9 +21,13 @@ namespace DoAnWebNgheNhac.Controllers
         //
         // GET: /Album/
 
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            var model = _iAlbumServices.GetAllAlbums().Where(a => a.Level ==1).ToList();
+            var model = _iAlbumServices.GetAllAlbums().Where(a => a.Level ==1);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(a => a.Tittle.ToUpper().Contains(searchString.ToUpper()));
+            }
 
             return View(model);
         }
@@ -55,14 +59,9 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Create()
         {
-            var model = new AlbumEntity();
-            var getAlbumList = _iAlbumServices.GetAllAlbums().ToList();
-            var albumEntity = new AlbumEntity { Id = 0, Tittle = "-Select Parent-" };
-           // var list = getAlbumList;
-           // list.Add(albumEntity);
-            getAlbumList.Add(albumEntity);
-            model.AlbumList = new SelectList(getAlbumList, "Id", "Tittle");
-            return View(model);
+            var albums = _iAlbumServices.GetAllAlbums().Where(a => a.Level <= 2);
+            ViewBag.ParentId = new SelectList(albums, "Id", "Tittle");
+            return View();
         }
 
         //
@@ -110,7 +109,7 @@ namespace DoAnWebNgheNhac.Controllers
         {
             if (ModelState.IsValid)
             {
-                _iAlbumServices.UpdateAlbum(album.Id, album);
+                _iAlbumServices.UpdateAlbum(album);
                 return RedirectToAction("Index");
             }
             return View(album);

@@ -82,7 +82,7 @@ namespace BusinessServices
        /// <param name="albumId"></param>
        /// <param name="albumEntity"></param>
        /// <returns></returns>
-        public bool UpdateAlbum(int albumId, BusinessEntities.AlbumEntity albumEntity)
+        public bool UpdateAlbum(BusinessEntities.AlbumEntity albumEntity)
         {
             var success = false;
             if (albumEntity != null)

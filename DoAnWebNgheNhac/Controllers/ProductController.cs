@@ -5,9 +5,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using DataModel;
 using BusinessEntities;
 using BusinessServices;
+using PagedList;
 
 namespace DoAnWebNgheNhac.Controllers
 {
@@ -26,13 +26,30 @@ namespace DoAnWebNgheNhac.Controllers
         //
         // GET: /Product/
 
-        public ActionResult Index()
+        public ActionResult Index(string currentFilter,string searchString, int? page)
         {
            // var products = db.Products.Include(p => p.ArtistProduct);
            // var artistproducts = _iProductServices.GetAllProducts();
-            
-            IEnumerable<ProductEntity> products = _iProductServices.GetAllProducts(); 
-            return View(products);
+            if (searchString != null)
+            {
+                page = 1;
+            }
+
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFiler = searchString;
+            IEnumerable<ProductEntity> products = _iProductServices.GetAllProducts();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(a => a.Name.ToUpper().Contains(searchString.ToUpper()));
+            }
+
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+            return View(products.ToPagedList(pageNumber, pageSize));
         }
 
         //

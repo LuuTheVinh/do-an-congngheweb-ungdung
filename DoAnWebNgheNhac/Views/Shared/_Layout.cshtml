@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@*@model IEnumerable<BusinessEntities.ProductEntity>*@
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -23,7 +24,7 @@
         }
     </head>
     <body>
-        
+  @*    @Html.Partial("SearchIndex");*@
         <header>
             <nav class="top-menu">
                 @RenderPage("~/Views/Shared/_TopMenu.cshtml")

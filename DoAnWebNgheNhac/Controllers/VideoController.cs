@@ -24,7 +24,7 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Index()
         {
-            var model = _iVideoServices.GetAllVideos();
+            var model = _iVideoServices.GetAllVideos().Where(a => a.Level == 1);
             return View(model);
         }
 
@@ -54,6 +54,8 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Create()
         {
+            var videos = _iVideoServices.GetAllVideos().Where(a => a.Level <= 3);
+            ViewBag.ParentId = new SelectList(videos, "Id", "Tittle");
             return View();
         }
 
@@ -95,7 +97,7 @@ namespace DoAnWebNgheNhac.Controllers
         {
             if (ModelState.IsValid)
             {
-                _iVideoServices.UpdateVideo(video.Id,video);
+                _iVideoServices.UpdateVideo(video);
                 return RedirectToAction("Index");
             }
             return View(video);

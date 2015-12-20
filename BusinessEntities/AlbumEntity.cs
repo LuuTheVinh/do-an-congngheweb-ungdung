@@ -24,10 +24,5 @@ namespace BusinessEntities
         public virtual ICollection<AlbumProductEntity> AlbumProducts { get; set; }
 
        //
-        public IEnumerable<SelectListItem> AlbumList
-        {
-            get;
-            set;
-        }
     }
 }

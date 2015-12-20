@@ -53,6 +53,12 @@
     <Reference Include="Ninject.Web.Mvc">
       <HintPath>..\packages\Ninject.MVC3.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -207,7 +213,6 @@
     <Compile Include="Controllers\ArtistProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Controllers\VideoProductController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -222,6 +227,8 @@
     <Content Include="App_Data\DefaultConnection_log.ldf">
       <DependentUpon>DefaultConnection.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\mediaplayer.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\slick-theme.css" />
     <Content Include="Content\slick.css" />
     <Content Include="Content\Styles.css" />
@@ -282,6 +289,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Audio\Pokemon_Season6.mp3" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -296,6 +304,7 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\CustomScripts\player.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -361,11 +370,6 @@
     <Content Include="Views\Album\ViewIndex.cshtml" />
     <Content Include="Views\Artist\ViewIndex.cshtml" />
     <Content Include="Views\Video\ViewIndex.cshtml" />
-    <Content Include="Views\Test\Index.cshtml" />
-    <Content Include="Views\Test\Details.cshtml" />
-    <Content Include="Views\Test\Create.cshtml" />
-    <Content Include="Views\Test\Edit.cshtml" />
-    <Content Include="Views\Test\Delete.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
@@ -384,6 +388,14 @@
     <Content Include="Views\VideoProduct\Create.cshtml" />
     <Content Include="Views\VideoProduct\Edit.cshtml" />
     <Content Include="Views\VideoProduct\Delete.cshtml" />
+    <Content Include="Views\Home\PlayMusic.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\AlbumProduct\ViewIndex.cshtml" />
+    <Content Include="Views\Home\NhacVietMoiIndex.cshtml" />
+    <Content Include="Views\Home\NhacVietHotIndex.cshtml" />
+    <Content Include="Views\Home\Index1.cshtml" />
+    <Content Include="Views\Home\SearchIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj">

@@ -33,6 +33,19 @@ namespace BusinessServices
             return new List<AlbumEntity>();
         }
 
+
+        public IEnumerable<ProductEntity> GetListProducts()
+        {
+            var products = _unitOfWork.ProductRepository.GetAll().ToList();
+            if (products.Any())
+            {
+                var productsModel = Mapper.Map<List<Product>, List<ProductEntity>>(products);
+                return productsModel;
+            }
+
+            return null;
+        }
+
         /// <summary>
         /// Get list albums by parentId
         /// </summary>
@@ -54,6 +67,29 @@ namespace BusinessServices
                 return albumsModel;
             }
             return new List<AlbumEntity>();
+        }
+
+
+        public IEnumerable<AlbumProductEntity> GetNhacVietHot()
+        {
+            var albums = _unitOfWork.AlbumProductRepository.GetAll().Where(a => a.AlbumId == 65).ToList();
+            if (albums.Any())
+            {
+                var albumsModel = Mapper.Map<List<AlbumProduct>, List<AlbumProductEntity>>(albums);
+                return albumsModel;
+            }
+            return new List<AlbumProductEntity>();
+        }
+
+        public IEnumerable<AlbumProductEntity> GetNhacVietMoi()
+        {
+            var albums = _unitOfWork.AlbumProductRepository.GetAll().Where(a => a.AlbumId == 67).ToList();
+            if (albums.Any())
+            {
+                var albumsModel = Mapper.Map<List<AlbumProduct>, List<AlbumProductEntity>>(albums);
+                return albumsModel;
+            }
+            return new List<AlbumProductEntity>();
         }
     }
 }

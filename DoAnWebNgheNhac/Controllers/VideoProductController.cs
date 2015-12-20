@@ -5,20 +5,29 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using DataModel;
+using BusinessEntities;
+using BusinessServices;
 
 namespace DoAnWebNgheNhac.Controllers
 {
     public class VideoProductController : Controller
     {
-        private WebNgheNhacDb1Entities db = new WebNgheNhacDb1Entities();
+        private readonly IVideoProductServices _iVideoProductServices;
+        private readonly IProductServices _iProductServices;
+        private readonly IVideoServices _iVideoServices;
 
+        public VideoProductController(IVideoProductServices iVideoProductServices, IProductServices iProductServices, IVideoServices iVideoServices)
+        {
+            this._iVideoProductServices = iVideoProductServices;
+            this._iProductServices = iProductServices;
+            this._iVideoServices = iVideoServices;
+        }
         //
         // GET: /VideoProduct/
 
         public ActionResult Index()
         {
-            var videoproducts = db.VideoProducts.Include(v => v.Product).Include(v => v.Video);
+            var videoproducts = _iVideoProductServices.GetAllVideoProducts();
             return View(videoproducts.ToList());
         }
 
@@ -27,7 +36,7 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            VideoProduct videoproduct = db.VideoProducts.Find(id);
+            VideoProductEntity videoproduct = _iVideoProductServices.GetVideoProductById(id);
             if (videoproduct == null)
             {
                 return HttpNotFound();
@@ -40,8 +49,10 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.ProductId = new SelectList(db.Products, "Id", "Name");
-            ViewBag.VideoId = new SelectList(db.Videos, "Id", "Tittle");
+            var products = _iProductServices.GetAllProducts();
+            var videos = _iVideoServices.GetAllVideos();
+            ViewBag.ProductId = new SelectList(products, "Id", "Name");
+            ViewBag.VideoId = new SelectList(videos, "Id", "Tittle");
             return View();
         }
 
@@ -50,17 +61,16 @@ namespace DoAnWebNgheNhac.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(VideoProduct videoproduct)
+        public ActionResult Create(VideoProductEntity videoproduct)
         {
             if (ModelState.IsValid)
             {
-                db.VideoProducts.Add(videoproduct);
-                db.SaveChanges();
+                _iVideoProductServices.CreateVideoProduct(videoproduct);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ProductId = new SelectList(db.Products, "Id", "Name", videoproduct.ProductId);
-            ViewBag.VideoId = new SelectList(db.Videos, "Id", "Tittle", videoproduct.VideoId);
+            //ViewBag.ProductId = new SelectList(db.Products, "Id", "Name", videoproduct.ProductId);
+            //ViewBag.VideoId = new SelectList(db.Videos, "Id", "Tittle", videoproduct.VideoId);
             return View(videoproduct);
         }
 
@@ -69,13 +79,15 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            VideoProduct videoproduct = db.VideoProducts.Find(id);
+            VideoProductEntity videoproduct = _iVideoProductServices.GetVideoProductById(id);
+            var videos = _iVideoServices.GetAllVideos();
+            var products = _iProductServices.GetAllProducts();
             if (videoproduct == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ProductId = new SelectList(db.Products, "Id", "Name", videoproduct.ProductId);
-            ViewBag.VideoId = new SelectList(db.Videos, "Id", "Tittle", videoproduct.VideoId);
+            ViewBag.ProductId = new SelectList(products, "Id", "Name", videoproduct.ProductId);
+            ViewBag.VideoId = new SelectList(videos, "Id", "Tittle", videoproduct.VideoId);
             return View(videoproduct);
         }
 
@@ -84,16 +96,15 @@ namespace DoAnWebNgheNhac.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(VideoProduct videoproduct)
+        public ActionResult Edit(VideoProductEntity videoproduct)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(videoproduct).State = EntityState.Modified;
-                db.SaveChanges();
+                _iVideoProductServices.UpdateVideoProduct(videoproduct.Id, videoproduct);
                 return RedirectToAction("Index");
             }
-            ViewBag.ProductId = new SelectList(db.Products, "Id", "Name", videoproduct.ProductId);
-            ViewBag.VideoId = new SelectList(db.Videos, "Id", "Tittle", videoproduct.VideoId);
+            //ViewBag.ProductId = new SelectList(db.Products, "Id", "Name", videoproduct.ProductId);
+            //ViewBag.VideoId = new SelectList(db.Videos, "Id", "Tittle", videoproduct.VideoId);
             return View(videoproduct);
         }
 
@@ -102,7 +113,7 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            VideoProduct videoproduct = db.VideoProducts.Find(id);
+            VideoProductEntity videoproduct = _iVideoProductServices.GetVideoProductById(id);
             if (videoproduct == null)
             {
                 return HttpNotFound();
@@ -117,16 +128,15 @@ namespace DoAnWebNgheNhac.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            VideoProduct videoproduct = db.VideoProducts.Find(id);
-            db.VideoProducts.Remove(videoproduct);
-            db.SaveChanges();
+            bool success = _iVideoProductServices.DeleteVideoProduct(id);
+
+            if (!success)
+            {
+                ModelState.AddModelError("error", "delete fail");
+                return View();
+            }
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
     }
 }

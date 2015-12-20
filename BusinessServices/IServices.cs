@@ -10,7 +10,12 @@ namespace BusinessServices
     public interface IServices
     {
         IEnumerable<AlbumEntity> GetListAlbums();
+        IEnumerable<ProductEntity> GetListProducts();
 
         IEnumerable<AlbumEntity> GetListAlbumByParentId(int parentId);
+
+        IEnumerable<AlbumProductEntity> GetNhacVietHot();
+        IEnumerable<AlbumProductEntity> GetNhacVietMoi();
+
     }
 }

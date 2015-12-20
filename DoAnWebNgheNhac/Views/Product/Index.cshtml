@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<BusinessEntities.ProductEntity>
-
+@using PagedList.Mvc;
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Product";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -10,6 +10,14 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="search"/>
+    </p> 
+}
 <table>
     <tr>
         <th>
@@ -68,3 +76,6 @@
 }
 
 </table>
+@*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager( Model, page => Url.Action("Index", new { page, currentFilter=ViewBag.CurrentFilter }) )*@
