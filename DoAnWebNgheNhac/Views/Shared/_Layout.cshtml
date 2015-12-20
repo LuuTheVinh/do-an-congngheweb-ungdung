@@ -10,10 +10,7 @@
         {
             @RenderSection("facebooksharepage", required: false);
         }
-        @if (IsSectionDefined("videoplayerscript"))
-        {
-            @RenderSection("videoplayerscript", required: false);
-        }
+        
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
         <title>@ViewBag.Title - Web Nghe Nhạc</title>
 
@@ -49,11 +46,6 @@
             {
                 @RenderSection("playerscript", required: false);
             }
-            @if (IsSectionDefined("bodyvideoplayer"))
-            {
-                @RenderSection("bodyvideoplayer", required: false);
-            }
-
         </div>
 
         <div class="play-control">
