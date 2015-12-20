@@ -18,6 +18,7 @@
     var countviews = 2934021;
 
     var artistthumbnail = "../../Images/af8438cb947f2e0d1a36c0cdc84c6574_1442377367.jpg";
+    var artistid = "12";
     var artisturl = "some url";
     var artistname = "Minh Hằng";
     var musicname = "Người Điên Yêu";
@@ -53,9 +54,9 @@
 
 <div class="box_left">
     <div id="info-span" class="info-span">
-        <div id="artistthumbnail"class="thumbnail">
+        <div id="artistthumbnail"class="thumbnail-artist">
             <a href="@artisturl" title="@artistname">
-                <img src="@artistthumbnail" alt="@artistname" class="thumbnail"/>
+                <img src="@artistthumbnail" alt="@artistname" class="thumbnail-artist"/>
             </a>
         </div>
         <div id="info-content" class="info-content">
@@ -195,7 +196,6 @@
             }
         </div>
     </div>
-
   @* <div id="playlist">
        Danh sách các bài hát
    </div> *@
@@ -203,7 +203,114 @@
      @section playerscript{
         <script type="text/javascript" src="~/Scripts/CustomScripts/player.js")" ></script>
     }
-</div>
-<div class="box_right">
 
+    <div>
+        @* Cái này em lấy lại của th. Vinh thôi. Tại nó cũng giống nhau*@
+        @* Định làm cái server-end giống cái "Bài hát cùng Ca sĩ luôn mà không biết lấy dữ liệu nào *@
+        <div class="list_album list_album_musicview">
+		    <div class="title_box">
+			    <a href="#">Album Của @artistname</a>
+		    </div>
+		    <ul>
+			    <li>
+				    <a class="thumbnail" href="#">
+                        <span class="fa fa-play-circle play-icon"> </span>
+					    <img src="images/0c2b0067691ef5521afcebe2887028dc_1443425336.jpg" >
+				    </a>
+                    
+                    <div class="description">
+					    <h3><a href="">Enjoy Your Life</a></h3>
+					    <h4><a href="">Karik</a></h4>
+                    </div>
+			    </li>
+                			    <li>
+				    <a class="thumbnail" href="#">
+                        <span class="fa fa-play-circle play-icon"> </span>
+					    <img src="images/0c2b0067691ef5521afcebe2887028dc_1443425336.jpg" >
+				    </a>
+                    
+                    <div class="description">
+					    <h3><a href="">Enjoy Your Life</a></h3>
+					    <h4><a href="">Karik</a></h4>
+                    </div>
+			    </li>
+                			    <li>
+				    <a class="thumbnail" href="#">
+                        <span class="fa fa-play-circle play-icon"> </span>
+					    <img src="images/0c2b0067691ef5521afcebe2887028dc_1443425336.jpg" >
+				    </a>
+                    
+                    <div class="description">
+					    <h3><a href="">Enjoy Your Life</a></h3>
+					    <h4><a href="">Karik</a></h4>
+                    </div>
+			    </li>
+                			    <li>
+				    <a class="thumbnail" href="#">
+                        <span class="fa fa-play-circle play-icon"> </span>
+					    <img src="images/0c2b0067691ef5521afcebe2887028dc_1443425336.jpg" >
+				    </a>
+                    
+                    <div class="description">
+					    <h3><a href="">Enjoy Your Life</a></h3>
+					    <h4><a href="">Karik</a></h4>
+                    </div>
+			    </li>
+            </ul>
+        </div>
+    </div>
+    <div class="list_video">
+		<div class="title_box">
+			<a href="#">VIDEO | MV của @artistname</a>
+		</div>
+		<ul>
+			<li>
+				<a class="thumbnail video_thumbnail" href="#">
+                    <span class="fa fa-play-circle play-icon"> </span>
+					<img src="images/fe1be290d78713b68429c28181ae06d7_1443687046.jpg">
+				</a>
+				<div class="description">
+					<h3><a href="">Enjoy Your Life</a></h3>
+					<h4><a href="">Karik</a></h4>
+                </div>
+			</li>
+			<li>
+				<a class="thumbnail video_thumbnail" href="#">
+                    <span class="fa fa-play-circle play-icon"> </span>
+					<img src="images/f680e73d65ab72f0f64e9eb03f4357de_1443785226.jpg">
+				</a>
+				<div class="description">
+					<h3><a href="">Enjoy Your Life</a></h3>
+					<h4><a href="">Karik</a></h4>
+                </div>
+			</li>
+			<li>
+				<a class="thumbnail video_thumbnail" href="#">
+                    <span class="fa fa-play-circle play-icon"> </span>
+					<img src="images/f680e73d65ab72f0f64e9eb03f4357de_1443785226.jpg">
+				</a>
+				<div class="description">
+					<h3><a href="">Enjoy Your Life</a></h3>
+					<h4><a href="">Karik</a></h4>
+                </div>
+			</li>
+			<li>
+				<a class="thumbnail video_thumbnail" href="#">
+                    <span class="fa fa-play-circle play-icon"> </span>
+					<img src="images/f680e73d65ab72f0f64e9eb03f4357de_1443785226.jpg">
+				</a>
+				<div class="description">
+					<h3><a href="">Enjoy Your Life</a></h3>
+					<h4><a href="">Karik</a></h4>
+                </div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="box_right">
+    @*Chưa test *@
+    @*Lấy những bài hát cùng ca sĩ*@
+    
+    @{ Html.RenderAction("Songs", "ArtistProduct", new { artistId = -1 });} 
 </div>

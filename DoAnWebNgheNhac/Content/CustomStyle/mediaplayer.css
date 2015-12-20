@@ -389,7 +389,7 @@ p.textviews {
     height:  80px;
 }
 
-.thumbnail {
+.thumbnail-artist {
     width: 80px;
     height: 100%;
     float: left;
@@ -448,4 +448,12 @@ p.textviews {
     max-height: 480px;
     overflow:scroll;
     font-size: 14px;
+}
+
+.list_album_musicview {
+    margin-top: 32px;
+}
+
+.video_thumbnail {
+    height: 100px;
 }

@@ -67,7 +67,7 @@ namespace DoAnWebNgheNhac.Controllers
                 return RedirectToAction("Index");
             }
 
-          //  ViewBag.ArtistId = new SelectList(db.Artists, "Id", "Tittle", artistproduct.ArtistId);
+            //  ViewBag.ArtistId = new SelectList(db.Artists, "Id", "Tittle", artistproduct.ArtistId);
             return View(artistproductEntity);
         }
 
@@ -82,7 +82,7 @@ namespace DoAnWebNgheNhac.Controllers
             {
                 return HttpNotFound();
             }
-            
+
             ViewBag.ArtistId = new SelectList(artists, "Id", "Tittle", artistproduct.ArtistId);
             return View(artistproduct);
         }
@@ -101,7 +101,7 @@ namespace DoAnWebNgheNhac.Controllers
                 _iArtistProductServices.UpdateArtistProduct(artistproductEntity.Id, artistproductEntity);
                 return RedirectToAction("Index");
             }
-           // ViewBag.ArtistId = new SelectList(db.Artists, "Id", "Tittle", artistproduct.ArtistId);
+            // ViewBag.ArtistId = new SelectList(db.Artists, "Id", "Tittle", artistproduct.ArtistId);
             return View(artistproductEntity);
         }
 
@@ -135,6 +135,60 @@ namespace DoAnWebNgheNhac.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public ActionResult Songs(int artistId = -1)
+        {
+            // Lấy những bài hát của cùng môt ca sĩ
+            // Chưa test
+            if (artistId == -1)
+            {
+                ICollection<ProductEntity> products = getTestValue();
+                ViewData["ArtistName"] = getTestArtistName();
+                System.Diagnostics.Debug.Write("artistId = -1");
+                return PartialView(products);
+            }
+            var allartistproduct = _iArtistProductServices.GetAllArtistProducts();
+
+            if (allartistproduct == null)
+                return null;
+            if (allartistproduct.Any())
+            {
+                var foundArtist = allartistproduct.Where(art => art.ArtistId == artistId);
+                ICollection<ProductEntity> products = null;
+                if (foundArtist.Any())
+                {
+                    products = foundArtist.First().Products;
+                    ViewData["ArtistName"] = foundArtist.First().StageName;
+                    return PartialView(products);
+                }
+            }
+            return null;
+        }
+
+        private string getTestArtistName()
+        {
+            return "Phạm Trưởng";
+        }
+
+        private ICollection<ProductEntity> getTestValue()
+        {
+            return new List<ProductEntity>()
+            {
+                new ProductEntity(){Name = "Nắng Và Mưa", Views =  2594599},
+                new ProductEntity(){Name = "Đôi Khi Muốn", Views = 3943778},
+                new ProductEntity(){Name = "Đàn Ông Là Thế (Remix)", Views = 180565},
+                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405},
+                new ProductEntity(){Name = "Trang Giấy Trắng", Views = 3329897},
+                new ProductEntity(){Name = "Đừng Đánh Mất Hạnh Phúc", Views =  340335},
+                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405},
+                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405},
+                new ProductEntity(){Name = "Người Dự Bị", Views = 1700114},
+                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405},
+                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405},
+                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405},
+            };
+        }
+
 
     }
 }

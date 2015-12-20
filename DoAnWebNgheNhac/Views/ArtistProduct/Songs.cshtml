@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BusinessEntities.ProductEntity>
+
+<div class="box_chart_music">
+    <div class="title_box">
+        <a>Cùng Ca Sĩ</a>
+    </div>
+    <ul>
+    @{
+        var max = Math.Max(10, Model.Count());
+        int index;
+        Random rand = new Random();
+        int count = Model.Count();
+        List<BusinessEntities.ProductEntity> select = new List<BusinessEntities.ProductEntity>(10);
+        if (count < 10)
+        {
+            select = @Model.ToList();
+        }
+        else{
+            for (int i = 0; i < 10; )
+            {
+                index = rand.Next(0, count);
+                if (select.Contains(@Model.ElementAt(index)) == false)
+                {
+                    select.Add(@Model.ElementAt(index));
+                    if (select.Count == 10)
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+        
+        foreach (var product in select)
+        {
+                <li>
+                <div class="chart_info_song">
+                    <h3>
+                        <a href="">@product.Name</a>
+                    </h3>
+                    <a href="">@ViewData["ArtistName"].ToString()</a>
+                    <span class="float-right">@String.Format(new System.Globalization.CultureInfo("en-US"), "{0:N0}",product.Views)</span>
+                </div>
+            </li>                       
+        }
+    }
+    </ul >
+</div>

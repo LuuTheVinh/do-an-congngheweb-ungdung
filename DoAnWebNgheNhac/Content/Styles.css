@@ -306,6 +306,8 @@ ul.sub-item li a
     position: relative;
     overflow: hidden;
     border: 1px solid #f2f2f2;
+    background-size:cover;
+    background-image:url("../../Images/default_avatar.jpg");
 }
 
 .thumbnail .play-icon {
