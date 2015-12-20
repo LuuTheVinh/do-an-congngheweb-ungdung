@@ -9,6 +9,8 @@
 /BusinessServices/obj
 /BusinessEntities/bin
 /BusinessEntities/obj
+/obj
+/bin/debug
 *.filters
 *.sln
 DoAnWebNgheNhac.v11.suo
