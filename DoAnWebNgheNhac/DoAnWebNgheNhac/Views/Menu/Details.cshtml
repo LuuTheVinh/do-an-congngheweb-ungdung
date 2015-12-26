@@ -1,0 +1,23 @@
+﻿@model BusinessServices.Menu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+  @if (Model.AlbumMenu != null)
+  {
+      foreach (var item in Model.AlbumMenu.Where(a => a.Level ==1))
+      {
+           <div>
+               <div>
+                   Text : @item.Tittle
+               </div>
+           </div>
+      } 
+  }
+</fieldset>
+
