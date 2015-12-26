@@ -1,0 +1,210 @@
+﻿@model BusinessServices.HomeServices
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="content col-left">
+	<div class="home-slider">
+        <!--SLIDER-->
+        <!--http://kenwheeler.github.io/slick/-->
+        <a href="#"><img  src="images/1449121076568_org.jpg" /> </a>
+        <a href="#"><img  src="images/1449225786937_org.jpg" /></a>
+        <a href="#"><img  src="images/1449048191492_org.jpg" /></a>
+        <a href="#"><img  src="images/1449048191492_org.jpg" /></a>
+        <a href="#"><img  src="images/1449048191492_org.jpg" /></a>
+	</div>
+
+	<div class="list_music">
+		<div class="">
+			<div class="title_box">
+				<a href="#">NHẠC VIỆT HOT</a>
+			</div>
+			@*@Html.Partial("NhacVietHotIndex") *@
+           <ul>@if (Model != null)
+                {
+                    foreach (var item in Model.NhacVietHot)
+                    {
+                        <li>
+					        <div class="info_song">
+						        <h3>
+							        <a href="/home/PlayMusic?id=@item.ProductId">@Html.DisplayFor(modelItem => item.Product.Name)</a>
+							        -
+							        <a href="#">@Html.DisplayFor(modelItem => item.Product.ArtistProduct.StageName)</a>
+						        </h3>
+						        <span class="float-right">@Html.DisplayFor(modelItem => item.Product.Views)</span>
+						        <div class="box_song_action"></div>
+					        </div>
+				        </li>
+                    }
+                }
+    </ul>
+		</div>
+		<div class="">
+			<div class="title_box">
+				<a href="#">NHẠC VIỆT MỚI</a>
+			</div>
+			 @*@Html.Partial("NhacVietMoiIndex")*@
+             <ul>@if (Model != null)
+                {
+                    foreach (var item in Model.NhacVietMoi)
+                    {
+                        <li>
+					        <div class="info_song">
+						        <h3>
+							        <a href="/home/PlayMusic?id=@item.ProductId">@Html.DisplayFor(modelItem => item.Product.Name)</a>
+							        -
+							        <a href="#">@Html.DisplayFor(modelItem => item.Product.ArtistProduct.StageName)</a>
+						        </h3>
+						        <span class="float-right">@Html.DisplayFor(modelItem => item.Product.Views)</span>
+						        <div class="box_song_action"></div>
+					        </div>
+				        </li>
+                    }
+                }
+    </ul>
+		</div>
+	</div>
+	<div class="list_album">
+		<div class="title_box">
+			<a href="#">ALBUM</a>
+		</div>
+		<ul>
+            @if (Model != null)
+                {
+                    foreach (var item in Model.GetAlbum)
+                    {
+			            <li>
+				            <a class="thumbnail" href="#">
+                                <span class="fa fa-play-circle play-icon"> </span>
+					            <img src="images/@Html.DisplayFor(modelItem => item.AlbumProducts.FirstOrDefault().Product.Thumbnail)" >
+                        
+				            </a>
+                    
+                            <div class="description">
+					            <h3><a href="">@Html.DisplayFor(modelItem => item.Tittle)</a></h3>
+					            <h4><a href="">@Html.DisplayFor(modelItem => item.AlbumProducts.FirstOrDefault().Product.ArtistProduct.StageName)</a></h4>
+                            </div>
+			            </li>
+                     }
+              }
+		</ul>
+	</div>
+	<div class="list_video">
+		<div class="title_box">
+			<a href="#">VIDEO | MV</a>
+		</div>
+		<ul>
+			<li>
+				<a class="thumbnail" href="#">
+                    <span class="fa fa-play-circle play-icon"> </span>
+					<img src="images/fe1be290d78713b68429c28181ae06d7_1443687046.jpg">
+				</a>
+				<div class="description">
+					<h3><a href="">Enjoy Your Life</a></h3>
+					<h4><a href="">Karik</a></h4>
+                </div>
+			</li>
+			<li>
+				<a class="thumbnail" href="#">
+                    <span class="fa fa-play-circle play-icon"> </span>
+					<img src="images/f680e73d65ab72f0f64e9eb03f4357de_1443785226.jpg">
+				</a>
+				<div class="description">
+					<h3><a href="">Enjoy Your Life</a></h3>
+					<h4><a href="">Karik</a></h4>
+                </div>
+			</li>
+			<li>
+				<a class="thumbnail" href="#">
+                    <span class="fa fa-play-circle play-icon"> </span>
+					<img src="images/f680e73d65ab72f0f64e9eb03f4357de_1443785226.jpg">
+				</a>
+				<div class="description">
+					<h3><a href="">Enjoy Your Life</a></h3>
+					<h4><a href="">Karik</a></h4>
+                </div>
+			</li>
+			<li>
+				<a class="thumbnail" href="#">
+                    <span class="fa fa-play-circle play-icon"> </span>
+					<img src="images/f680e73d65ab72f0f64e9eb03f4357de_1443785226.jpg">
+				</a>
+				<div class="description">
+					<h3><a href="">Enjoy Your Life</a></h3>
+					<h4><a href="">Karik</a></h4>
+                </div>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="sidebar col-right">
+	<div class="box_chart_music">
+		<div class="title_box">
+			<a href="#">BXH BÀI HÁT</a>
+        </div>
+            <ul>
+                <li>
+                    <div class="chart_info_song">
+                        <h3>
+                            <a href="">Anh Vẫn Yêu Em Như Ngày Đầu Tiên</a>
+                        </h3>
+                        <a href="">Cao Thái Sơn</a>
+                        <span class="float-right">247,902</span>
+                        <div class="box_song_action"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chart_info_song">
+                        <h3>
+                            <a href="">Dưới Những Cơn Mưa</a>
+                        </h3>
+                        <a href="">Mr. Siro</a>
+                        <span>2,091,422</span>
+                        <div class="box_song_action"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chart_info_song">
+                        <h3>
+                            <a href="">Tội Lỗi</a>
+                        </h3>
+                        <a href="">Hồ Ngọc Hà</a>
+                        <span>1,287,919</span>
+                        <div class="box_song_action"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chart_info_song">
+                        <h3>
+                            <a href="">Tình Yêu Trong Vòng Tay</a>
+                        </h3>
+                        <a href="">Lương Bích Hữu</a>
+                        <span>209,711</span>
+                        <div class="box_song_action"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="chart_info_song">
+                        <h3>
+                            <a href="">Let Me Be The One</a>
+                        </h3>
+                        <a href="">Trọng Hiếu</a>
+                        <span>12,506</span>
+                        <div class="box_song_action"></div>
+                    </div>
+                </li>
+            </ul>
+	</div>
+</div>
+<div class="clear"></div>
+
+<script type="text/javascript" >
+    $(document).ready(function(){
+        $('.home-slider').slick({
+            dots: true,
+            autoplay: true,
+            autoplaySpeed: 5000,
+            infinite: true,
+    });
+    });
+</script>

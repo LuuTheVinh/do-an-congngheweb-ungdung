@@ -1,0 +1,123 @@
+﻿@model IEnumerable<BusinessEntities.AlbumEntity> 
+@{
+    ViewBag.Title = "ViewIndex";
+}
+
+<div class="title_box">
+	<a href="#">ALBUM</a>
+    <span class="fa fa-angle-right"></span>
+    <a href="#">VIỆT NAM</a>
+</div>
+
+<div class="album-page">
+    <ul class="album-list">
+        @foreach (var item in Model)
+        {
+            <li>
+                 <a class="thumbnail" href="#" onmouseover="">
+                    <span class="fa fa-play-circle play-icon"> </span>
+			        <img src="../../Images/0c2b0067691ef5521afcebe2887028dc_1443425336.jpg" >
+		         </a>
+                 <div class="description">
+			         <h3><a href="#">@Html.DisplayFor(modelItem => item.Tittle)</a></h3>
+			         <h4><a href="#">Karik</a></h4>
+                 </div>
+            </li>
+        }
+
+	    @*<li>
+		    <a class="thumbnail" href="#" onmouseover="">
+                <!--<span class="fa fa-heart like-icon"></span>
+                <span class="fa fa-share-alt share-icon"></span>-->
+                <span class="fa fa-play-circle play-icon"> </span>
+			    <img src="../../Images/0c2b0067691ef5521afcebe2887028dc_1443425336.jpg" >
+                        
+		    </a>
+                    
+            <div class="description">
+			    <h3><a href="#">Enjoy Your Life</a></h3>
+			    <h4><a href="#">Karik</a></h4>
+            </div>
+	    </li>
+	    <li>
+		    <a class="thumbnail" href="#">
+                <span class="fa fa-play-circle play-icon"> </span>
+			    <img src="../../Images/506d5153dcfd6d80d7fdfdb82d9e8fe2_1443686452.jpg" >
+		    </a>
+                    
+            <div class="description">
+			    <h3><a href="#">Enjoy Your Life</a></h3>
+			    <h4><a href="#">Karik</a></h4>
+            </div>
+	    </li>
+	    <li>
+		    <a class="thumbnail" href="#">
+                <span class="fa fa-play-circle play-icon"> </span>
+			    <img src="../../Images/6960b84e92417f604dad18dd76594729_1443686543.jpg">
+		    </a>
+                    
+            <div class="description">
+			    <h3><a href="#">Enjoy Your Life</a></h3>
+			    <h4><a href="#">Karik</a></h4>
+            </div>
+	    </li>
+	    <li>
+		    <a class="thumbnail" href="#">
+                <span class="fa fa-play-circle play-icon"> </span>
+			    <img src="../../Images/7500ed8542033b04579830ef16c40328_1443837080.jpg">
+		    </a>
+                    
+            <div class="description">
+			    <h3><a href="#">Enjoy Your Life</a></h3>
+			    <h4><a href="#">Karik</a></h4>
+            </div>
+	    </li>
+        <li>
+		    <a class="thumbnail" href="#">
+                <span class="fa fa-play-circle play-icon"> </span>
+			    <img src="../../Images/7500ed8542033b04579830ef16c40328_1443837080.jpg">
+		    </a>
+                    
+            <div class="description">
+			    <h3><a href="#">Enjoy Your Life</a></h3>
+			    <h4><a href="#">Karik</a></h4>
+            </div>
+	    </li>
+        <li>
+		    <a class="thumbnail" href="#">
+                <span class="fa fa-play-circle play-icon"> </span>
+			    <img src="../../Images/7500ed8542033b04579830ef16c40328_1443837080.jpg">
+		    </a>
+                    
+            <div class="description">
+			    <h3><a href="#">Enjoy Your Life</a></h3>
+			    <h4><a href="#">Karik</a></h4>
+            </div>
+	    </li>
+        <li>
+		    <a class="thumbnail" href="#">
+                <span class="fa fa-play-circle play-icon"> </span>
+			    <img src="../../Images/7500ed8542033b04579830ef16c40328_1443837080.jpg">
+		    </a>
+                    
+            <div class="description">
+			    <h3><a href="#">Enjoy Your Life</a></h3>
+			    <h4><a href="#">Karik</a></h4>
+            </div>
+	    </li>
+        <li>
+		    <a class="thumbnail" href="#">
+                <span class="fa fa-play-circle play-icon"> </span>
+			    <img src="../../Images/7500ed8542033b04579830ef16c40328_1443837080.jpg">
+		    </a>
+                    
+            <div class="description">
+			    <h3><a href="#">Enjoy Your Life</a></h3>
+			    <h4><a href="#">Karik</a></h4>
+            </div>
+	    </li>*@
+    </ul>
+</div>
+
+<script type="text/javascript">
+</script>
