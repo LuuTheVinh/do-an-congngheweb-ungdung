@@ -1,0 +1,24 @@
+﻿
+
+
+    <div id="functionbar" class="functionbar">
+        <a href="~/Audio/@Model.URL.TrimEnd()" download="@Model.URL.TrimEnd()">
+            <div id="downloadbtn" class="controlbtn textbtn unselectable functionbtn embedbtn" style="float: left;" title="Download bài hát">Download
+            </div> 
+        </a>
+        <div id="reportbtn" class="controlbtn textbtn unselectable functionbtn embedbtn" style="float: left;" title="Báo cáo sự cố">
+            Báo Cáo
+        </div> 
+        <div id="comunitybar" class="comunitybar">
+
+            <div id="embedbtn" class="controlbtn textbtn unselectable functionbtn embedbtn" title="Mã nhúng">Embed</div>
+            <div id="fbshare" class="controlbtn functionbtn fbsharebtn" title="Chia sẽ trên facebook"></div>
+            <div id="ggpluslogo" class="controlbtn functionbtn ggpluslogo" title="Chia sẽ trên Google+"></div>
+            <div id="instarlogo" class="controlbtn functionbtn instarlogo" title="Vì lập trình viên không sử dụng instagram nên chức năng này không được kích hoạt"></div>
+            <p class="textviews">
+                <b style="font-size: 15px; font-weight: 300;">@PageData["text"] </b>
+                
+                <b style="font-size: 20px; font-weight: bold;">@Model.Views</b>
+            </p>
+        </div>
+    </div>

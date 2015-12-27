@@ -138,7 +138,7 @@
         </div>
     </div>
 
-    <div id="functionbar" class="functionbar">
+@*    <div id="functionbar" class="functionbar">
         <a href="~/Audio/@Model.URL.TrimEnd()" download="@Model.URL.TrimEnd()">
             <div id="downloadbtn" class="controlbtn textbtn unselectable functionbtn embedbtn" style="float: left;" title="Download bài hát">Download
             </div> 
@@ -157,7 +157,8 @@
                 <b style="font-size: 20px; font-weight: bold;">@Html.DisplayFor(modelItem => modelItem.Views)</b>
             </p>
         </div>
-    </div>
+    </div>*@
+    @RenderPage("~/Views/Product/_ComunityBar.cshtml", new { text="Lượt Nghe"})
     <div id="reportpane" class="report-pane hide" >
         <div id="reportitle" class ="report-title"> Phản hồi bài hát này </div>
         <p class="report-elem"> Bạn gặp vấn đề gì?</p>
@@ -284,8 +285,10 @@
 </div>
 
 <div class="box_right">
-    @*Chưa test *@
+
     @*Lấy những bài hát cùng ca sĩ*@
     
-    @{ Html.RenderAction("Songs", "ArtistProduct", new { artistId = @Model.ArtistProduct.ArtistId });} 
+    @{
+        Html.RenderAction("Songs", "ArtistProduct", new { artistId = @Model.ArtistProduct.ArtistId });
+    } 
 </div>

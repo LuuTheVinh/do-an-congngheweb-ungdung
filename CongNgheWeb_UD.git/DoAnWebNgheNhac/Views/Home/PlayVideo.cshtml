@@ -3,6 +3,13 @@
     ViewBag.Title = "PlayVideo";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section mediaplayerstyle{
+    <link rel="stylesheet" type="text/css" href="../../Content/CustomStyle/mediaplayer.css">
+}
+    @section playerscript{
+    <script type="text/javascript" src="~/Scripts/CustomScripts/player.js")" ></script>
+}
+
  @section videoplayerscript{
     @*Để inline để script tham chiếu đến *@
     <link rel='stylesheet prefetch' href='http://vjs.zencdn.net/5-unsafe/video-js.css'>
@@ -92,8 +99,115 @@
 
 }
 
-
-    <video id="my_video_1" class="video-js vjs-default-skin" controls width="650" height="400" style="background-color: #3C3C3C;"  data-setup='{"playbackRates": [1, 1.5, 2] }'>
-    @*<source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">*@
-    <source src="../../Videos/Shi jin.mp4" type="video/mp4">
+<div class="box_left">
+    <video id="my_video_1" class="video-js vjs-default-skin" controls width="860" height="600" style="background-color: #3C3C3C; "  data-setup='{"playbackRates": [1, 1.5, 2] }'>
+    <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+    @*<source src="../../Videos/Shi jin.mp4" type="video/mp4">*@
     </video>
+
+    <div id="functionbar" class="functionbar">
+        <a href="" download="">
+            <div id="downloadbtn" class="controlbtn textbtn unselectable functionbtn embedbtn" style="float: left;" title="Download bài hát">Download
+            </div> 
+        </a>
+        <div id="reportbtn" class="controlbtn textbtn unselectable functionbtn embedbtn" style="float: left;" title="Báo cáo sự cố">
+            Báo Cáo
+        </div> 
+        <div id="comunitybar" class="comunitybar">
+
+            <div id="embedbtn" class="controlbtn textbtn unselectable functionbtn embedbtn" title="Mã nhúng">Embed</div>
+            <div id="fbshare" class="controlbtn functionbtn fbsharebtn" title="Chia sẽ trên facebook"></div>
+            <div id="ggpluslogo" class="controlbtn functionbtn ggpluslogo" title="Chia sẽ trên Google+"></div>
+            <div id="instarlogo" class="controlbtn functionbtn instarlogo" title="Vì lập trình viên không sử dụng instagram nên chức năng này không được kích hoạt"></div>
+            <p class="textviews">
+                <b style="font-size: 15px; font-weight: 300;">Lượt Xem</b>
+                
+                <b style="font-size: 20px; font-weight: bold;">461849</b>
+            </p>
+        </div>
+    </div>
+      @*  @RenderPage("~/Views/Product/_ComunityBar.cshtml", new { text="Lượt Xem"})*@
+
+
+
+    @* Cái này em lấy lại của th. Vinh thôi. Tại nó cũng giống nhau*@
+    @* Định làm cái server-end giống cái "Bài hát cùng Ca sĩ luôn mà không biết lấy dữ liệu nào *@
+    <div class="list_album list_album_musicview">
+		<div class="title_box">
+			<a href="#">Album Của "Ca sĩ XYZ"</a>
+		</div>
+		<ul class="album-list">
+@*              @foreach (var item in Model.AlbumProducts.All())
+            {
+                *@<li>
+                        <a class="thumbnail" href="#" onmouseover="">
+                        <span class="fa fa-play-circle play-icon"> </span>
+			            <img src="">
+		                </a>
+                        <div class="description">
+			                <h3><a href="#"> Tiêu đề album</a></h3>
+			                <h4><a href="#">ArtistProduct.StageName</a></h4>
+                        </div>
+                </li>
+            @* }*@
+            </ul>
+    </div>
+
+    <div class="list_video">
+		<div class="title_box">
+			<a href="#">VIDEO | MV của "Ca sĩ XYZ"</a>
+		</div>
+		<ul>
+			<li>
+				<a class="thumbnail video_thumbnail" href="#">
+                    <span class="fa fa-play-circle play-icon"> </span>
+					<img src="images/fe1be290d78713b68429c28181ae06d7_1443687046.jpg">
+				</a>
+				<div class="description">
+					<h3><a href="">Enjoy Your Life</a></h3>
+					<h4><a href="">Karik</a></h4>
+                </div>
+			</li>
+			<li>
+				<a class="thumbnail video_thumbnail" href="#">
+                    <span class="fa fa-play-circle play-icon"> </span>
+					<img src="images/f680e73d65ab72f0f64e9eb03f4357de_1443785226.jpg">
+				</a>
+				<div class="description">
+					<h3><a href="">Enjoy Your Life</a></h3>
+					<h4><a href="">Karik</a></h4>
+                </div>
+			</li>
+			<li>
+				<a class="thumbnail video_thumbnail" href="#">
+                    <span class="fa fa-play-circle play-icon"> </span>
+					<img src="images/f680e73d65ab72f0f64e9eb03f4357de_1443785226.jpg">
+				</a>
+				<div class="description">
+					<h3><a href="">Enjoy Your Life</a></h3>
+					<h4><a href="">Karik</a></h4>
+                </div>
+			</li>
+			<li>
+				<a class="thumbnail video_thumbnail" href="#">
+                    <span class="fa fa-play-circle play-icon"> </span>
+					<img src="images/f680e73d65ab72f0f64e9eb03f4357de_1443785226.jpg">
+				</a>
+				<div class="description">
+					<h3><a href="">Enjoy Your Life</a></h3>
+					<h4><a href="">Karik</a></h4>
+                </div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+
+<div class="box_right">
+
+    @*Lấy những bài hát cùng ca sĩ*@
+    
+    @{
+        Html.RenderAction("Songs", "ArtistProduct", new { artistId = -1 });
+    } 
+</div>

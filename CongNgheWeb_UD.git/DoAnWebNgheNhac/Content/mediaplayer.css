@@ -253,3 +253,9 @@ p.current {
     background-color: white;
     z-index: 10;
 }
+
+
+.videoplayer {
+    background-color: #3C3C3C;
+    margin-left: 150px;
+}
