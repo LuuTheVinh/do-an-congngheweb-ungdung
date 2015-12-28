@@ -12,7 +12,7 @@ namespace BusinessServices
     {
        public IEnumerable<AlbumProductEntity> NhacVietHot {get; set;}
        public IEnumerable<AlbumProductEntity> NhacVietMoi {get; set;}
-       public IEnumerable<AlbumProductEntity> GetAlbum { get; set; }
+       public IEnumerable<AlbumEntity> GetAlbum { get; set; }
        public IEnumerable<VideoProductEntity> GetVideo { get; set; }
     }
 }

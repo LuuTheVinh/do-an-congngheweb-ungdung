@@ -1,0 +1,50 @@
+﻿
+<div class="container">
+    <ul class="level-1-menu">
+        <li class="current-item">@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+        <li><a class="genre-btn" href="#" onclick="categoryButtonClick('.genre-panel', 200)">Thể Loại</a>
+        </li>
+
+        <li><a class="album-btn" href="#" onclick="categoryButtonClick('.album-panel', 200)">Album</a></li>
+        <li><a href="#">Playlist</a></li>
+        <li><a href="#" onclick="categoryButtonClick('.video-panel', 200)" >Video</a></li>
+        <li><a href="#">BXH</a></li>
+        <li>
+            @Html.ActionLink("Nghệ Sĩ", "ViewIndex", "Artist")
+        </li>
+    </ul>
+</div>
+
+<div class="category-panel genre-panel">
+    <div class="container">
+        <div class="category">
+             @Html.Action("MenuAlbum")
+        </div>
+    </div>
+</div>
+
+<div class="category-panel album-panel">
+    <div class="container">
+        <div class="category">
+            @Html.Action("MenuAlbum")
+        </div>
+    </div>
+</div>
+
+<div class="category-panel video-panel">
+    <div class="container">
+        <div class="category">
+             @Html.Action("MenuAlbum")
+        </div>
+    </div>
+</div>
+
+<div class="clear" />
+
+<script type="text/javascript">
+
+    function categoryButtonClick(panel, time){
+        $('.category-panel').not(panel).slideUp(time);
+        $(panel).delay(time).slideToggle(time);
+    }
+</script>

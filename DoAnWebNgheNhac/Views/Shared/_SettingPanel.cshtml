@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "_SettingPanel";
+}
+
+<ul>
+    <li><a href="#">Dashboard</a></li>
+    <li>
+        @Html.ActionLink("Bài hát", "Index", "Product")
+        <a href="#" class="expand-btn"><span class="fa fa-chevron-right"></span></a>
+        <ul>
+            <li>@Html.ActionLink("Thể loại", "Index", "Album")</li>
+            <li>@Html.ActionLink("Danh sách", "Index", "Product")</li>
+            <li>@Html.ActionLink("Thêm mới", "Create", "Product")</li>
+        </ul>
+    </li>
+    <li>
+        @Html.ActionLink("Album", "Index", "Album")
+        <a href="#" class="expand-btn"><span class="fa fa-chevron-right"></span></a>
+        <ul>
+            <li>@Html.ActionLink("Thể loại", "Index", "Album")</li>
+            <li>@Html.ActionLink("Danh sách", "Index", "AlbumProduct")</li>
+            <li>@Html.ActionLink("Thêm mới", "Create", "AlbumProduct")</li>
+        </ul>
+    </li>
+    <li>
+        @Html.ActionLink("Video", "Index", "Video")
+        <a href="#" class="expand-btn"><span class="fa fa-chevron-right"></span></a>
+        <ul>
+            <li>@Html.ActionLink("Xem", "Index", "Video")</li>
+            <li>@Html.ActionLink("Danh sách", "Index", "VideoProduct")</li>
+            <li>@Html.ActionLink("Thêm mới", "Index", "VideoProduct")</li>
+        </ul>
+    </li>
+    <li>@Html.ActionLink("Nghệ Sĩ", "Index", "Artist")
+        <a href="#" class="expand-btn"><span class="fa fa-chevron-right"></span></a>
+        <ul>
+            <li>@Html.ActionLink("Thể loại", "Index", "Artist")</li>
+            <li>@Html.ActionLink("Danh sách", "Index", "ArtistProduct")</li>
+            <li>@Html.ActionLink("Thêm mới", "Create", "ArtistProduct")</li>
+        </ul>
+    </li>
+    <li><a href="#">Thiết lập</a></li>
+    <li><a href="#">Tài khoản</a></li>
+</ul>
+
+<script type="text/javascript">
+    $('.expand-btn').click(function () {
+        $('ul', this.parentElement).slideToggle(200);
+        var btn = $('span', this);
+
+        if ($(this).hasClass('is-show')) {
+            $(this).removeClass('is-show')
+            btn.css({
+                'transform': 'rotate(0deg)'
+            });
+        }
+        else {
+            $(this).addClass('is-show')
+            btn.css({
+                'transform': 'rotate(90deg)'
+            });
+        }
+    });
+</script>
