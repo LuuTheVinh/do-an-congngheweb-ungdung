@@ -152,5 +152,9 @@ namespace DoAnWebNgheNhac.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult InfoSpan(ProductEntity model)
+        {
+            return PartialView(model);
+        }
     }
 }

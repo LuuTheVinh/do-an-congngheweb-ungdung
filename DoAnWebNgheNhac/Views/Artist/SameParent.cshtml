@@ -1,0 +1,22 @@
+﻿@model IEnumerable<BusinessEntities.ArtistEntity>
+
+    <div class="list_album list_album_musicview" style="float:left; margin-top:20px;">
+	    <div class="title_box">
+		    <a href="#">Các ca sĩ khác tương tự</a>
+	    </div>
+	    <ul class="album-list">
+            @foreach (var item in Model)
+            {
+                <li>
+                        <a class="thumbnail" href="#" onmouseover="">    
+			            <img src="../../Images/artist_thumbnail/7ung.jpg">
+		                </a>
+                        <div class="description">
+			                <h3><a href="#">7ung</h3>
+			                <h4><a href="#">Không ai quan tâm</h4>
+                        </div>
+                </li>
+           }
+           
+        </ul>
+    </div>

@@ -135,13 +135,27 @@ namespace DoAnWebNgheNhac.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult ViewArtist(int artistId = -1)
+        {
+            if (artistId == -1)
+            {
+                ArtistProductEntity artist = getArtistTestValue();
+                return View(artist);
+            }
+            else
+            {
+                ArtistProductEntity artist = _iArtistProductServices.GetArtistProductById(artistId);
+                return View(artist);
+            }
+        }
+
         public ActionResult Songs(int artistId = -1)
         {
             // Lấy những bài hát của cùng môt ca sĩ
             // Chưa test
             if (artistId == -1)
             {
-                ICollection<ProductEntity> products = getTestValue();
+                ICollection<ProductEntity> products = getProductsTestValue();
                 ViewData["ArtistName"] = getTestArtistName();
                 System.Diagnostics.Debug.Write("artistId = -1");
                 return PartialView(products);
@@ -166,10 +180,10 @@ namespace DoAnWebNgheNhac.Controllers
 
         private string getTestArtistName()
         {
-            return "Phạm Trưởng";
+            return getArtistTestValue().StageName;
         }
 
-        private ICollection<ProductEntity> getTestValue()
+        private ICollection<ProductEntity> getProductsTestValue()
         {
             return new List<ProductEntity>()
             {
@@ -188,6 +202,24 @@ namespace DoAnWebNgheNhac.Controllers
             };
         }
 
+        private ArtistProductEntity getArtistTestValue()
+        {
+            return new ArtistProductEntity()
+            {
+                Artist = _iArtistServices.GetArtistById(8),
+                BirthDay = new DateTime(1995, 11, 26),
+                Description = "Tôi là một lập trình viên chứ không phải một ca sĩ",
+                Gender = "Nam",
+                GroupId = 0,
+                Id = -1,
+                Products = getProductsTestValue(),
+                RealName = "Hồ Hoàng Tùng",
+                Specialization = "Lập trình viên",
+                StageName = "7ung",
+                Thumbnail = "7ung.jpg",
+                UserArtists = null
+            };
+        }
 
     }
 }
