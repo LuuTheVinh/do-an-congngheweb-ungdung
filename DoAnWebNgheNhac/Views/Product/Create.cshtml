@@ -6,7 +6,7 @@
 }
 
 <div class="setting-title">
-    <h2 class="title_box">Thêm bài hát</h2>
+    <h2 class="title_box">Thêm sản phẩm</h2>
 </div>  
 
 @using (Html.BeginForm()) {
@@ -17,10 +17,13 @@
         <div class="editor-label">
             @*@Html.LabelFor(model => model.ArtistProductId, "ArtistProduct")*@
             Ca sĩ
+            
         </div>
         <div class="editor-field">
             @Html.DropDownList("ArtistProductId", String.Empty)
             @Html.ValidationMessageFor(model => model.ArtistProductId)
+             Chưa có ca sĩ? 
+            @Html.ActionLink("Tạo ở đây", "Create", "ArtistProduct", null, new { @style="color: #ff6a00;" })
         </div>
 
         <div class="editor-label">
@@ -33,10 +36,18 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Category)
+            @*@Html.LabelFor(model => model.Category)*@
+            Loại
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Category)
+            @{
+                var items = new List<SelectListItem>{
+                    new SelectListItem() {Text = "Nhạc", Value = "Music", Selected = true},
+                    new SelectListItem() {Text = "Video", Value = "Video", Selected = false}
+                };
+                
+                 @Html.DropDownListFor(m => m.Category, new SelectList(items, "Value", "Text"));
+            }
             @Html.ValidationMessageFor(model => model.Category)
         </div>
 

@@ -28,7 +28,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
+            @*@Html.LabelFor(model => model.Name)*@
+            Tên
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Name)
@@ -36,10 +37,18 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Category)
+            @*@Html.LabelFor(model => model.Category)*@
+            Loại
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Category)
+            @{
+                var items = new List<SelectListItem>{
+                    new SelectListItem() {Text = "Nhạc", Value = "Music", Selected = true},
+                    new SelectListItem() {Text = "Video", Value = "Video", Selected = false}
+                };
+                
+                 @Html.DropDownListFor(m => m.Category, new SelectList(items, "Value", "Text"));
+            }
             @Html.ValidationMessageFor(model => model.Category)
         </div>
 

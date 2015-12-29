@@ -26,7 +26,7 @@ namespace DoAnWebNgheNhac.Controllers
         //
         // GET: /Product/
 
-        public ActionResult Index(string currentFilter,string searchString, int? page)
+        public ActionResult Index(string currentFilter,string searchString, int? page, string type)
         {
            // var products = db.Products.Include(p => p.ArtistProduct);
            // var artistproducts = _iProductServices.GetAllProducts();
@@ -34,7 +34,6 @@ namespace DoAnWebNgheNhac.Controllers
             {
                 page = 1;
             }
-
             else
             {
                 searchString = currentFilter;
@@ -45,6 +44,11 @@ namespace DoAnWebNgheNhac.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 products = products.Where(a => a.Name.ToUpper().Contains(searchString.ToUpper()));
+            }
+
+            if (!String.IsNullOrEmpty(type))
+            {
+                products = products.Where(x => x.Category.ToUpper() == type.ToUpper());
             }
 
             int pageSize = 4;

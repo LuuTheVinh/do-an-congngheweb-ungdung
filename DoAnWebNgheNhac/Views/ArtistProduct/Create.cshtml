@@ -15,15 +15,19 @@
     <fieldset class="col-4">
         <legend></legend>
         <div class="editor-label">
-            @Html.LabelFor(model => model.ArtistId, "Artist")
+            @*@Html.LabelFor(model => model.ArtistId, "Artist")*@
+            Mục
         </div>
         <div class="editor-field">
             @Html.DropDownList("ArtistId", String.Empty)
             @Html.ValidationMessageFor(model => model.ArtistId)
+             Chưa có mục cho người này? 
+            @Html.ActionLink("Tạo ở đây", "Create", "Artist", null, new { @style="color: #ff6a00;" })
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.StageName)
+            @*@Html.LabelFor(model => model.StageName)*@
+            Nghệ danh
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.StageName)
@@ -31,7 +35,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.RealName)
+            @*@Html.LabelFor(model => model.RealName)*@
+            Tên thật
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.RealName)
@@ -39,7 +44,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.BirthDay)
+            @*@Html.LabelFor(model => model.BirthDay)*@
+            Ngày sinh
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.BirthDay)
@@ -47,15 +53,25 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Gender)
+            @*@Html.LabelFor(model => model.Gender)*@
+            Giới tính
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Gender)
+            @{
+                var items = new List<SelectListItem>{
+                    new SelectListItem() {Text = "Nam", Value = "Nam", Selected = true},
+                    new SelectListItem() {Text = "Nữ", Value = "Nữ", Selected = false},
+                    new SelectListItem() {Text = "Khác", Value = "Khác", Selected = false}
+                };
+                
+                 @Html.DropDownListFor(m => m.Gender, new SelectList(items, "Value", "Text"));
+            }
             @Html.ValidationMessageFor(model => model.Gender)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Country)
+            @*@Html.LabelFor(model => model.Country)*@
+            Quốc tịch
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Country)
@@ -63,7 +79,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Specialization)
+            @*@Html.LabelFor(model => model.Specialization)*@
+            Khả năng
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Specialization)
@@ -71,15 +88,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.GroupId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.GroupId)
-            @Html.ValidationMessageFor(model => model.GroupId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Description)
+            @*@Html.LabelFor(model => model.Description)*@
+            Thông tin chi tiết
         </div>
         <div class="editor-field">
             @Html.TextAreaFor(model => model.Description, new { @cols=50, @rows=10 })
@@ -87,7 +97,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Thumbnail)
+            @*@Html.LabelFor(model => model.Thumbnail)*@
+            Ảnh
             <br />
             <img src="../../Images/default_avatar.jpg" alt="Ảnh" width="200" height="200" />
         </div>

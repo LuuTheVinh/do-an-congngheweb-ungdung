@@ -5,11 +5,12 @@
 <ul>
     <li><a href="#">Dashboard</a></li>
     <li>
-        @Html.ActionLink("Bài hát", "Index", "Product")
+        @Html.ActionLink("Sản phẩm", "Index", "Product")
         <a href="#" class="expand-btn"><span class="fa fa-chevron-right"></span></a>
         <ul>
-            <li>@Html.ActionLink("Thể loại", "Index", "Album")</li>
-            <li>@Html.ActionLink("Danh sách", "Index", "Product")</li>
+            <li>@Html.ActionLink("Nhạc", "Index", "Product", new { @type = "music" }, null)</li>
+            <li>@Html.ActionLink("Video", "Index", "Product", new { @type = "video" }, null)</li>
+            <li>@Html.ActionLink("Tất cả", "Index", "Product")</li>
             <li>@Html.ActionLink("Thêm mới", "Create", "Product")</li>
         </ul>
     </li>
@@ -26,7 +27,7 @@
         @Html.ActionLink("Video", "Index", "VideoProduct")
         <a href="#" class="expand-btn"><span class="fa fa-chevron-right"></span></a>
         <ul>
-            <li>@Html.ActionLink("Xem", "Index", "Video")</li>
+            <li>@Html.ActionLink("Thể loại", "Index", "Video")</li>
             <li>@Html.ActionLink("Danh sách", "Index", "VideoProduct")</li>
             <li>@Html.ActionLink("Thêm mới", "Index", "VideoProduct")</li>
         </ul>
