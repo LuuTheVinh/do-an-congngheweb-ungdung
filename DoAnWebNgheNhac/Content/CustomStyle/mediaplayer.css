@@ -66,7 +66,7 @@ span.span_kara {
      top: 0;
      left:0; 
      text-align:left;
-     color:rgba(110, 140, 210, 1);
+     color:rgba(255, 106, 0, 1);
      overflow:hidden;
      -webkit-text-stroke-width: 1px;
 }
@@ -116,14 +116,14 @@ p.current {
 .timeslidecurrent {
     position: relative;
     height: 4px;
-    background-color: rgba(110, 140, 210, 1);
+    background-color: rgba(255, 106, 0, 1);
 }
 
 .timeslidecurrentExtend {
     position: relative;
     top: -1px;
     height: 6px;
-    background-color: rgba(110, 140, 210, 1);
+    background-color: rgba(255, 106, 0, 1);
 }
 
 .timeNode {
@@ -225,7 +225,7 @@ p.current {
 .timeinfospan {
     font-size: 12px;
     float: left;
-    color: rgba(110, 140, 210, 1);
+    color: rgba(255, 106, 0, 1);
     margin-top: 12px;
     margin-left: 12px;
     margin-right: 12px;
@@ -249,7 +249,7 @@ p.current {
     height: inherit;
     top: 0px;
     left: 0px;
-    background-color: rgba(110, 140, 210, 1);
+    background-color: rgba(255, 106, 0, 1);
 }
 
 .volumenode {
@@ -302,14 +302,14 @@ p.current {
     height: auto;
     text-align: center;
     padding: 7px;
-    border-style: ridge;
+    border-style: solid;
     font-weight: bold;
-    border-color: rgba(110, 140, 210, 1);
-    color: rgba(110, 140, 210, 1);
+    border-color: rgba(255, 106, 0, 1);
+    color: rgba(255, 106, 0, 1);
 }
 .embedbtn {
     line-height: 75%;
-    color: rgba(110, 140, 210, 1);
+    color: rgba(255, 106, 0, 1);
 }
 
 .outside-textarea {

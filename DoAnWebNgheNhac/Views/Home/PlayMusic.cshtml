@@ -35,7 +35,7 @@
         Html.RenderAction("InfoSpan", "Product",Model);
     }
 
-    @RenderPage("~/Views/Product/_MediaPlayer.cshtml")
+    @RenderPage("~/Views/Product/_MediaPlayer.cshtml", new { product = @Model })
     @RenderPage("~/Views/Product/_ComunityBar.cshtml", new { text="Lượt Nghe"})
 
     <div id="lyricbox" class="lyricbox">

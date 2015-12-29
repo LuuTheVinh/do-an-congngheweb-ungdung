@@ -141,5 +141,50 @@ namespace DoAnWebNgheNhac.Controllers
             return RedirectToAction("Index");
         }
 
+        private ActionResult PlayList(int albumId = -1)
+        {
+            if (albumId == -1)
+            {
+                albumId = 65; // for test
+            }
+            var all_product = _iAlbumProductServices.GetAllAlbumProducts();
+            var productsId = _iAlbumProductServices.GetAllAlbumProducts().Where(album => album.AlbumId == albumId)
+                .Select(album => album.ProductId);
+            List<ProductEntity> products = new List<ProductEntity>();
+            foreach (var id in productsId)
+            {
+                products.Add(_iProductServices.GetProductById(id));
+            }
+            return PartialView(products);
+        }
+
+        public ActionResult PlayList(IEnumerable<ProductEntity> products)
+        {
+            if (products == null)
+            {
+                return PlayList(-1);
+            }
+            return PartialView(products);
+        }
+
+        private void getChildAlbumId(int albumId, List<int> resultlist)
+        {
+            // Lấy tất cả album con
+            var album = _iAlbumServices.GetAlbumById(albumId);
+            if (album.Level == 3)
+            {
+                resultlist.Add(albumId);
+                return;
+            }
+            else
+            {
+                var all_album = _iAlbumServices.GetAllAlbums();
+                var child_album = all_album.Where(alb => alb.ParentId == albumId);
+                foreach (var child in child_album)
+                {
+                    getChildAlbumId(child.Id, resultlist);
+                }
+            }
+        }
     }
 }
