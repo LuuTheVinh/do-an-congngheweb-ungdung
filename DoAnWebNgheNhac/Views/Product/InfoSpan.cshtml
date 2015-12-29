@@ -1,0 +1,29 @@
+﻿@model BusinessEntities.ProductEntity
+
+    <div id="info-span" class="info-span">
+        <div id="artistthumbnail"class="thumbnail-artist">
+                <a href="~/ArtistProduct/ViewArtist?artisId=-1" 
+                   title="@Html.DisplayFor(modelItem => modelItem.ArtistProduct.StageName))">
+                    <img src="/Images/@Html.DisplayFor(modelItem => modelItem.ArtistProduct.Thumbnail)" 
+                         alt="@Html.DisplayFor(modelItem => modelItem.ArtistProduct.StageName)" 
+                         class="thumbnail-artist"/>
+                </a>
+        </div>
+        <div id="info-content" class="info-content">
+            <div class="info-text info-title">
+                <p class="inline">@Html.DisplayFor(modelItem => modelItem.Name)</p>
+                <span style="margin:0 5px">-</span>
+                <div class="inline" style="font-weight:300;">
+                    @*@Html.ActionLink(@artistname, "ViewIndex", "Artist", 1, null)*@
+                    @Html.DisplayFor(modelItem => modelItem.ArtistProduct.StageName)
+                </div>
+            </div>
+            <div class="info-text">
+                <p>Album: @Html.DisplayFor(modelItem => modelItem.AlbumProducts.First().Album.Tittle)</p>
+            </div>
+            <div class="info-text">
+                <p>Thể loại: @Html.DisplayFor(modelItem => modelItem.Category)</p>
+            </div>
+        </div>
+    </div>
+    

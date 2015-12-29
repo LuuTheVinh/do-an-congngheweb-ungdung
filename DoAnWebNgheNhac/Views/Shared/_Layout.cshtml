@@ -6,15 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        @if (IsSectionDefined("facebooksharepage"))
+        @if (IsSectionDefined("_comunity_metadata"))
         {
-            @RenderSection("facebooksharepage", required: false);
-        }
-        
-
-        @if (IsSectionDefined("facebooksharepage"))
-        {
-            @RenderSection("facebooksharepage", required: false);
+            @RenderSection("_comunity_metadata", required: false);
         }
         @if (IsSectionDefined("videoplayerscript"))
         {

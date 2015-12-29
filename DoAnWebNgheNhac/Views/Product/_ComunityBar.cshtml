@@ -1,5 +1,16 @@
 ﻿
 
+@{
+    Dictionary<string, string> listReportProblem = new Dictionary<string, string>{
+        {"report1", "Không play được"},
+        {"report2", "Chất lượng kém"},
+        {"report3", "Không tải được"},
+        {"report4", "Thông tin bài hát chưa chính xác"},
+        {"report5", "Lời bài hát chưa chính xác"},
+        {"report6", "Karaoke chưa chính xác"},
+        {"report7", "Lỗi khác"}
+    };
+}
 
     <div id="functionbar" class="functionbar">
         <a href="~/Audio/@Model.URL.TrimEnd()" download="@Model.URL.TrimEnd()">
@@ -22,3 +33,34 @@
             </p>
         </div>
     </div>
+
+    <div id="reportpane" class="report-pane hide" >
+        <div id="reportitle" class ="report-title"> Phản hồi bài hát này </div>
+        <p class="report-elem"> Bạn gặp vấn đề gì?</p>
+        @{
+            foreach (var item in listReportProblem)
+            {
+                <div class="report-elem checkbox-elem">
+                    @Html.RadioButton("report",item.Value, new Dictionary<string, object> { {"id",item.Key}})
+                    @Html.Label(item.Value, new Dictionary<string, object> {{"for", item.Key}})
+                </div>
+            }
+        }
+        <div id="contentreport" class="contentreport hide">
+            <p  class="report-title">
+                Nội dung
+            </p>
+            <textarea id="reporttext" class="report-textareas">
+            </textarea>
+        </div>
+        <div id="submitrptbtn" class="controlbtn textbtn unselectable" style="float:none">
+            Gửi báo cáo
+        </div>
+    </div>
+    <div id="embedbox" class="outside-textarea" style="display:none">
+        <label class="labeltitle">Mã nhúng</label>
+        <textarea id="embedtext" class="embedarea">
+            This is embed text
+        </textarea>
+    </div>
+
