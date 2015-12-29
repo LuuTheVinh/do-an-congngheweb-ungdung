@@ -145,5 +145,10 @@ namespace DoAnWebNgheNhac.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public string GetNameById(int id)
+        {
+            return _iAlbumServices.GetAlbumById(id).Tittle;
+        }
     }
 }

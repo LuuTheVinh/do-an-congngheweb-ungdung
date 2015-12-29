@@ -7,9 +7,17 @@
 
 <div class="wrap">
     <div class="setting-title">
-        <h2 class="title_box">Chi tiết</h2>
-         @Html.ActionLink("Thêm mới", "Create", null , new {@class = "button"})
-         @Html.ActionLink("Quay lại", "Index", null, new { @class = "button", @style="margin-left: 10px;"})
+        @if (Model.Count() > 0)
+        { 
+            <h2 class="title_box">Chi tiết @Html.Action("GetNameById", new { id = Model.First().ParentId })</h2>
+        }
+        else
+        {
+            <h2 class="title_box">Chi tiết</h2>
+        }
+
+        @Html.ActionLink("Thêm mới", "Create", null , new {@class = "button"})
+        @Html.ActionLink("Quay lại", "Index", null, new { @class = "button", @style="margin-left: 10px;"})
     </div>
 
     <table>
@@ -18,10 +26,10 @@
                 @*@Html.DisplayNameFor(model => model.Tittle)*@
                 Tên
             </th>
-            <th class="col-1">
-                @*@Html.DisplayNameFor(model => model.ParentId)*@
-                Parent Id
-            </th>
+            @*<th class="col-1">
+                @Html.DisplayNameFor(model => model.ParentId)
+                Thuộc
+            </th>*@
             <th class="col-1">
                 @*@Html.DisplayNameFor(model => model.Level)*@
                 Cấp
@@ -33,10 +41,8 @@
         foreach (var item in Model) {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Tittle)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ParentId)
+                        @*<a style="display: block;" href="/album/details/@item.Id">@Html.DisplayFor(modelItem => item.Tittle)</a> *@
+                        @Html.ActionLink(item.Tittle, "Details", new { id = item.Id }, new { @style="display: block;" })
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Level)

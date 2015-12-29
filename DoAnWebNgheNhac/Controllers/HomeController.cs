@@ -46,6 +46,7 @@ namespace DoAnWebNgheNhac.Controllers
             homealbums.NhacVietHot = _iServices.GetNhacVietHot();
             homealbums.NhacVietMoi = _iServices.GetNhacVietMoi();
             homealbums.GetAlbum = _iServices.GetListAlbums().Where( a => a.ParentId == 69);
+            homealbums.GetVideo = _iVideoProductServices.GetAllVideoProducts();
             return View(homealbums);         
         }
 

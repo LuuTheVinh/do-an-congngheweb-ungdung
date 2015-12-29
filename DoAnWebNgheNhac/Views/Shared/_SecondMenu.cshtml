@@ -9,9 +9,7 @@
         <li><a href="#">Playlist</a></li>
         <li><a href="#" onclick="categoryButtonClick('.video-panel', 200)" >Video</a></li>
         <li><a href="#">BXH</a></li>
-        <li>
-            <a href="#">Nghệ Sĩ</a>
-        </li>
+        <li><a href="#" onclick="categoryButtonClick('.artist-panel', 200)" >Nghệ sĩ</a></li>
     </ul>
 </div>
 
@@ -37,6 +35,14 @@
     <div class="container">
         <div class="category">
              @Html.Action("MenuVideo","Home")
+        </div>
+    </div>
+</div>
+
+<div class="category-panel artist-panel">
+    <div class="container">
+        <div class="category">
+             @Html.Action("MenuArtist","Home")
         </div>
     </div>
 </div>
