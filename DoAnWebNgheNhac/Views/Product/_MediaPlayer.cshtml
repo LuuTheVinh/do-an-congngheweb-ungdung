@@ -1,0 +1,68 @@
+﻿
+@{
+    // Thời gian đã play của một đoạn nhạc, đơn vị phần trăm so với đoạn text. dùng để vẽ đoạn nhạc đã qua.
+    var karapercent = "17";
+
+    // Đoạn text kara lyric, được vẽ ở dòng trên.
+    var upperlyric = "Làm em cuồng điên vì khóc";
+
+    // Đoạn text kara lyric, được vẽ ở dòng dưới.
+    var lowerlyric = "Làm em cuồng điên vì yêu";    
+}
+    <div id="musicPlayer" class="player unselectable">
+        <audio id="playingsong" autoplay>
+            <source src="/Audio/@Model.URL.TrimEnd()" type="audio/mp3"/>
+            @*<source src="~/Audio/Pokemon_Season6.mp3" type="audio/mp3"/>*@
+        </audio>
+        <div class="player_background" style="background-image:url(@Model.Thumbnail); ">
+            <div class="player_background_msk"></div>
+        </div>
+        <div class="player_lyric">
+            <p class="lyric_item">
+                @upperlyric
+                <span> </span>
+            </p>
+            <br>
+            <p class="lyric_item">
+                @lowerlyric
+                <span class="span_kara" style="width:@karapercent%">
+                @lowerlyric
+                </span>
+            </p>
+        </div>
+        <div id="timelinecontrol" class="timeslide" >
+            <div id="timeline" class="timeslideloaded">
+            </div>
+            <div id="currentTimeSlider" class ="timeslidecurrent">
+                <div id="timenode" class="timeNode" >
+                </div>
+            </div>
+        </div>
+        <div class="controlbar">
+            <span id="playpausebtn" class="controlbtn playbtn">
+            </span>
+            <span id="nextbtn" class="controlbtn nextbtn">
+
+            </span>
+            <span class="timeinfospan">
+                <em id="timecurrrent" style="color:inherit">0:00</em>
+                <em>/</em>
+                <em id="timeduration" style="color:inherit">0:00</em>
+            </span>
+
+            <span id="loopbtn" class="controlbtn alignright loopbtn">
+
+            </span>
+            <span id="shufflebtn" class="controlbtn alignright shufflebtn">
+
+            </span>
+            <span id="volumebar" class="volumebar alignright">
+                <span id="volumeavaiable" class="volumeavaiable">
+                    <span id="volumenode" class="volumenode ">
+                    </span>
+                </span>
+            </span>
+            <span id="volumeicon" class="controlbtn alignright volume3">
+            </span>
+        </div>
+    </div>

@@ -136,10 +136,28 @@ namespace DoAnWebNgheNhac.Controllers
             return RedirectToAction("Index");
         }
 
+
         //protected override void Dispose(bool disposing)
         //{
         //    db.Dispose();
         //    base.Dispose(disposing);
         //}
+        public ActionResult SameParent(int parentId = -1)
+        {
+            if (parentId == -1)
+            {
+                var artists = new List<ArtistEntity>()
+                {
+                    _iArtistServices.GetArtistById(8),
+                    _iArtistServices.GetArtistById(9)
+                };
+                return PartialView(artists);
+            }
+            else
+            {
+                var artists = _iArtistServices.GetAllArtists().Where(item => item.ParentId == parentId);
+                return PartialView(artists);
+            }
+        }
     }
 }
