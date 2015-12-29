@@ -1,0 +1,25 @@
+﻿@model IEnumerable<BusinessEntities.ProductEntity>
+
+<ul>@{
+        foreach (var item in Model)
+        {
+            <li class="item-song">
+				<div class="info-song">
+					<h3>
+						<a href="/home/PlayMusic?id=@item.Id">@item.Name</a>
+						-
+						<a style="color: #2582be;" href="/artistproduct/ViewArtist?id=@item.ArtistProductId">@item.ArtistProduct.StageName</a>
+					</h3>
+				</div>
+                <div class="meta-song">
+                    <span class="">Thể loại: @item.Category </span>
+                     - 
+                    <span class="">Lượt nghe: @item.Views </span>
+                </div>
+
+                <div class="box_song_action"></div>
+			</li>
+        }
+    }
+</ul>
+

@@ -1068,3 +1068,24 @@ td.text-right {
 .editor-field {
     margin-bottom: 10px;
 }
+
+.item-song {
+    border-bottom: 1px solid #dedede;
+    overflow: hidden;
+    padding: 25px 0;
+    font-size: 15px;
+}
+
+    .item-song .info-song {
+        margin-bottom: 10px;
+    }
+
+.item-song .info-song a {
+    font-size: 20px;
+}
+
+.search-title {
+    color: #ff6a00;
+    font-size: 15px;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,19 @@
+﻿@model IEnumerable<BusinessEntities.AlbumProductEntity>
+
+<ul>@{
+        foreach (var item in Model)
+        {
+            <li>
+				<div class="info_song">
+					<h3>
+						<a href="/home/PlayMusic?id=@item.ProductId">@item.Product.Name</a>
+						-
+						<a href="/artistproduct/ViewArtist?id=@item.Product.ArtistProductId">@item.Product.ArtistProduct.StageName</a>
+					</h3>
+					<span class="float-right">@item.Product.Views</span>
+					<div class="box_song_action"></div>
+				</div>
+			</li>
+        }
+    }
+</ul>
