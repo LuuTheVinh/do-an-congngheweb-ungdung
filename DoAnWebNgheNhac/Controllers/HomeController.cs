@@ -185,7 +185,7 @@ namespace DoAnWebNgheNhac.Controllers
                 .Select(album => album.ProductId);
             List<BusinessEntities.ProductEntity> products = new List<BusinessEntities.ProductEntity>();
             foreach (var id in productsId)
-        {
+            {
                 products.Add(_iProductServices.GetProductById(id));
             }
             return View(products);
