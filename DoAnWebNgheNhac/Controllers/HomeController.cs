@@ -217,9 +217,16 @@ namespace DoAnWebNgheNhac.Controllers
         /// PlayVideo Action
         /// </summary>
         /// <returns></returns>
-        public ActionResult PlayVideo(int? Id)
+        public ActionResult PlayVideo(int Id = -1)
+        {
+            if (Id == -1)
             {
-            var videos = _iServices.GetProductById(Id.Value); 
+                var video = getTestVideoValue();
+                return View(video);
+            }
+            else
+            {
+                var videos = _iServices.GetProductById(Id); 
                 return View(videos);
             }
         }
