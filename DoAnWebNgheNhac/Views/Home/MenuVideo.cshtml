@@ -1,0 +1,15 @@
+﻿@foreach (var item in Model.GetVideoLevel1)
+{
+     <div class="sub-category">
+                <a class="sub-title" href="/home/AlbumIndex?Id=@item.Id">@item.Tittle</a>
+                <ul class="sub-item">
+                    @foreach (var item2 in Model.GetVideoLevel2)
+                    {
+                        if(@item2.ParentId == item.Id)
+                        {
+                     <li><a href="/home/VideoIndex?Id=@item2.Id">@item2.Tittle</a></li>
+                    }
+                    }
+                </ul>
+            </div>
+}
