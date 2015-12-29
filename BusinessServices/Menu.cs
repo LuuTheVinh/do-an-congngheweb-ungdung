@@ -12,9 +12,10 @@ namespace BusinessServices
 
         public IEnumerable<AlbumEntity> GetAlbumLevel1 { get; set; }
         public IEnumerable<AlbumEntity> GetAlbumLevel2 { get; set; }
-
+        public IEnumerable<VideoEntity> GetVideoLevel1 { get; set; }
+        public IEnumerable<VideoEntity> GetVideoLevel2 { get; set; }
         public IEnumerable<ArtistEntity> GetArtistLevel1 { get; set; }
-        public IEnumerable<ArtistEntity> GetArtistLevel2 { get; set; }     
+        public IEnumerable<ArtistEntity> GetArtistLevel2 { get; set; } 
     }
 
 }

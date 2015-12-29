@@ -62,7 +62,20 @@ namespace DoAnWebNgheNhac.Controllers
         }
 
         /// <summary>
-        /// MenuArtist Action
+        /// MenuVideo
+        /// </summary>
+        /// <returns></returns>
+        [ChildActionOnly]
+        public ActionResult MenuVideo()
+        {
+            Menu videoMenu = new Menu();
+            videoMenu.GetVideoLevel1 = _iMenuServices.GetListVideos();
+            videoMenu.GetVideoLevel2 = _iMenuServices.GetListVideosLevel2();
+            return PartialView(videoMenu);
+        }
+
+        /// <summary>
+        /// MenuArtist
         /// </summary>
         /// <returns></returns>
         [ChildActionOnly]
@@ -73,7 +86,6 @@ namespace DoAnWebNgheNhac.Controllers
             artistMenu.GetArtistLevel2 = _iMenuServices.GetListArtistsLevel2();
             return PartialView(artistMenu);
         }
-
         /// <summary>
         /// AlbumIndex Action
         /// </summary>
@@ -82,6 +94,17 @@ namespace DoAnWebNgheNhac.Controllers
         public ActionResult AlbumIndex(int? Id)
         {
             var albums = _iAlbumServices.GetAllAlbums().Where(a => a.ParentId == Id.Value);         
+            return View(albums);
+        }
+
+        /// <summary>
+        /// VideoIndex
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public ActionResult VideoIndex(int? Id)
+        {
+            var albums = _iVideoProductServices.GetAllVideoProducts().Where(a => a.VideoId == Id.Value);
             return View(albums);
         }
         /// <summary>

@@ -6,9 +6,17 @@
             <li class="item-song">
 				<div class="info-song">
 					<h3>
-						<a href="/home/PlayMusic?id=@item.Id">@item.Name</a>
+                         @if (@item.Category != "MV")
+                        {
+                         <a href="/home/PlayMusic?id=@item.Id">@item.Name</a>
+                        }
+                        else
+                        {
+						<a href="/home/PlayVideo?id=@item.Id">@item.Name</a>
+                         }
 						-
-						<a style="color: #2582be;" href="/artistproduct/ViewArtist?id=@item.ArtistProductId">@item.ArtistProduct.StageName</a>
+						<a style="color: #2582be;" href="/artistproduct/ViewArtist?artistId=@item.ArtistProductId">@item.ArtistProduct.StageName</a>
+   
 					</h3>
 				</div>
                 <div class="meta-song">

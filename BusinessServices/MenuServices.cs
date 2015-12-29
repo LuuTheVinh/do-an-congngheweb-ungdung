@@ -43,26 +43,48 @@ namespace BusinessServices
             return new List<AlbumEntity>();
         }
 
-        public IEnumerable<BusinessEntities.ArtistEntity> GetListArtists()
+
+        public IEnumerable<VideoEntity> GetListVideos()
+        {
+            var videos = _unitOfWork.VideoRepository.GetAll().Where(a => a.Level == 1).ToList();
+            if (videos.Any())
+            {
+                var videosModel = Mapper.Map<List<Video>, List<VideoEntity>>(videos);
+                return videosModel;
+            }
+            return new List<VideoEntity>();
+        }
+
+        public IEnumerable<VideoEntity> GetListVideosLevel2()
+        {
+            var videos = _unitOfWork.VideoRepository.GetAll().Where(a => a.Level == 2).ToList();
+            if (videos.Any())
+            {
+                var videosModel = Mapper.Map<List<Video>, List<VideoEntity>>(videos);
+                return videosModel;
+            }
+            return new List<VideoEntity>();
+        }
+
+
+        public IEnumerable<ArtistEntity> GetListArtists()
         {
             var artists = _unitOfWork.ArtistRepository.GetAll().Where(a => a.Level == 1).ToList();
-
             if (artists.Any())
             {
                 var artistsModel = Mapper.Map<List<Artist>, List<ArtistEntity>>(artists);
                 return artistsModel;
             }
-
             return new List<ArtistEntity>();
         }
 
-        public IEnumerable<BusinessEntities.ArtistEntity> GetListArtistsLevel2()
+        public IEnumerable<ArtistEntity> GetListArtistsLevel2()
         {
             var artists = _unitOfWork.ArtistRepository.GetAll().Where(a => a.Level == 2).ToList();
             if (artists.Any())
             {
-                var albumsModel = Mapper.Map<List<Artist>, List<ArtistEntity>>(artists);
-                return albumsModel;
+                var artistsModel = Mapper.Map<List<Artist>, List<ArtistEntity>>(artists);
+                return artistsModel;
             }
             return new List<ArtistEntity>();
         }
