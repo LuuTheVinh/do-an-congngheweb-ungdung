@@ -15,6 +15,8 @@ namespace DoAnWebNgheNhac.Controllers
         private readonly IMenuServices _iMenuServices;
         private readonly IVideoProductServices _iVideoProductServices;
         private readonly IVideoServices _iVideoServices;
+        private readonly IArtistServices _iArtistServices;
+        private readonly IArtistProductServices _iArtistProductServices;
 
         /// <summary>
         /// Home Constructor 
@@ -24,7 +26,7 @@ namespace DoAnWebNgheNhac.Controllers
         /// <param name="iAlbumProductServices"></param>
         /// <param name="iMenuServices"></param>
         public HomeController(IServices iServices, IAlbumServices iAlbumServices, IAlbumProductServices iAlbumProductServices, IMenuServices iMenuServices
-            , IVideoProductServices iVideoProductService, IVideoServices iVideoServices)
+            , IVideoProductServices iVideoProductService, IVideoServices iVideoServices, IArtistServices iArtistServices, IArtistProductServices iArtistProductServices)
         {
             this._iServices = iServices;
             this._iAlbumServices = iAlbumServices;
@@ -32,6 +34,8 @@ namespace DoAnWebNgheNhac.Controllers
             this._iMenuServices = iMenuServices;
             this._iVideoProductServices = iVideoProductService;
             this._iVideoServices = iVideoServices;
+            this._iArtistServices = iArtistServices;
+            this._iArtistProductServices = iArtistProductServices;
         }
 
         /// <summary>
@@ -104,8 +108,19 @@ namespace DoAnWebNgheNhac.Controllers
         /// <returns></returns>
         public ActionResult VideoIndex(int? Id)
         {
-            var albums = _iVideoProductServices.GetAllVideoProducts().Where(a => a.VideoId == Id.Value);
-            return View(albums);
+            var videos = _iVideoProductServices.GetAllVideoProducts().Where(a => a.VideoId == Id.Value);
+            return View(videos);
+        }
+
+        /// <summary>
+        /// ArtistIndex
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public ActionResult ArtistIndex(int? Id)
+        {
+            var artists = _iArtistServices.GetAllArtists().Where(a => a.ParentId == Id.Value);
+            return View(artists);
         }
         /// <summary>
         /// SearchIndex PartialView

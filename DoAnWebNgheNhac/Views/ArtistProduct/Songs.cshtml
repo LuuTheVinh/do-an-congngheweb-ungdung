@@ -35,7 +35,14 @@
                 <li>
                 <div class="chart_info_song">
                     <h3>
-                        <a href="">@product.Name</a>
+                        @if(@product.Category != "MV")
+                        {
+                        <a href="/home/playmusic?id=@product.Id">@product.Name</a>
+                        }
+                        else
+                        {
+                        <a href="/home/playvideo?id=@product.Id">@product.Name</a>
+                        }
                     </h3>
                     <a href="">@ViewData["ArtistName"].ToString()</a>
                     <span class="float-right">@String.Format(new System.Globalization.CultureInfo("en-US"), "{0:N0}",product.Views)</span>
