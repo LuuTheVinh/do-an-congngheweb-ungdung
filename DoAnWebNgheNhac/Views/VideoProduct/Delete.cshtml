@@ -5,11 +5,12 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Delete</h2>
+<div class="setting-title">
+    <h2 class="title_box">Xóa @Html.DisplayFor(model => model.Product.Name)</h2>
+</div> 
 
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>VideoProduct</legend>
+<fieldset class="col-4 border-box">
+    <legend></legend>
 
     <div class="display-label">
          @Html.DisplayNameFor(model => model.Product.Name)
@@ -27,8 +28,11 @@
 </fieldset>
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+    <div class="setting-title">
+        
+        <h3 class="title_box">Are you sure you want to delete this?</h3>
+
+        <input class="button red-button" type="submit" value="Xóa" />
+        @Html.ActionLink("Quay lại", "Index", null, new { @class = "button", @style="margin-left: 10px;"})
+    </div>
 }

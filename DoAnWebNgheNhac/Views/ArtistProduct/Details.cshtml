@@ -5,10 +5,17 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="setting-title">
+    <h2 class="title_box">Thông tin chi tiết</h2>
+</div>  
 
-<fieldset>
-    <legend>ArtistProduct</legend>
+<fieldset class="col-4 border-box">
+    <legend>@Html.DisplayFor(model => model.Artist.Tittle)</legend>
+
+    <div class="display-label">
+         @*@Html.DisplayNameFor(model => model.Thumbnail)*@
+        <img src="@Html.DisplayFor(model => model.Thumbnail)" alt="Ảnh" width="200" height="200" />
+    </div>
 
     <div class="display-label">
          @Html.DisplayNameFor(model => model.Artist.Tittle)
@@ -73,14 +80,9 @@
         @Html.DisplayFor(model => model.Description)
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Thumbnail)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Thumbnail)
-    </div>
 </fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+    <div class="editor-field">
+            @Html.ActionLink("Edit", "Edit", new { id=Model.Id }, new  { @class = "button"})
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "button "})
+    </div>

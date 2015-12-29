@@ -13,6 +13,7 @@
     @Html.ValidationSummary(true)
 
     <fieldset class="col-4">
+        <legend></legend>
         <div class="editor-label">
             @Html.LabelFor(model => model.ArtistId, "Artist")
         </div>
@@ -81,21 +82,24 @@
             @Html.LabelFor(model => model.Description)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Description)
+            @Html.TextAreaFor(model => model.Description, new { @cols=50, @rows=10 })
             @Html.ValidationMessageFor(model => model.Description)
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Thumbnail)
+            <br />
+            <img src="../../Images/default_avatar.jpg" alt="Ảnh" width="200" height="200" />
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Thumbnail)
             @Html.ValidationMessageFor(model => model.Thumbnail)
+            <input type="file" accept="image/*" />
         </div>
 
         <div class="editor-field">
             <input class="button red-button" type="submit" value="Tạo" />
-            @Html.ActionLink("Quay lại", "Index", null, new { @class = "button "})
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "button"})
         </div>
     </fieldset>
 }

@@ -5,14 +5,22 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Delete</h2>
+<div class="setting-title">
+    <h2 class="title_box">Xóa @Html.DisplayFor(model => model.Name)</h2>
+    
+</div> 
 
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>Product</legend>
+<fieldset class="border-box col-4">
+    <legend></legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ArtistProduct.StageName)
+         @*@Html.DisplayNameFor(model => model.Thumbnail)*@
+        <img width="100" height="100" src="@Html.DisplayFor(model => model.Thumbnail)" />
+    </div>
+
+    <div class="display-label">
+         @*@Html.DisplayNameFor(model => model.ArtistProduct.StageName)*@
+        Ca sĩ
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.ArtistProduct.StageName)
@@ -47,23 +55,20 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Thumbnail)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Thumbnail)
-    </div>
-
-    <div class="display-label">
          @Html.DisplayNameFor(model => model.Views)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Views)
     </div>
 </fieldset>
+
+<h3 class="title_box">Are you sure you want to delete this?</h3>
+
+
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+    <div class="setting-title">
+        <input class="button red-button" type="submit" value="Xóa" />
+        @Html.ActionLink("Quay lại", "Index", null, new { @class = "button", @style="margin-left: 10px;"} )
+    </div>
 }
