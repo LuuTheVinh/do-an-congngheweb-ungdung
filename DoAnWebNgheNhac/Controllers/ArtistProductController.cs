@@ -187,18 +187,18 @@ namespace DoAnWebNgheNhac.Controllers
         {
             return new List<ProductEntity>()
             {
-                new ProductEntity(){Name = "Nắng Và Mưa", Views =  2594599},
-                new ProductEntity(){Name = "Đôi Khi Muốn", Views = 3943778},
-                new ProductEntity(){Name = "Đàn Ông Là Thế (Remix)", Views = 180565},
-                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405},
-                new ProductEntity(){Name = "Trang Giấy Trắng", Views = 3329897},
-                new ProductEntity(){Name = "Đừng Đánh Mất Hạnh Phúc", Views =  340335},
-                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405},
-                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405},
-                new ProductEntity(){Name = "Người Dự Bị", Views = 1700114},
-                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405},
-                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405},
-                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405},
+                new ProductEntity(){Name = "Nắng Và Mưa", Views =  2594599, ArtistProductId = -1, Id = 3},
+                new ProductEntity(){Name = "Đôi Khi Muốn", Views = 3943778, ArtistProductId = -1, Id = 3},
+                new ProductEntity(){Name = "Đàn Ông Là Thế (Remix)", Views = 180565, ArtistProductId = -1, Id = 3},
+                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405, ArtistProductId = -1, Id = 3},
+                new ProductEntity(){Name = "Trang Giấy Trắng", Views = 3329897, ArtistProductId = -1, Id = 3},
+                new ProductEntity(){Name = "Đừng Đánh Mất Hạnh Phúc", Views =  340335, ArtistProductId = -1, Id = 3},
+                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405, ArtistProductId = -1, Id = 3},
+                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405, ArtistProductId = -1, Id = 3},
+                new ProductEntity(){Name = "Người Dự Bị", Views = 1700114, ArtistProductId = -1, Id = 3},
+                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405, ArtistProductId = -1, Id = 3},
+                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405, ArtistProductId = -1, Id = 3},
+                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405, ArtistProductId = -1, Id = 3},
             };
         }
 

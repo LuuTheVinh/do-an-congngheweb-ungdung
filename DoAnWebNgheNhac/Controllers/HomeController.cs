@@ -183,11 +183,16 @@ namespace DoAnWebNgheNhac.Controllers
             var all_product = _iAlbumProductServices.GetAllAlbumProducts();
             var productsId = _iAlbumProductServices.GetAllAlbumProducts().Where(album => album.AlbumId == _id)
                 .Select(album => album.ProductId);
+            if (productsId.Any() == false)
+            {
+                return null;
+            }
             List<BusinessEntities.ProductEntity> products = new List<BusinessEntities.ProductEntity>();
             foreach (var id in productsId)
             {
                 products.Add(_iProductServices.GetProductById(id));
             }
+            
             return View(products);
         }
         /// <summary>
@@ -212,14 +217,24 @@ namespace DoAnWebNgheNhac.Controllers
         {
             return new BusinessEntities.ProductEntity()
             {
-                AlbumProducts = null,
+                AlbumProducts = new List<BusinessEntities.AlbumProductEntity>
+                {
+                    new BusinessEntities.AlbumProductEntity()
+                    {
+                        Album = new BusinessEntities.AlbumEntity()
+                        {
+                            Tittle = "Phim thiếu nhi"
+                        }
+                    }
+                },
                 ArtistProduct = new BusinessEntities.ArtistProductEntity()
                 {
-                    
+                    StageName = "7ung",
+                    ArtistId = -1,
                 },
                 ArtistProductId = -1,
                 Category = "Video",
-                Description = "Phim Siêu Nhân",
+                Description = "Tokumei Sentai Go-Busters là series Super Sentai thứ 36 của Toei Company, tiếp nối Kaizoku Sentai Gokaiger.\nBộ phim được phát sóng lần đầu tiên vào ngày 26 tháng 2, 2012 trên TV Asahi, song song với Kamen Rider Fourze trong Super Hero Time",
                 Id = -1,
                 Name = "Go Buster",
                 Thumbnail = "../../Videos/Shi jin.mp4",

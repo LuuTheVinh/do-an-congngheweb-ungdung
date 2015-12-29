@@ -17,11 +17,11 @@
     <style>
 
     div {
-        color: #6e8cd2! important;
+        color: rgba(255, 106, 0, 1)! important;
     }
     .video-js {
         font-size: 14px! important;
-        color: #6e8cd2! important;
+        color: rgba(255, 106,0,1    )! important;
     }
 
     .vjs-default-skin .vjs-big-play-button {
@@ -29,7 +29,7 @@
         line-height: 1.2em;
         height: 1.3em;
         width: 1.3em;
-        border: 0.06666em solid #6e8cd2;
+        border: 0.06666em solid rgba(255, 106, 0, 1);
         border-radius: 0.0em;
         left: 50%;
         top: 50%;
@@ -54,7 +54,7 @@
     .video-js .vjs-volume-level,
     .video-js .vjs-play-progress,
     .video-js .vjs-slider-bar {
-        background: #6e8cd2;
+        background: rgba(255,106,0,1);
     }
 
     /* The main progress bar also has a bar that shows how much has been loaded. */
@@ -100,6 +100,11 @@
 }
 
 <div class="box_left">
+
+    @{
+        Html.RenderAction("InfoSpan", "Product",Model);
+    }
+
     <video id="my_video_1" class="video-js vjs-default-skin" controls width="860" height="600" style="background-color: #3C3C3C; "  data-setup='{"playbackRates": [1, 1.5, 2] }'>
     <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
     @*<source src="../../Videos/@Model.URL.TrimEnd()" type="video/mp4">*@
@@ -128,7 +133,22 @@
     </div>
       @*  @RenderPage("~/Views/Product/_ComunityBar.cshtml", new { text="Lượt Xem"})*@
 
-
+    
+    <div id="lyricbox" class="lyricbox">
+        <div id="lyrictitle" class="lyrictitle">
+            <label style="font-weight:400">Thông tin về </label>
+            <s>@Html.DisplayFor(modelItem => modelItem.Name)</s>
+        </div>
+        <div id="lyric-content" class="lyric-content">
+            @{
+                var lyric = Model.Description.Split('\n');
+                foreach (var item in lyric)
+	            {
+		            <p>@item</p>
+	            }
+            }
+        </div>
+    </div>
 
     @* Cái này em lấy lại của th. Vinh thôi. Tại nó cũng giống nhau*@
     @* Định làm cái server-end giống cái "Bài hát cùng Ca sĩ luôn mà không biết lấy dữ liệu nào *@

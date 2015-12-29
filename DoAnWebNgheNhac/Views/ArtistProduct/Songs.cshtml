@@ -35,9 +35,11 @@
                 <li>
                 <div class="chart_info_song">
                     <h3>
-                        <a href="">@product.Name</a>
+                        @*<a href="">@product.Name</a>*@
+                        @Html.ActionLink(@product.Name,"PlayMusic","Home",new {id = @product.Id},null)
                     </h3>
-                    <a href="">@ViewData["ArtistName"].ToString()</a>
+                    @*<a href="">@ViewData["ArtistName"].ToString()</a>*@
+                    @Html.ActionLink(@ViewData["ArtistName"].ToString(),"ViewArtist","ArtistProduct",new {artistId = @product.ArtistProductId},null)
                     <span class="float-right">@String.Format(new System.Globalization.CultureInfo("en-US"), "{0:N0}",product.Views)</span>
                 </div>
             </li>                       
