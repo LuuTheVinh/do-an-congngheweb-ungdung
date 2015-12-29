@@ -35,8 +35,16 @@
                 <li>
                 <div class="chart_info_song">
                     <h3>
-                        @*<a href="">@product.Name</a>*@
-                        @Html.ActionLink(@product.Name,"PlayMusic","Home",new {id = @product.Id},null)
+                        @if(@product.Category != "MV")
+                        {
+                            @*<a href="">@product.Name</a>*@
+                            @Html.ActionLink(@product.Name,"PlayMusic","Home",new {id = @product.Id},null)
+                        }
+                        else
+                        {
+                            <a href="/Home/PlayVideo?Id=@product.Id">@product.Name</a> 
+                        }
+
                     </h3>
                     @*<a href="">@ViewData["ArtistName"].ToString()</a>*@
                     @Html.ActionLink(@ViewData["ArtistName"].ToString(),"ViewArtist","ArtistProduct",new {artistId = @product.ArtistProductId},null)

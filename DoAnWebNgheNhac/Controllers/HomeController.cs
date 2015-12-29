@@ -15,6 +15,8 @@ namespace DoAnWebNgheNhac.Controllers
         private readonly IMenuServices _iMenuServices;
         private readonly IVideoProductServices _iVideoProductServices;
         private readonly IVideoServices _iVideoServices;
+        private readonly IArtistServices _iArtistServices;
+        private readonly IArtistProductServices _iArtistProductServices;
 
         private readonly IProductServices _iProductServices;
         /// <summary>
@@ -24,8 +26,10 @@ namespace DoAnWebNgheNhac.Controllers
         /// <param name="iAlbumServices"></param>
         /// <param name="iAlbumProductServices"></param>
         /// <param name="iMenuServices"></param>
-        public HomeController(IServices iServices, IAlbumServices iAlbumServices, IAlbumProductServices iAlbumProductServices, IMenuServices iMenuServices
-            , IVideoProductServices iVideoProductService, IVideoServices iVideoServices, IProductServices iProductServices)
+
+        public HomeController(IServices iServices, IAlbumServices iAlbumServices, IAlbumProductServices iAlbumProductServices, IMenuServices iMenuServices, IProductServices iProductServices
+            , IVideoProductServices iVideoProductService, IVideoServices iVideoServices, IArtistServices iArtistServices, IArtistProductServices iArtistProductServices)
+
         {
             this._iServices = iServices;
             this._iAlbumServices = iAlbumServices;
@@ -34,6 +38,9 @@ namespace DoAnWebNgheNhac.Controllers
             this._iProductServices = iProductServices;
             this._iVideoProductServices = iVideoProductService;
             this._iVideoServices = iVideoServices;
+            this._iArtistServices = iArtistServices;
+            this._iArtistProductServices = iArtistProductServices;
+
         }
 
         /// <summary>
@@ -106,8 +113,19 @@ namespace DoAnWebNgheNhac.Controllers
         /// <returns></returns>
         public ActionResult VideoIndex(int? Id)
         {
-            var albums = _iVideoProductServices.GetAllVideoProducts().Where(a => a.VideoId == Id.Value);
-            return View(albums);
+            var videos = _iVideoProductServices.GetAllVideoProducts().Where(a => a.VideoId == Id.Value);
+            return View(videos);
+        }
+
+        /// <summary>
+        /// ArtistIndex
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public ActionResult ArtistIndex(int? Id)
+        {
+            var artists = _iArtistServices.GetAllArtists().Where(a => a.ParentId == Id.Value);
+            return View(artists);
         }
         /// <summary>
         /// SearchIndex PartialView
@@ -169,19 +187,19 @@ namespace DoAnWebNgheNhac.Controllers
             return View(product);
         }
 
-        public ActionResult PlayAlbum(int albumId = -1)
+        public ActionResult PlayAlbum(int? albumId)
         {
             int _id = 0;
-            if (albumId == -1)
+            if (albumId.HasValue == false)
             {
                 _id = 65;
             }
             else
             {
-                _id = albumId;
+                _id = albumId.Value;
             }
             var all_product = _iAlbumProductServices.GetAllAlbumProducts();
-            var productsId = _iAlbumProductServices.GetAllAlbumProducts().Where(album => album.AlbumId == _id)
+            var productsId = _iAlbumProductServices.GetAllAlbumProducts().Where(album => album.AlbumId == albumId)
                 .Select(album => album.ProductId);
             if (productsId.Any() == false)
             {
@@ -199,16 +217,9 @@ namespace DoAnWebNgheNhac.Controllers
         /// PlayVideo Action
         /// </summary>
         /// <returns></returns>
-        public ActionResult PlayVideo(int Id = -1)
-        {
-            if (Id == -1)
+        public ActionResult PlayVideo(int? Id)
             {
-                BusinessEntities.ProductEntity video = getTestVideoValue();
-                return View(video);
-            }
-            else
-            {
-                var videos = _iServices.GetProductById(Id);
+            var videos = _iServices.GetProductById(Id.Value); 
                 return View(videos);
             }
         }
