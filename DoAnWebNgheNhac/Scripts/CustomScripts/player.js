@@ -110,6 +110,18 @@ window.addEventListener("load", function (args) {
         setVolume(vol);
     }
 })
+
+shufflebtn.addEventListener("click", function sufflebtnClick() {
+
+    if ((document.getElementById('playlist')) ? true : false) {
+        if ($(this).hasClass("disable") == true)
+            $(this).removeClass("disable");
+        else
+            $(this).addClass("disable");
+    }
+})
+
+
 window.addEventListener("beforeunload", function (args) {
     setCookie("volume", music.volume, 2);
 })
@@ -126,7 +138,30 @@ music.addEventListener("canplaythrough", function () {
     // sau khi bài hát load thành công và bắt đầu play thì chuyển nút sang nút pause.
     playpausebtn.className = "controlbtn pausebtn";
     movePlayedLine(music.currentTime / duration);
+
+    high_current(); // highlight
+    update_infospan();
+    update_lyric()
 }, false);
+
+function high_current() {
+    $('#playlist_ul li').css("background-color", "initial");
+    var current = document.getElementById("musicPlayer").dataset.currenttrack;
+    $('#playlist_ul li:eq(' + current + ')').css("background-color", "#dedede");
+}
+function update_infospan() {
+    $('[id^="info_span_li_"]').hide();
+    var current = document.getElementById("musicPlayer").dataset.currenttrack;
+    $('#info_span_li_' + current).show();
+}
+function update_lyric() {
+    $('[id^="lyricbox_li_"]').hide();
+    var current = document.getElementById("musicPlayer").dataset.currenttrack;
+    $('#lyricbox_li_' + current).show();
+}
+nextbtn.addEventListener("click", function nextbtnClick() {
+    nextmusic();
+})
 
 // Helper
 function setCookie(cname, cvalue, exdays) {
@@ -182,20 +217,23 @@ function musicended() {
     var btntype = loopbtn.className.toString();
     if ((document.getElementById('playlist')) ? true : false) {
         // Có playlist
-        if (btntype.indexOf(" looponebtn") >= 0) {
-            setCurrentTime(0);
-            movePlayedLine(0);
-        }
-        else if (btntype.indexOf(" loopbtn") >= 0) {
-            // Nếu có playlist và trạng thái nút là loop 
-            //      Kiểm tra xem có phải bài hát cuối không nếu phải thì nhảy lên đầu
-            //      Nếu không phải thì nhảy đến bài hát kế tiếp.
-        }
-        if (shufflebtn.className.indexOf(" disable") >= 0) {
+
+        if ($('#shufflebtn').hasClass('disable') == false) {
+            next_random_music();
+
             // Nhảy đến bài hát ngẫu nhiên.
         }
         else {
-            // Nhảy đến bài hảt kế tiếp.
+            if (btntype.indexOf(" looponebtn") >= 0) {
+                setCurrentTime(0);
+                movePlayedLine(0);
+            }
+            else if (btntype.indexOf(" loopbtn") >= 0) {
+                // Nếu có playlist và trạng thái nút là loop 
+                //      Kiểm tra xem có phải bài hát cuối không nếu phải thì nhảy lên đầu
+                //      Nếu không phải thì nhảy đến bài hát kế tiếp.
+                nextmusic();
+            }
         }
     }
     else {
@@ -206,6 +244,32 @@ function musicended() {
         }
     }
 
+}
+function next_random_music() {
+    var current = document.getElementById("musicPlayer").dataset.currenttrack;
+    var count = document.getElementById("playlist_ul").dataset.trackcount;
+    var next = Math.floor((Math.random() * count) + 1) -1;
+    var playlist_li = document.getElementById("playlist_li_" + next);
+
+    document.getElementById("musicPlayer").dataset.currenttrack = next;
+    music.src = "../../Audio/" + playlist_li.dataset.url;
+    setCurrentTime(0);
+    movePlayedLine(0);
+    //$('#playlist_ul li').css("background-color", "initial");
+    //$('#playlist_ul li:eq(' + next + ')').css("background-color", "#2FEBEB");
+}
+function nextmusic() {
+    var current = document.getElementById("musicPlayer").dataset.currenttrack;
+    var count = document.getElementById("playlist_ul").dataset.trackcount;
+    var next = (parseInt(current) + 1) % count;
+    var playlist_li = document.getElementById("playlist_li_" + next);
+
+    document.getElementById("musicPlayer").dataset.currenttrack = next;
+    music.src = "../../Audio/" + playlist_li.dataset.url;
+    setCurrentTime(0);
+    movePlayedLine(0);
+    //$('#playlist_ul li').css("background-color", "initial");
+    //$('#playlist_ul li:eq(' + next + ')').css("background-color", "#2FEBEB");
 }
 
 // Chỉnh kích thước thanh timeslider
@@ -485,7 +549,7 @@ function fbshareClick() {
 function ggplusClick() {
     var url = "https://plusone.google.com/_/+1/confirm?hl=ru&url=_URL_&title=_TITLE_";
     url = url.replace("_URL_", "http://mp3.zing.vn/bai-hat/Nguoi-Dien-Yeu-Minh-Hang/ZWZ9Z699.html");
-    url = url.replace("_TITLE_", "Tên bài ha");
+    url = url.replace("_TITLE_", "Tên bài hát");
     //url += document.URL;
     var sharewindow = window.open(url, "_blank", "fullscreen=no, width=500, height=350px, top=100, left=150,");
     

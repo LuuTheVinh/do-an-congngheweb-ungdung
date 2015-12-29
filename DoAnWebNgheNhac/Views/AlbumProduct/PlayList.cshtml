@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BusinessEntities.ProductEntity>
+
+<link href="~/Content/CustomStyle/playlist.css" rel="stylesheet" />
+
+@{
+    int count = @Model.Count();
+}
+<link href="~/Content/CustomStyle/mediaplayer.css" rel="stylesheet" />
+<div id="playlist" class="box-scroll">
+    <ul id="playlist_ul" class="playlist" data-trackcount="@count.ToString()">
+        @for (int i = 0; i < count; i++)
+        {
+            <li data-tracknumber="@i.ToString()"
+                data-productid ="@{@Model.ElementAt(i).Id;}"
+                data-nextproductid="@{@Model.ElementAt((i + 1) % count).Id;}"
+                data-url="@Model.ElementAt(i).URL"
+                id="playlist_li_@i.ToString()"
+                >
+                <div id="list_item" class="item">
+                    <div id="num" class="item-num">
+                        @{ int index = i + 1;}
+                        @index  
+                    </div>
+
+                    <p class="item-text ">
+                       
+                        @Html.ActionLink(@Model.ElementAt(i).Name, "PlayMusic", "Home", new { id = @Model.ElementAt(i).Id }, null)
+                    </p>
+                    <p class="item-text ">
+                        
+                        @Html.ActionLink(@Model.ElementAt(i).ArtistProduct.StageName, "ViewArtist", "ArtistProduct", new { artistId = @Model.ElementAt(i).ArtistProductId }, null)
+                    </p> 
+
+                    <a href="~/Audio/@Model.ElementAt(i).URL.TrimEnd()" download="@Model.ElementAt(i).URL.TrimEnd()">
+                        <div id="downloadbtn" 
+                             class="controlbtn textbtn unselectable functionbtn embedbtn" style="float: left;margin-top: 5px;" title="Download bài hát">
+                            Download
+                        </div> 
+                    </a>
+                </div>
+
+            </li>     
+
+        }
+    </ul>
+</div>

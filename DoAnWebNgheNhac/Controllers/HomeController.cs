@@ -13,7 +13,7 @@ namespace DoAnWebNgheNhac.Controllers
         private readonly IAlbumServices _iAlbumServices;
         private readonly IAlbumProductServices _iAlbumProductServices;
         private readonly IMenuServices _iMenuServices;
-
+        private readonly IProductServices _iProductServices;
         /// <summary>
         /// Home Constructor 
         /// </summary>
@@ -21,12 +21,13 @@ namespace DoAnWebNgheNhac.Controllers
         /// <param name="iAlbumServices"></param>
         /// <param name="iAlbumProductServices"></param>
         /// <param name="iMenuServices"></param>
-        public HomeController(IServices iServices, IAlbumServices iAlbumServices, IAlbumProductServices iAlbumProductServices, IMenuServices iMenuServices)
+        public HomeController(IServices iServices, IAlbumServices iAlbumServices, IAlbumProductServices iAlbumProductServices, IMenuServices iMenuServices,  IProductServices iProductServices)
         {
             this._iServices = iServices;
             this._iAlbumServices = iAlbumServices;
             this._iAlbumProductServices = iAlbumProductServices;
             this._iMenuServices = iMenuServices;
+            this._iProductServices = iProductServices;
         }
 
         /// <summary>
@@ -125,10 +126,26 @@ namespace DoAnWebNgheNhac.Controllers
             return View(product);
         }
 
-        public ActionResult PlayAlbum(int? Id)
+        public ActionResult PlayAlbum(int? albumId)
         {
-            var albums = _iAlbumServices.GetAllAlbums().Where(a => a.ParentId == Id.Value);
-            return View(albums);
+            int _id = 0;
+            if (albumId.HasValue == false)
+            {
+                _id = 65;
+            }
+            else
+            {
+                _id = albumId.Value;
+            }
+            var all_product = _iAlbumProductServices.GetAllAlbumProducts();
+            var productsId = _iAlbumProductServices.GetAllAlbumProducts().Where(album => album.AlbumId == albumId)
+                .Select(album => album.ProductId);
+            List<BusinessEntities.ProductEntity> products = new List<BusinessEntities.ProductEntity>();
+            foreach (var id in productsId)
+            {
+                products.Add(_iProductServices.GetProductById(id));
+            }
+            return View(products);
         }
         /// <summary>
         /// PlayVideo Action
