@@ -15,7 +15,10 @@ namespace DoAnWebNgheNhac.Controllers
         private readonly IMenuServices _iMenuServices;
         private readonly IVideoProductServices _iVideoProductServices;
         private readonly IVideoServices _iVideoServices;
+        private readonly IArtistServices _iArtistServices;
+        private readonly IArtistProductServices _iArtistProductServices;
 
+        private readonly IProductServices _iProductServices;
         /// <summary>
         /// Home Constructor 
         /// </summary>
@@ -23,15 +26,21 @@ namespace DoAnWebNgheNhac.Controllers
         /// <param name="iAlbumServices"></param>
         /// <param name="iAlbumProductServices"></param>
         /// <param name="iMenuServices"></param>
-        public HomeController(IServices iServices, IAlbumServices iAlbumServices, IAlbumProductServices iAlbumProductServices, IMenuServices iMenuServices
-            , IVideoProductServices iVideoProductService, IVideoServices iVideoServices)
+
+        public HomeController(IServices iServices, IAlbumServices iAlbumServices, IAlbumProductServices iAlbumProductServices, IMenuServices iMenuServices, IProductServices iProductServices
+            , IVideoProductServices iVideoProductService, IVideoServices iVideoServices, IArtistServices iArtistServices, IArtistProductServices iArtistProductServices)
+
         {
             this._iServices = iServices;
             this._iAlbumServices = iAlbumServices;
             this._iAlbumProductServices = iAlbumProductServices;
             this._iMenuServices = iMenuServices;
+            this._iProductServices = iProductServices;
             this._iVideoProductServices = iVideoProductService;
             this._iVideoServices = iVideoServices;
+            this._iArtistServices = iArtistServices;
+            this._iArtistProductServices = iArtistProductServices;
+
         }
 
         /// <summary>
@@ -104,8 +113,19 @@ namespace DoAnWebNgheNhac.Controllers
         /// <returns></returns>
         public ActionResult VideoIndex(int? Id)
         {
-            var albums = _iVideoProductServices.GetAllVideoProducts().Where(a => a.VideoId == Id.Value);
-            return View(albums);
+            var videos = _iVideoProductServices.GetAllVideoProducts().Where(a => a.VideoId == Id.Value);
+            return View(videos);
+        }
+
+        /// <summary>
+        /// ArtistIndex
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public ActionResult ArtistIndex(int? Id)
+        {
+            var artists = _iArtistServices.GetAllArtists().Where(a => a.ParentId == Id.Value);
+            return View(artists);
         }
         /// <summary>
         /// SearchIndex PartialView
@@ -167,19 +187,81 @@ namespace DoAnWebNgheNhac.Controllers
             return View(product);
         }
 
-        public ActionResult PlayAlbum(int? Id)
+        public ActionResult PlayAlbum(int? albumId)
         {
-            var albums = _iAlbumServices.GetAllAlbums().Where(a => a.ParentId == Id.Value);
-            return View(albums);
+            int _id = 0;
+            if (albumId.HasValue == false)
+            {
+                _id = 65;
+            }
+            else
+            {
+                _id = albumId.Value;
+            }
+            var all_product = _iAlbumProductServices.GetAllAlbumProducts();
+            var productsId = _iAlbumProductServices.GetAllAlbumProducts().Where(album => album.AlbumId == albumId)
+                .Select(album => album.ProductId);
+            if (productsId.Any() == false)
+            {
+                return null;
+            }
+            List<BusinessEntities.ProductEntity> products = new List<BusinessEntities.ProductEntity>();
+            foreach (var id in productsId)
+            {
+                products.Add(_iProductServices.GetProductById(id));
+            }
+            
+            return View(products);
         }
         /// <summary>
         /// PlayVideo Action
         /// </summary>
         /// <returns></returns>
-        public ActionResult PlayVideo(int? Id)
+        public ActionResult PlayVideo(int Id = -1)
         {
-            var videos = _iServices.GetProductById(Id.Value); 
-            return View(videos);
+            if (Id == -1)
+            {
+                var video = getTestVideoValue();
+                return View(video);
+            }
+            else
+            {
+                var videos = _iServices.GetProductById(Id); 
+                return View(videos);
+            }
+        }
+
+        private BusinessEntities.ProductEntity getTestVideoValue()
+        {
+            return new BusinessEntities.ProductEntity()
+            {
+                AlbumProducts = new List<BusinessEntities.AlbumProductEntity>
+                {
+                    new BusinessEntities.AlbumProductEntity()
+                    {
+                        Album = new BusinessEntities.AlbumEntity()
+                        {
+                            Tittle = "Phim thiếu nhi"
+                        }
+                    }
+                },
+                ArtistProduct = new BusinessEntities.ArtistProductEntity()
+                {
+                    StageName = "7ung",
+                    ArtistId = -1,
+                },
+                ArtistProductId = -1,
+                Category = "Video",
+                Description = "Tokumei Sentai Go-Busters là series Super Sentai thứ 36 của Toei Company, tiếp nối Kaizoku Sentai Gokaiger.\nBộ phim được phát sóng lần đầu tiên vào ngày 26 tháng 2, 2012 trên TV Asahi, song song với Kamen Rider Fourze trong Super Hero Time",
+                Id = -1,
+                Name = "Go Buster",
+                Thumbnail = "../../Videos/Shi jin.mp4",
+                URL = "../../Images/judithhill.jpg",
+                UserComments = null,
+                UserLikes = null,
+                VideoProducts = null,
+                Views = 123
+            };
         }
     }
 }

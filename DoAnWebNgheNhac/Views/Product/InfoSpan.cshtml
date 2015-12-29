@@ -14,12 +14,20 @@
                 <p class="inline">@Html.DisplayFor(modelItem => modelItem.Name)</p>
                 <span style="margin:0 5px">-</span>
                 <div class="inline" style="font-weight:300;">
-                    @*@Html.ActionLink(@artistname, "ViewIndex", "Artist", 1, null)*@
-                    @Html.DisplayFor(modelItem => modelItem.ArtistProduct.StageName)
+                    @Html.ActionLink(@Model.ArtistProduct.StageName, "ViewArtist", "ArtistProduct", new {artistId =  @Model.ArtistProductId}, null)
                 </div>
             </div>
             <div class="info-text">
-                <p>Album: @Html.DisplayFor(modelItem => modelItem.AlbumProducts.First().Album.Tittle)</p>
+                @* Foreach cho đỡ quăng lỗi *@
+                <p>
+                    Album: 
+                    @foreach (var item in @Model.AlbumProducts)
+                    {
+                        var temp = item.Album.Tittle + ", ";
+                        @temp;
+                    }
+                    
+                </p>
             </div>
             <div class="info-text">
                 <p>Thể loại: @Html.DisplayFor(modelItem => modelItem.Category)</p>

@@ -1,0 +1,64 @@
+﻿
+.box-scroll {
+    background: #fafafa;
+    max-height: 250px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative;
+    height: 250px;
+    width: 100%;
+    width: 860px;/*test*/
+
+}
+.playlist {
+    overflow: hidden;
+    display: block;
+    -webkit-padding-start : 0px;
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+}
+    .playlist li:first-child{
+        border-top: 0px;
+    }
+    .playlist li:last-child {
+        border-bottom: 0px;
+    }
+    .playlist li {
+        height: 50px;
+        list-style: none;
+        border: 1px;
+        border-style: solid;
+        border-color: #dedede;
+        position: relative;
+        padding-left: 1px;
+        padding-right: 1px;
+    }
+
+.item {
+    float: left;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 820px;
+    line-height: 50px;
+    font-family: Roboto! important;
+    font-size: 18px;
+}
+
+.item-num {
+    margin-right: 15px;
+    float: left;
+    width: 18px;
+    height: 100%;
+    text-align: center;
+}
+
+.item-text {
+    margin-right: 25px;
+    float: left;
+    width: 290px;
+    height: 100%;
+    text-align: left;
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}

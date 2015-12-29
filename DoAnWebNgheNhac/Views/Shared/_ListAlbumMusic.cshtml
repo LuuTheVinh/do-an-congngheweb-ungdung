@@ -6,9 +6,11 @@
             <li>
 				<div class="info_song">
 					<h3>
-						<a href="/home/PlayMusic?id=@item.ProductId">@item.Product.Name</a>
-						-
-						<a href="/artistproduct/ViewArtist?id=@item.Product.ArtistProductId">@item.Product.ArtistProduct.StageName</a>
+						@*<a href="/home/PlayMusic?id=@item.ProductId">@item.Product.Name</a>*@
+                        @Html.ActionLink(item.Product.Name, "PlayMusic", "Home", new { id = @item.ProductId }, null)
+                        -
+						@*<a href="/artistproduct/ViewArtist?id=@item.Product.ArtistProductId">@item.Product.ArtistProduct.StageName</a>*@
+                        @Html.ActionLink(item.Product.ArtistProduct.StageName,"ViewArtist","ArtistProduct",new {artistId = item.Product.ArtistProductId},null)
 					</h3>
 					<span class="float-right">@item.Product.Views</span>
 					<div class="box_song_action"></div>
