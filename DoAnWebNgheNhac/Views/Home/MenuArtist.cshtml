@@ -1,9 +1,9 @@
-﻿@foreach (var item in Model.GetAristLevel1)
+﻿@foreach (var item in Model.GetArtistLevel1)
 {
      <div class="sub-category">
                 <a class="sub-title" href="/home/AlbumIndex?Id=@item.Id">@item.Tittle</a>
                 <ul class="sub-item">
-                    @foreach (var item2 in Model.GetAristLevel2)
+                    @foreach (var item2 in Model.GetArtistLevel2)
                     {
                         if(@item2.ParentId == item.Id)
                         {
