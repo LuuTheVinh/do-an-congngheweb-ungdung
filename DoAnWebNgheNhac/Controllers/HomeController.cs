@@ -169,19 +169,19 @@ namespace DoAnWebNgheNhac.Controllers
             return View(product);
         }
 
-        public ActionResult PlayAlbum(int? albumId)
+        public ActionResult PlayAlbum(int albumId = -1)
         {
             int _id = 0;
-            if (albumId.HasValue == false)
+            if (albumId == -1)
             {
                 _id = 65;
             }
             else
             {
-                _id = albumId.Value;
+                _id = albumId;
             }
             var all_product = _iAlbumProductServices.GetAllAlbumProducts();
-            var productsId = _iAlbumProductServices.GetAllAlbumProducts().Where(album => album.AlbumId == albumId)
+            var productsId = _iAlbumProductServices.GetAllAlbumProducts().Where(album => album.AlbumId == _id)
                 .Select(album => album.ProductId);
             List<BusinessEntities.ProductEntity> products = new List<BusinessEntities.ProductEntity>();
             foreach (var id in productsId)
@@ -194,10 +194,41 @@ namespace DoAnWebNgheNhac.Controllers
         /// PlayVideo Action
         /// </summary>
         /// <returns></returns>
-        public ActionResult PlayVideo(int? Id)
+        public ActionResult PlayVideo(int Id = -1)
         {
-            var videos = _iServices.GetProductById(Id.Value); 
-            return View(videos);
+            if (Id == -1)
+            {
+                BusinessEntities.ProductEntity video = getTestVideoValue();
+                return View(video);
+            }
+            else
+            {
+                var videos = _iServices.GetProductById(Id);
+                return View(videos);
+            }
+        }
+
+        private BusinessEntities.ProductEntity getTestVideoValue()
+        {
+            return new BusinessEntities.ProductEntity()
+            {
+                AlbumProducts = null,
+                ArtistProduct = new BusinessEntities.ArtistProductEntity()
+                {
+                    
+                },
+                ArtistProductId = -1,
+                Category = "Video",
+                Description = "Phim Siêu Nhân",
+                Id = -1,
+                Name = "Go Buster",
+                Thumbnail = "../../Videos/Shi jin.mp4",
+                URL = "../../Images/judithhill.jpg",
+                UserComments = null,
+                UserLikes = null,
+                VideoProducts = null,
+                Views = 123
+            };
         }
     }
 }
