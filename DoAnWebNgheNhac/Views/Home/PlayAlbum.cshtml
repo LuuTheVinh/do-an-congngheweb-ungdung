@@ -45,7 +45,7 @@
     @RenderPage("~/Views/Product/_MediaPlayer.cshtml",new {product = currentProduct})
 
     @{
-        Html.RenderAction("PlayList", "AlbumProduct", @Model);    
+        Html.RenderAction("PlayList", "AlbumProduct", new { products = @Model });    
     }
 
 @*    @RenderPage("~/Views/Product/_ComunityBar.cshtml", new { text="Lượt Nghe"})*@
