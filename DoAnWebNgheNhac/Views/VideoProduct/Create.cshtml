@@ -5,14 +5,16 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Create</h2>
+<div class="setting-title">
+    <h2 class="title_box">Thêm Video mới</h2>
+</div> 
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>VideoProduct</legend>
+        <legend></legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.ProductId, "Product")
@@ -30,15 +32,12 @@
             @Html.ValidationMessageFor(model => model.VideoId)
         </div>
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
+        <div class="editor-field">
+            <input class="button red-button" type="submit" value="Tạo" />
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "button "})
+        </div>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

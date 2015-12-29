@@ -13,8 +13,10 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     <fieldset class="col-4">
+        <legend></legend>
         <div class="editor-label">
-            @Html.LabelFor(model => model.ArtistProductId, "ArtistProduct")
+            @*@Html.LabelFor(model => model.ArtistProductId, "ArtistProduct")*@
+            Ca sĩ
         </div>
         <div class="editor-field">
             @Html.DropDownList("ArtistProductId", String.Empty)
@@ -22,7 +24,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
+            @*@Html.LabelFor(model => model.Name)*@
+            Tên bài hát
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Name)
@@ -41,7 +44,7 @@
             @Html.LabelFor(model => model.Description)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Description)
+            @Html.TextAreaFor(model => model.Description, new { @rows=10, @cols=50 })
             @Html.ValidationMessageFor(model => model.Description)
         </div>
 
@@ -51,27 +54,23 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.URL)
             @Html.ValidationMessageFor(model => model.URL)
+            <input type="file" accept="audio/*" />
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Thumbnail)
+            <br />
+            <img src="../../Images/default_avatar.jpg" width="100" height="100"/>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Thumbnail)
             @Html.ValidationMessageFor(model => model.Thumbnail)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Views)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Views)
-            @Html.ValidationMessageFor(model => model.Views)
+            <input type="file" accept="image/*" />
         </div>
 
         <div class="editor-field">
-            <input class="button" type="submit" value="Tạo" />
-            @Html.ActionLink("Quay lại", "Index", null, new { @class = "button red-button"})
+            <input class="button red-button" type="submit" value="Tạo" />
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "button"})
         </div>
     </fieldset>
 }

@@ -5,7 +5,9 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="setting-title">
+    <h2 class="title_box">Chi tiết</h2>
+</div>  
 
 <table>
      <tr>
@@ -43,6 +45,6 @@
         }
     }
 </table>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="setting-title">
+    @Html.ActionLink("Quay lại", "Index", null, new { @class = "button"} )
+</div>

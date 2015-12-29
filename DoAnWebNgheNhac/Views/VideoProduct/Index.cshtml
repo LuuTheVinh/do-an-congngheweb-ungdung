@@ -4,11 +4,11 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="setting-title">
+        <h2 class="title_box">Danh sách video</h2>
+        @Html.ActionLink("Thêm mới", "Create", null , new {@class = "button"})
+</div>  
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table>
     <tr>
         <th>
