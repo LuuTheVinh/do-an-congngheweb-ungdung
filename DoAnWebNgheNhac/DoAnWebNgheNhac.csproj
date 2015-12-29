@@ -417,6 +417,10 @@
     <Content Include="Views\Home\MenuAlbum.cshtml" />
     <Content Include="Views\Home\AlbumIndex.cshtml" />
     <Content Include="Views\Home\PlayAlbum.cshtml" />
+    <Content Include="Views\ArtistProduct\ViewArtist.cshtml" />
+    <Content Include="Views\Product\InfoSpan.cshtml" />
+    <Content Include="Views\Product\_ComunityBar.cshtml" />
+    <Content Include="Views\Product\_MediaPlayer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj">

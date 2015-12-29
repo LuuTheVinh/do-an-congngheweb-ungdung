@@ -13,6 +13,8 @@ namespace DoAnWebNgheNhac.Controllers
         private readonly IAlbumServices _iAlbumServices;
         private readonly IAlbumProductServices _iAlbumProductServices;
         private readonly IMenuServices _iMenuServices;
+        private readonly IVideoProductServices _iVideoProductServices;
+        private readonly IVideoServices _iVideoServices;
 
         /// <summary>
         /// Home Constructor 
@@ -21,12 +23,15 @@ namespace DoAnWebNgheNhac.Controllers
         /// <param name="iAlbumServices"></param>
         /// <param name="iAlbumProductServices"></param>
         /// <param name="iMenuServices"></param>
-        public HomeController(IServices iServices, IAlbumServices iAlbumServices, IAlbumProductServices iAlbumProductServices, IMenuServices iMenuServices)
+        public HomeController(IServices iServices, IAlbumServices iAlbumServices, IAlbumProductServices iAlbumProductServices, IMenuServices iMenuServices
+            , IVideoProductServices iVideoProductService, IVideoServices iVideoServices)
         {
             this._iServices = iServices;
             this._iAlbumServices = iAlbumServices;
             this._iAlbumProductServices = iAlbumProductServices;
             this._iMenuServices = iMenuServices;
+            this._iVideoProductServices = iVideoProductService;
+            this._iVideoServices = iVideoServices;
         }
 
         /// <summary>
@@ -134,9 +139,10 @@ namespace DoAnWebNgheNhac.Controllers
         /// PlayVideo Action
         /// </summary>
         /// <returns></returns>
-        public ActionResult PlayVideo()
+        public ActionResult PlayVideo(int? Id)
         {
-            return View();
+            var videos = _iServices.GetProductById(Id.Value); 
+            return View(videos);
         }
     }
 }
