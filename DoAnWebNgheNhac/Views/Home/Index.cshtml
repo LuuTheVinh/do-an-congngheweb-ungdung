@@ -19,55 +19,24 @@
 			<div class="title_box">
 				<a href="#">NHẠC VIỆT HOT</a>
 			</div>
-			@*@Html.Partial("NhacVietHotIndex") *@
-           <ul>@if (Model != null)
-                {
-                    foreach (var item in Model.NhacVietHot)
-                    {
-                        <li>
-					        <div class="info_song">
-						        <h3>
-							        <a href="/home/PlayMusic?id=@item.ProductId">@Html.DisplayFor(modelItem => item.Product.Name)</a>
-							        -
-							        <a href="#">@Html.DisplayFor(modelItem => item.Product.ArtistProduct.StageName)</a>
-						        </h3>
-						        <span class="float-right">@Html.DisplayFor(modelItem => item.Product.Views)</span>
-						        <div class="box_song_action"></div>
-					        </div>
-				        </li>
-                    }
-                }
-    </ul>
+            @{
+                Html.RenderPartial("~/Views/Shared/_ListAlbumMusic.cshtml", Model.NhacVietHot);
+            }
 		</div>
 		<div class="">
 			<div class="title_box">
 				<a href="#">NHẠC VIỆT MỚI</a>
 			</div>
-			 @*@Html.Partial("NhacVietMoiIndex")*@
-             <ul>@if (Model != null)
-                {
-                    foreach (var item in Model.NhacVietMoi)
-                    {
-                        <li>
-					        <div class="info_song">
-						        <h3>
-							        <a href="/home/PlayMusic?id=@item.ProductId">@Html.DisplayFor(modelItem => item.Product.Name)</a>
-							        -
-							        <a href="#">@Html.DisplayFor(modelItem => item.Product.ArtistProduct.StageName)</a>
-						        </h3>
-						        <span class="float-right">@Html.DisplayFor(modelItem => item.Product.Views)</span>
-						        <div class="box_song_action"></div>
-					        </div>
-				        </li>
-                    }
-                }
-    </ul>
+            @{
+                Html.RenderPartial("~/Views/Shared/_ListAlbumMusic.cshtml", Model.NhacVietMoi);
+            }
 		</div>
 	</div>
 	<div class="list_album">
 		<div class="title_box">
 			<a href="#">ALBUM</a>
 		</div>
+
 		<ul>
             @if (Model != null)
                 {

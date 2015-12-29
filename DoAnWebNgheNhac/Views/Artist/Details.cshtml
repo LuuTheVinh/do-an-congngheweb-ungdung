@@ -7,7 +7,8 @@
 
 <div class="setting-title">
     <h2 class="title_box">Danh sách</h2>
-     @Html.ActionLink("Create New", "Create", "Artist" , new {@class = "button"})
+    @Html.ActionLink("Thêm mới", "Create", "Artist" , new {@class = "button"})
+    @Html.ActionLink("Quay lại", "Index",null , new {@class = "button", @style="margin-left: 10px;"})
 </div>  
 
 @* <p>@Html.ActionLink("Create New", "Create", "Artist")</p> *@
@@ -47,6 +48,3 @@
         }
 }
     </table>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -5,19 +5,33 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<div class="setting-title">
+    <h2 class="title_box">Sửa @Html.DisplayFor(model => model.StageName)</h2>
+</div>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>ArtistProduct</legend>
+    <fieldset class="col-4">
+        <legend></legend>
 
         @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ArtistId, "Artist")
+            @*@Html.LabelFor(model => model.Thumbnail)*@
+            <img src="@Html.DisplayFor(model => model.Thumbnail)" width="100" height="100"/>
+        </div>
+        <div class="editor-field">
+            from Url:
+            @Html.EditorFor(model => model.Thumbnail)
+            @Html.ValidationMessageFor(model => model.Thumbnail)
+            <input id="thumbnailPicker" type="file" accept="image/*" />
+        </div>
+
+        <div class="editor-label">
+            @*@Html.LabelFor(model => model.ArtistId, "Artist")*@
+            Mục nghệ sĩ
         </div>
         <div class="editor-field">
             @Html.DropDownList("ArtistId", String.Empty)
@@ -25,7 +39,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.StageName)
+            @*@Html.LabelFor(model => model.StageName)*@
+            Nghệ danh
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.StageName)
@@ -33,7 +48,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.RealName)
+            @*@Html.LabelFor(model => model.RealName)*@
+            Tên thật
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.RealName)
@@ -41,7 +57,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.BirthDay)
+            @*@Html.LabelFor(model => model.BirthDay)*@
+            Ngày sinh
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.BirthDay)
@@ -49,7 +66,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Gender)
+            @*@Html.LabelFor(model => model.Gender)*@
+            Giới tính
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Gender)
@@ -57,7 +75,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Country)
+            @*@Html.LabelFor(model => model.Country)*@
+            Quốc gia
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Country)
@@ -65,7 +84,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Specialization)
+           @* @Html.LabelFor(model => model.Specialization)*@
+            Kỹ năng
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Specialization)
@@ -73,7 +93,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.GroupId)
+           @* @Html.LabelFor(model => model.GroupId)*@
+            Nhóm
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.GroupId)
@@ -81,30 +102,20 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Description)
+            @*@Html.LabelFor(model => model.Description)*@
+            Chi tiết
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Description)
+            @Html.TextAreaFor(model => model.Description, new { @rows = 10, @cols = 50 })
             @Html.ValidationMessageFor(model => model.Description)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Thumbnail)
-        </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Thumbnail)
-            @Html.ValidationMessageFor(model => model.Thumbnail)
+            <input class="button red-button" type="submit" value="Lưu" />
+            @Html.ActionLink("Hủy", "Index", null, new { @class = "button" })
         </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

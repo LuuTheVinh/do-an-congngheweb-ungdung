@@ -5,19 +5,22 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<div class="setting-title">
+    <h2 class="title_box">Sửa @Html.DisplayFor(model => model.Name)</h2>
+</div> 
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Product</legend>
+    <fieldset class="col-4">
+        <legend></legend>
 
         @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ArtistProductId, "ArtistProduct")
+            @*@Html.LabelFor(model => model.ArtistProductId, "ArtistProduct")*@
+            Ca sĩ
         </div>
         <div class="editor-field">
             @Html.DropDownList("ArtistProductId", String.Empty)
@@ -54,14 +57,18 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.URL)
             @Html.ValidationMessageFor(model => model.URL)
+            <input type="file" accept="audio/*" />
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Thumbnail)
+            <br />
+            <img src="../../Images/default_avatar.jpg" width="100" height="100"/>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Thumbnail)
             @Html.ValidationMessageFor(model => model.Thumbnail)
+            <input type="file" accept="image/*" />
         </div>
 
         <div class="editor-label">
@@ -72,15 +79,12 @@
             @Html.ValidationMessageFor(model => model.Views)
         </div>
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
+        <div class="editor-field">
+            <input class="button red-button" type="submit" value="Lưu" />
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "button"})
+        </div>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -2,7 +2,7 @@
 
     <div id="info-span" class="info-span">
         <div id="artistthumbnail"class="thumbnail-artist">
-                <a href="~/ArtistProduct/ViewArtist?artisId=-1" 
+                <a href="~/ArtistProduct/ViewArtist?artistId=@Model.ArtistProductId" 
                    title="@Html.DisplayFor(modelItem => modelItem.ArtistProduct.StageName))">
                     <img src="/Images/@Html.DisplayFor(modelItem => modelItem.ArtistProduct.Thumbnail)" 
                          alt="@Html.DisplayFor(modelItem => modelItem.ArtistProduct.StageName)" 

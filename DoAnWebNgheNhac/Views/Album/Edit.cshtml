@@ -6,7 +6,7 @@
 }
 
 <div class="setting-title">
-    <h2 class="title_box">Editing Album Category</h2>
+    <h2 class="title_box">Sửa Album Category</h2>
 </div>  
 
 @using (Html.BeginForm()) {
@@ -14,6 +14,8 @@
     @Html.ValidationSummary(true)
 
     <fieldset class="col-4">
+        <legend></legend>
+
         @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
@@ -41,8 +43,8 @@
         </div>
 
         <div class="editor-field">
-            <input class="button" type="submit" value="Save" />
-            @Html.ActionLink("Cancel", "Index", null, new { @class = "button red-button"})
+            <input class="button red-button" type="submit" value="Lưu" />
+            @Html.ActionLink("Hủy", "Index", null, new { @class = "button" })
         </div>
     </fieldset>
 }

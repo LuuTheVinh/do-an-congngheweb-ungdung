@@ -13,6 +13,9 @@ namespace DoAnWebNgheNhac.Controllers
         private readonly IAlbumServices _iAlbumServices;
         private readonly IAlbumProductServices _iAlbumProductServices;
         private readonly IMenuServices _iMenuServices;
+        private readonly IVideoProductServices _iVideoProductServices;
+        private readonly IVideoServices _iVideoServices;
+
         private readonly IProductServices _iProductServices;
         /// <summary>
         /// Home Constructor 
@@ -21,13 +24,16 @@ namespace DoAnWebNgheNhac.Controllers
         /// <param name="iAlbumServices"></param>
         /// <param name="iAlbumProductServices"></param>
         /// <param name="iMenuServices"></param>
-        public HomeController(IServices iServices, IAlbumServices iAlbumServices, IAlbumProductServices iAlbumProductServices, IMenuServices iMenuServices,  IProductServices iProductServices)
+        public HomeController(IServices iServices, IAlbumServices iAlbumServices, IAlbumProductServices iAlbumProductServices, IMenuServices iMenuServices
+            , IVideoProductServices iVideoProductService, IVideoServices iVideoServices, IProductServices iProductServices)
         {
             this._iServices = iServices;
             this._iAlbumServices = iAlbumServices;
             this._iAlbumProductServices = iAlbumProductServices;
             this._iMenuServices = iMenuServices;
             this._iProductServices = iProductServices;
+            this._iVideoProductServices = iVideoProductService;
+            this._iVideoServices = iVideoServices;
         }
 
         /// <summary>
@@ -57,6 +63,31 @@ namespace DoAnWebNgheNhac.Controllers
         }
 
         /// <summary>
+        /// MenuVideo
+        /// </summary>
+        /// <returns></returns>
+        [ChildActionOnly]
+        public ActionResult MenuVideo()
+        {
+            Menu videoMenu = new Menu();
+            videoMenu.GetVideoLevel1 = _iMenuServices.GetListVideos();
+            videoMenu.GetVideoLevel2 = _iMenuServices.GetListVideosLevel2();
+            return PartialView(videoMenu);
+        }
+
+        /// <summary>
+        /// MenuArtist
+        /// </summary>
+        /// <returns></returns>
+        [ChildActionOnly]
+        public ActionResult MenuArtist()
+        {
+            Menu artistMenu = new Menu();
+            artistMenu.GetArtistLevel1 = _iMenuServices.GetListArtists();
+            artistMenu.GetArtistLevel2 = _iMenuServices.GetListArtistsLevel2();
+            return PartialView(artistMenu);
+        }
+        /// <summary>
         /// AlbumIndex Action
         /// </summary>
         /// <param name="Id"></param>
@@ -64,6 +95,17 @@ namespace DoAnWebNgheNhac.Controllers
         public ActionResult AlbumIndex(int? Id)
         {
             var albums = _iAlbumServices.GetAllAlbums().Where(a => a.ParentId == Id.Value);         
+            return View(albums);
+        }
+
+        /// <summary>
+        /// VideoIndex
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public ActionResult VideoIndex(int? Id)
+        {
+            var albums = _iVideoProductServices.GetAllVideoProducts().Where(a => a.VideoId == Id.Value);
             return View(albums);
         }
         /// <summary>
@@ -142,7 +184,7 @@ namespace DoAnWebNgheNhac.Controllers
                 .Select(album => album.ProductId);
             List<BusinessEntities.ProductEntity> products = new List<BusinessEntities.ProductEntity>();
             foreach (var id in productsId)
-            {
+        {
                 products.Add(_iProductServices.GetProductById(id));
             }
             return View(products);
@@ -151,9 +193,10 @@ namespace DoAnWebNgheNhac.Controllers
         /// PlayVideo Action
         /// </summary>
         /// <returns></returns>
-        public ActionResult PlayVideo()
+        public ActionResult PlayVideo(int? Id)
         {
-            return View();
+            var videos = _iServices.GetProductById(Id.Value); 
+            return View(videos);
         }
     }
 }
