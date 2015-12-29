@@ -1,4 +1,4 @@
-﻿
+﻿@model BusinessEntities.ProductEntity
 @{
     ViewBag.Title = "PlayVideo";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -101,8 +101,8 @@
 
 <div class="box_left">
     <video id="my_video_1" class="video-js vjs-default-skin" controls width="860" height="600" style="background-color: #3C3C3C; "  data-setup='{"playbackRates": [1, 1.5, 2] }'>
-    <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
-    @*<source src="../../Videos/Shi jin.mp4" type="video/mp4">*@
+    @*<source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">*@
+    <source src="../../Videos/@Model.URL.TrimEnd()" type="video/mp4">
     </video>
 
     <div id="functionbar" class="functionbar">
@@ -122,7 +122,7 @@
             <p class="textviews">
                 <b style="font-size: 15px; font-weight: 300;">Lượt Xem</b>
                 
-                <b style="font-size: 20px; font-weight: bold;">461849</b>
+                <b style="font-size: 20px; font-weight: bold;">@Html.DisplayFor(modelItem => modelItem.Views)</b>
             </p>
         </div>
     </div>
@@ -134,7 +134,7 @@
     @* Định làm cái server-end giống cái "Bài hát cùng Ca sĩ luôn mà không biết lấy dữ liệu nào *@
     <div class="list_album list_album_musicview">
 		<div class="title_box">
-			<a href="#">Album Của "Ca sĩ XYZ"</a>
+			<a href="#">Album Của @Html.DisplayFor(modelItem => modelItem.ArtistProduct.StageName)</a>
 		</div>
 		<ul class="album-list">
 @*              @foreach (var item in Model.AlbumProducts.All())
@@ -146,7 +146,7 @@
 		                </a>
                         <div class="description">
 			                <h3><a href="#"> Tiêu đề album</a></h3>
-			                <h4><a href="#">ArtistProduct.StageName</a></h4>
+			                <h4><a href="#">@Html.DisplayFor(modelItem => modelItem.ArtistProduct.StageName)</a></h4>
                         </div>
                 </li>
             @* }*@
@@ -155,7 +155,7 @@
 
     <div class="list_video">
 		<div class="title_box">
-			<a href="#">VIDEO | MV của "Ca sĩ XYZ"</a>
+			<a href="#">VIDEO | MV của @Html.DisplayFor(modelItem => modelItem.ArtistProduct.StageName)</a>
 		</div>
 		<ul>
 			<li>
@@ -208,6 +208,6 @@
     @*Lấy những bài hát cùng ca sĩ*@
     
     @{
-        Html.RenderAction("Songs", "ArtistProduct", new { artistId = -1 });
+        Html.RenderAction("Songs", "ArtistProduct", new { artistId = @Model.ArtistProduct.ArtistId });
     } 
 </div>
