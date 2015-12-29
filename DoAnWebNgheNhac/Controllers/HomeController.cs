@@ -44,6 +44,7 @@ namespace DoAnWebNgheNhac.Controllers
             homealbums.NhacVietHot = _iServices.GetNhacVietHot();
             homealbums.NhacVietMoi = _iServices.GetNhacVietMoi();
             homealbums.GetAlbum = _iServices.GetListAlbums().Where( a => a.ParentId == 69);
+            homealbums.GetVideo = _iVideoProductServices.GetAllVideoProducts();
             return View(homealbums);         
         }
 
@@ -58,6 +59,19 @@ namespace DoAnWebNgheNhac.Controllers
             albumMenu.GetAlbumLevel1 = _iMenuServices.GetListAlbums();
             albumMenu.GetAlbumLevel2 = _iMenuServices.GetListAlbumsLevel2();
             return PartialView(albumMenu);
+        }
+
+        /// <summary>
+        /// MenuArtist Action
+        /// </summary>
+        /// <returns></returns>
+        [ChildActionOnly]
+        public ActionResult MenuArtist()
+        {
+            Menu artistMenu = new Menu();
+            artistMenu.GetArtistLevel1 = _iMenuServices.GetListArtists();
+            artistMenu.GetArtistLevel2 = _iMenuServices.GetListArtistsLevel2();
+            return PartialView(artistMenu);
         }
 
         /// <summary>

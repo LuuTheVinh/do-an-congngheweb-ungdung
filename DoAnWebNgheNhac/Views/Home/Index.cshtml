@@ -62,7 +62,12 @@
 		<div class="title_box">
 			<a href="#">VIDEO | MV</a>
 		</div>
-		<ul>
+        @{
+            var videos = Model.GetVideo;
+            Html.RenderPartial("~/Views/Shared/_ListVideo.cshtml", videos);
+        }
+
+		@*<ul>
 			<li>
 				<a class="thumbnail" href="#">
                     <span class="fa fa-play-circle play-icon"> </span>
@@ -103,7 +108,7 @@
 					<h4><a href="">Karik</a></h4>
                 </div>
 			</li>
-		</ul>
+		</ul>*@
 	</div>
 </div>
 <div class="sidebar col-right">

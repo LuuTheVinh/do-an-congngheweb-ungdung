@@ -1,0 +1,16 @@
+﻿
+@foreach (var item in Model.GetArtistLevel1)
+{
+    <div class="sub-category">
+        <a class="sub-title" href="#">@item.Tittle</a>
+        <ul class="sub-item">
+            @foreach (var item2 in Model.GetArtistLevel2)
+            {
+                if(@item2.ParentId == item.Id)
+                {
+                <li><a href="#">@item2.Tittle</a></li>
+                }
+            }
+        </ul>
+    </div>
+}

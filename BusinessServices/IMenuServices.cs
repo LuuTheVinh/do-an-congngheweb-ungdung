@@ -11,5 +11,8 @@ namespace BusinessServices
     {
         IEnumerable<AlbumEntity> GetListAlbums();
         IEnumerable<AlbumEntity> GetListAlbumsLevel2();
+
+        IEnumerable<ArtistEntity> GetListArtists();
+        IEnumerable<ArtistEntity> GetListArtistsLevel2();
     }
 }
