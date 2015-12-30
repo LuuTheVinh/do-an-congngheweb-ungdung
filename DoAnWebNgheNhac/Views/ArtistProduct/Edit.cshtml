@@ -36,6 +36,8 @@
         <div class="editor-field">
             @Html.DropDownList("ArtistId", String.Empty)
             @Html.ValidationMessageFor(model => model.ArtistId)
+             Chưa có mục cho người này? 
+            @Html.ActionLink("Tạo ở đây", "Create", "Artist", null, new { @style="color: #ff6a00;" })
         </div>
 
         <div class="editor-label">
@@ -70,7 +72,15 @@
             Giới tính
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Gender)
+            @{
+                var items = new List<SelectListItem>{
+                    new SelectListItem() {Text = "Nam", Value = "Nam", Selected = true},
+                    new SelectListItem() {Text = "Nữ", Value = "Nữ", Selected = false},
+                    new SelectListItem() {Text = "Khác", Value = "Khác", Selected = false}
+                };
+                
+                 @Html.DropDownListFor(m => m.Gender, new SelectList(items, "Value", "Text"));
+            }
             @Html.ValidationMessageFor(model => model.Gender)
         </div>
 
@@ -90,15 +100,6 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.Specialization)
             @Html.ValidationMessageFor(model => model.Specialization)
-        </div>
-
-        <div class="editor-label">
-           @* @Html.LabelFor(model => model.GroupId)*@
-            Nhóm
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.GroupId)
-            @Html.ValidationMessageFor(model => model.GroupId)
         </div>
 
         <div class="editor-label">

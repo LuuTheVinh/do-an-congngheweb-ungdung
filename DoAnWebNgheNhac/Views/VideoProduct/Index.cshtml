@@ -5,35 +5,46 @@
 }
 
 <div class="setting-title">
-        <h2 class="title_box">Danh sách video</h2>
+        <h2 class="title_box">Danh sách Video</h2>
         @Html.ActionLink("Thêm mới", "Create", null , new {@class = "button"})
 </div>  
 
 <table>
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Product.Name)
+        <th colspan="3">
+            @*@Html.DisplayNameFor(model => model.Product.Name)*@
+            Tên
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Video.Tittle)
-        </th>
-        <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Video.Tittle)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
+    @{
+        var videos = Model.GroupBy(x => x.Video.Tittle);
+            
+        if(videos != null)
+        {
+            foreach (var item in videos)
+            {
+                <tr>
+                    <td colspan="3" style="background: #dedede;">
+                        <b>@Html.DisplayFor(x => item.First().Video.Tittle)</b>
+                    </td>
+                </tr>
+        
+                foreach (var video in item)
+                {
+                    <tr>
+                        <td style="padding-left: 50px; background: none;" colspan="2">
+                            @Html.ActionLink(video.Product.Name, "Details", "Product", new { id=video.Product.Id }, null)
+                        </td>
+                        <td style="background: none;">
+                            @Html.ActionLink("Edit", "Edit", new { id=video.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id=video.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id=video.Id }) | 
+                            @Html.ActionLink("Xem", "PlayVideo","Home" , new { id=video.Product.Id }, null)
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    }
 </table>

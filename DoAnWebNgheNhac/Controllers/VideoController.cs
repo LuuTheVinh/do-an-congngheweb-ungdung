@@ -137,5 +137,13 @@ namespace DoAnWebNgheNhac.Controllers
         //    db.Dispose();
         //    base.Dispose(disposing);
         //}
+
+        public string GetNameById(int id)
+        {
+            if (_iVideoServices != null)
+                return _iVideoServices.GetVideoById(id).Tittle;
+            else
+                return "";
+        }
     }
 }

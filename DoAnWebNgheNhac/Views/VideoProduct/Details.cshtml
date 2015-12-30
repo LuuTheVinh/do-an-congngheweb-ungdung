@@ -1,30 +1,35 @@
-﻿@model DataModel.VideoProduct
+﻿@model BusinessEntities.VideoProductEntity
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="setting-title">
+    <h2 class="title_box">Chi tiết @Model.Product.Name</h2>
+</div>
 
-<fieldset>
-    <legend>VideoProduct</legend>
+<fieldset class="border-box col-4">
+    <legend></legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Product.Name)
+         @*@Html.DisplayNameFor(model => model.Product.Name)*@
+        Tên
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Product.Name)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Video.Tittle)
+         @*@Html.DisplayNameFor(model => model.Video.Tittle)*@
+        Thể loại
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Video.Tittle)
     </div>
 </fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="setting-title">
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }, new { @class = "button"})
+    @Html.ActionLink("Quay lại", "Index", null, new { @class = "button", @style="margin-left: 10px;"} )
+</div>

@@ -159,5 +159,13 @@ namespace DoAnWebNgheNhac.Controllers
                 return PartialView(artists);
             }
         }
+
+        public string GetNameById(int id)
+        {
+            if (_iArtistServices != null)
+                return _iArtistServices.GetArtistById(id).Tittle;
+            else
+                return "";
+        }
     }
 }
