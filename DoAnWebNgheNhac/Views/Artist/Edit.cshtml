@@ -14,6 +14,7 @@
     @Html.ValidationSummary(true)
 
     <fieldset class="col-4">
+        <legend></legend>
         @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
@@ -25,7 +26,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ParentId, "Artist")
+            @Html.LabelFor(model => model.ParentId, "ParentId")
         </div>
         <div class="editor-field">
             @Html.DropDownList("ParentId", string.Empty)

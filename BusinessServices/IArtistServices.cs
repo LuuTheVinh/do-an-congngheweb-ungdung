@@ -12,7 +12,7 @@ namespace BusinessServices
         ArtistEntity GetArtistById(int artistId);
         IEnumerable<ArtistEntity> GetAllArtists();
         int CreateArtist(ArtistEntity artistEntity);
-        bool UpdateArtist(int artistId, ArtistEntity artistEntity);
+        bool UpdateArtist(ArtistEntity artistEntity);
         bool DeleteArtist(int artistId);
     }
 }

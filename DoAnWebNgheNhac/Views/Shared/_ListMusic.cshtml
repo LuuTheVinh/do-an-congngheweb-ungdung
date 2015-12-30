@@ -16,7 +16,7 @@
                          }
 						-
 						@*<a style="color: #2582be;" href="/artistproduct/ViewArtist?artistId=@item.ArtistProductId">@item.ArtistProduct.StageName</a>*@
-                        @Html.ActionLink(@item.ArtistProduct.StageName, "ViewArtist", "ArtistProduct", new { artistId = item.ArtistProductId }, new { style = "color: #2582be;" });
+                        @Html.ActionLink(@item.ArtistProduct.StageName, "ViewArtist", "ArtistProduct", new { artistId = item.ArtistProductId }, new { style = "color: #2582be;" })
 					</h3>
 				</div>
                 <div class="meta-song">

@@ -97,7 +97,7 @@ namespace DoAnWebNgheNhac.Controllers
                 return HttpNotFound();
             }
 
-            ViewBag.ParentId = new SelectList(albums, "ParentId", "Tittle", album.ParentId);
+            ViewBag.ParentId = new SelectList(albums, "Id", "Tittle", album.ParentId);
             return View(album);
         }
 

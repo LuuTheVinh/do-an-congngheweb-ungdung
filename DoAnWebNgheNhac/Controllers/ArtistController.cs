@@ -86,7 +86,7 @@ namespace DoAnWebNgheNhac.Controllers
                 return HttpNotFound();
             }
 
-            ViewBag.ParentId = new SelectList(artists, "ParentId", "Tittle", artist.ParentId);
+            ViewBag.ParentId = new SelectList(artists, "Id", "Tittle", artist.ParentId);
             return View(artist);
         }
 
@@ -97,13 +97,13 @@ namespace DoAnWebNgheNhac.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ArtistEntity artist)
         {
-            var artists = _iArtistServices.GetAllArtists().Where(a => a.Level <= 2);
+            //var artists = _iArtistServices.GetAllArtists().Where(a => a.Level <= 2);
             if (ModelState.IsValid)
             {
-                _iArtistServices.UpdateArtist(artist.Id, artist);
+                _iArtistServices.UpdateArtist(artist);
                 return RedirectToAction("Index");
             }
-            ViewBag.ParentId = new SelectList(artists, "ParentId", "Tittle", artist.ParentId);
+            //ViewBag.ParentId = new SelectList(artists, "ParentId", "Tittle", artist.ParentId);
             return View(artist);
         }
 

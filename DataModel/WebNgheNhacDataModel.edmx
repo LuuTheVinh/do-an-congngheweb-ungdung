@@ -89,13 +89,13 @@
           <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Gender" Type="nvarchar" Nullable="false" MaxLength="16" />
-          <Property Name="PhoneNumber" Type="nchar" Nullable="false" MaxLength="16" />
-          <Property Name="Email" Type="nchar" Nullable="false" MaxLength="128" />
+          <Property Name="PhoneNumber" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="128" />
           <Property Name="Birthday" Type="smalldatetime" Nullable="false" />
-          <Property Name="IdentifyCard" Type="nchar" Nullable="false" MaxLength="16" />
+          <Property Name="IdentifyCard" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Thumbnail" Type="nchar" Nullable="false" MaxLength="256" />
+          <Property Name="Thumbnail" Type="nvarchar" Nullable="false" MaxLength="256" />
         </EntityType>
         <EntityType Name="Album">
           <Key>
@@ -138,7 +138,7 @@
           <Property Name="Specialization" Type="nvarchar" Nullable="false" MaxLength="128" />
           <Property Name="GroupId" Type="int" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Thumbnail" Type="nchar" Nullable="false" MaxLength="256" />
+          <Property Name="Thumbnail" Type="nvarchar" Nullable="false" MaxLength="256" />
         </EntityType>
         <EntityType Name="Playlist">
           <Key>
@@ -162,8 +162,8 @@
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
           <Property Name="Category" Type="nvarchar" Nullable="false" MaxLength="32" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="URL" Type="nchar" Nullable="false" MaxLength="256" />
-          <Property Name="Thumbnail" Type="nchar" Nullable="false" MaxLength="256" />
+          <Property Name="URL" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="Thumbnail" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="Views" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -182,8 +182,8 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="AccountInfoId" Type="int" Nullable="false" />
-          <Property Name="UserName" Type="nchar" Nullable="false" MaxLength="32" />
-          <Property Name="Password" Type="nchar" Nullable="false" MaxLength="32" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="SecQuest1" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="SecAnswer1" Type="nvarchar" Nullable="false" MaxLength="256" />
           <Property Name="SecQuest2" Type="nvarchar" Nullable="false" MaxLength="256" />
@@ -499,13 +499,13 @@
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Gender" Type="String" Nullable="false" MaxLength="16" Unicode="true" FixedLength="false" />
-          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="16" Unicode="true" FixedLength="true" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="true" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
           <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="IdentifyCard" Type="String" Nullable="false" MaxLength="16" Unicode="true" FixedLength="true" />
+          <Property Name="IdentifyCard" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Thumbnail" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="true" />
+          <Property Name="Thumbnail" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Users" Relationship="WebNgheNhacDb1Model.FK_User_AccountInfo" FromRole="AccountInfo" ToRole="User" />
         </EntityType>
         <EntityType Name="Album">
@@ -554,7 +554,7 @@
           <Property Name="Specialization" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
           <Property Name="GroupId" Type="Int32" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Thumbnail" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="true" />
+          <Property Name="Thumbnail" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Artist" Relationship="WebNgheNhacDb1Model.FK_ArtistProduct_Artist" FromRole="ArtistProduct" ToRole="Artist" />
           <NavigationProperty Name="Products" Relationship="WebNgheNhacDb1Model.FK_Product_ArtistProduct" FromRole="ArtistProduct" ToRole="Product" />
           <NavigationProperty Name="UserArtists" Relationship="WebNgheNhacDb1Model.FK_UserArtist_UserArtist" FromRole="ArtistProduct" ToRole="UserArtist" />
@@ -583,8 +583,8 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
           <Property Name="Category" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="URL" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="true" />
-          <Property Name="Thumbnail" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="true" />
+          <Property Name="URL" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Thumbnail" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Views" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AlbumProducts" Relationship="WebNgheNhacDb1Model.FK_AlbumProduct_Product" FromRole="Product" ToRole="AlbumProduct" />
           <NavigationProperty Name="ArtistProduct" Relationship="WebNgheNhacDb1Model.FK_Product_ArtistProduct" FromRole="Product" ToRole="ArtistProduct" />
@@ -608,8 +608,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="AccountInfoId" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="true" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="SecQuest1" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="SecAnswer1" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="SecQuest2" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />

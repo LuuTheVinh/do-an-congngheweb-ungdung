@@ -54,7 +54,7 @@ namespace BusinessServices
             }
         }
 
-        public bool UpdateArtist(int artistId, BusinessEntities.ArtistEntity artistEntity)
+        public bool UpdateArtist(BusinessEntities.ArtistEntity artistEntity)
         {
             var success = false;
             if (artistEntity != null)

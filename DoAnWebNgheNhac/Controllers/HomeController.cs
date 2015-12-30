@@ -124,7 +124,7 @@ namespace DoAnWebNgheNhac.Controllers
         /// <returns></returns>
         public ActionResult ArtistIndex(int? Id)
         {
-            var artists = _iArtistServices.GetAllArtists().Where(a => a.ParentId == Id.Value);
+            var artists = _iArtistProductServices.GetAllArtistProducts().Where(a => a.Id == Id.Value);
             return View(artists);
         }
         /// <summary>
