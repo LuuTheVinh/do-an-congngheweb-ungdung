@@ -19,7 +19,8 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Tittle)
+            @*@Html.LabelFor(model => model.Tittle)*@
+            Tên
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Tittle)
@@ -27,7 +28,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ParentId, "ParentId")
+            @*@Html.LabelFor(model => model.ParentId, "ParentId")*@
+            Thuộc
         </div>
         <div class="editor-field">
             @Html.DropDownList("ParentId", string.Empty)
@@ -35,7 +37,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Level)
+            @*@Html.LabelFor(model => model.Level)*@
+            Cấp
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Level)
