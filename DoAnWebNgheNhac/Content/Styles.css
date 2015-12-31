@@ -97,6 +97,7 @@ a:hover {
 .content {
     overflow: hidden;
     width: 860px;
+    margin-bottom: 20px;
 }
 
 .sidebar {

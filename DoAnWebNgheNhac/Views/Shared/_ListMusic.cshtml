@@ -20,8 +20,11 @@
 					</h3>
 				</div>
                 <div class="meta-song">
-                    <span class="">Thể loại: @item.Category </span>
-                     - 
+                    @if (@item.AlbumProducts.Count > 0)
+                    {
+                        <span class="">Album:  @Html.ActionLink(@item.AlbumProducts.First().Album.Tittle, "PlayAlbum", "Home", new { albumId = item.AlbumProducts.First().Album.Id  }, null) -</span>
+                    }
+                    
                     <span class="">Lượt nghe: @item.Views </span>
                 </div>
 

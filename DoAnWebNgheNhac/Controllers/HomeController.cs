@@ -125,7 +125,7 @@ namespace DoAnWebNgheNhac.Controllers
         /// <returns></returns>
         public ActionResult ArtistIndex(int? Id)
         {
-            var artists = _iArtistProductServices.GetAllArtistProducts().Where(a => a.Id == Id.Value);
+            var artists = _iArtistProductServices.GetAllArtistProducts().Where(a => a.Artist.ParentId == Id.Value);
             return View(artists);
         }
         /// <summary>
@@ -263,6 +263,16 @@ namespace DoAnWebNgheNhac.Controllers
                 VideoProducts = null,
                 Views = 123
             };
+        }
+
+        public string GetAlbumNameById(int id)
+        {
+            return _iAlbumServices.GetAlbumById(id).Tittle;
+        }
+
+        public string GetArtistNameById(int id)
+        {
+            return _iArtistServices.GetArtistById(id).Tittle;
         }
     }
 }

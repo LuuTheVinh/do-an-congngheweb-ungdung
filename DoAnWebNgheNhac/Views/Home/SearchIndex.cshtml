@@ -13,12 +13,33 @@
 
     
 
-    <div class="list_music">
-			<div class="title_box">BÀI HÁT</div>
+    
             @{
-                Html.RenderPartial("~/Views/Shared/_ListMusic.cshtml", Model);
+                var groups = Model.GroupBy(x => x.Category);
+
+                foreach (var item in groups)
+                {
+                    if(item.First().Category == "Video")
+                    {
+                        <div class="list_video">
+			                <div class="title_box">VIDEO</div>
+                            @{
+                                Html.RenderPartial("~/Views/Shared/_ListProductVideo.cshtml", item);
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="list_music">
+			                <div class="title_box">BÀI HÁT</div>
+                            @{
+                                Html.RenderPartial("~/Views/Shared/_ListMusic.cshtml", item);
+                            }
+                        </div>
+                    }
+                }
             }
-	</div>
+	
     
 
 
