@@ -116,58 +116,9 @@
 		<div class="title_box">
 			<a href="#">BXH BÀI HÁT</a>
         </div>
-            <ul>
-                <li>
-                    <div class="chart_info_song">
-                        <h3>
-                            <a href="">Anh Vẫn Yêu Em Như Ngày Đầu Tiên</a>
-                        </h3>
-                        <a href="">Cao Thái Sơn</a>
-                        <span class="float-right">247,902</span>
-                        <div class="box_song_action"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="chart_info_song">
-                        <h3>
-                            <a href="">Dưới Những Cơn Mưa</a>
-                        </h3>
-                        <a href="">Mr. Siro</a>
-                        <span>2,091,422</span>
-                        <div class="box_song_action"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="chart_info_song">
-                        <h3>
-                            <a href="">Tội Lỗi</a>
-                        </h3>
-                        <a href="">Hồ Ngọc Hà</a>
-                        <span>1,287,919</span>
-                        <div class="box_song_action"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="chart_info_song">
-                        <h3>
-                            <a href="">Tình Yêu Trong Vòng Tay</a>
-                        </h3>
-                        <a href="">Lương Bích Hữu</a>
-                        <span>209,711</span>
-                        <div class="box_song_action"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="chart_info_song">
-                        <h3>
-                            <a href="">Let Me Be The One</a>
-                        </h3>
-                        <a href="">Trọng Hiếu</a>
-                        <span>12,506</span>
-                        <div class="box_song_action"></div>
-                    </div>
-                </li>
-            </ul>
+             @{
+                Html.RenderPartial("~/Views/Shared/_BXH.cshtml", Model.BXH);
+            }
 	</div>
 </div>
 <div class="clear"></div>

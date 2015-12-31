@@ -14,5 +14,6 @@ namespace BusinessServices
        public IEnumerable<AlbumProductEntity> NhacVietMoi {get; set;}
        public IEnumerable<AlbumEntity> GetAlbum { get; set; }
        public IEnumerable<VideoProductEntity> GetVideo { get; set; }
+       public IEnumerable<ProductEntity> BXH { get; set; }
     }
 }

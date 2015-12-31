@@ -117,5 +117,10 @@
         $('.submit-search').click(function () {
             window.location = '/home/SearchIndex?searchString=' + $('#txtSearch').val();
         });
+        $('#txtSearch').keypress(function (e) {
+            if (e.which == 13) {//Enter key pressed
+                $('.submit-search').click();//Trigger search button click event
+            }
+        });
     });
     </script>

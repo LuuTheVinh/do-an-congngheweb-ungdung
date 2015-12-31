@@ -1,0 +1,40 @@
+﻿@model IEnumerable<BusinessEntities.ProductEntity>
+
+<ul>@{
+        //var max = Math.Max(10, Model.Count());
+        //int index = 5;
+        //int count = Model.Count();
+        //List<BusinessEntities.ProductEntity> select = new List<BusinessEntities.ProductEntity>(10);
+        //if (count < 10)
+        //{
+        //    select = @Model.ToList();
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < 10; )
+        //    {
+        //        if (select.Contains(@Model.ElementAt(index)) == false)
+        //        {
+        //            select.Add(@Model.ElementAt(index));
+        //            if (select.Count == 10)
+        //            {
+        //                break;
+        //            }
+        //        }
+        //    }
+        //}
+        foreach (var item in Model)
+        {
+            <li>
+				<div class="chart_info_song">
+					<h3>
+                        @Html.ActionLink(item.Name, "PlayMusic", "Home", new { id = @item.Id }, null)
+					</h3>
+                     @Html.ActionLink(item.ArtistProduct.StageName,"ViewArtist","ArtistProduct",new {artistId = item.ArtistProductId},null)
+					<span class="float-right">@item.Views</span>
+					<div class="box_song_action"></div>
+				</div>
+			</li>
+        }
+    }
+</ul>

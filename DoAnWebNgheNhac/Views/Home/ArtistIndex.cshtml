@@ -1,0 +1,31 @@
+﻿@model IEnumerable<BusinessEntities.ArtistProductEntity> 
+@{
+    ViewBag.Title = "ViewIndex";
+}
+
+<div class="title_box">
+	<a href="#">ARTIST</a>
+    <span class="fa fa-angle-right"></span>
+    <a href="#"></a>
+</div>
+
+<div class="album-page">
+    <ul class="album-list">
+        @foreach (var item in Model)
+        {
+            <li>
+                 <a class="thumbnail" href="#" onmouseover="">
+                    <span class="fa fa-play-circle play-icon"> </span>
+			        <img src="../../Images/@Html.DisplayFor(modelItem => item.Thumbnail)" />
+		         </a>
+                 <div class="description">
+			         @*<h3><a href="/home/playalbum?id=@item.Id">@Html.DisplayFor(modelItem => item.Tittle)</a></h3>*@
+			         <h4><a href="/ArtistProduct/ViewArtist?artistId=@item.Id">@Html.DisplayFor(modelItem => item.StageName)</a></h4>
+                 </div>
+            </li>
+        }
+    </ul>
+</div>
+
+<script type="text/javascript">
+</script>

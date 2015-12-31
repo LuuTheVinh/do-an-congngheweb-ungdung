@@ -106,8 +106,8 @@
     }
 
     <video id="my_video_1" class="video-js vjs-default-skin" controls width="860" height="600" style="background-color: #3C3C3C; "  data-setup='{"playbackRates": [1, 1.5, 2] }'>
-    <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
-    @*<source src="../../Videos/@Model.URL.TrimEnd()" type="video/mp4">*@
+    @*<source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">*@
+    <source src="../../Videos/@Model.URL.TrimEnd()" type="video/mp4">
     </video>
 
     <div id="functionbar" class="functionbar">
@@ -162,11 +162,19 @@
                 *@<li>
                         <a class="thumbnail" href="#" onmouseover="">
                         <span class="fa fa-play-circle play-icon"> </span>
-			            <img src="">
+			            <img src="/Images/@Model.ArtistProduct.Thumbnail">
 		                </a>
                         <div class="description">
-			                <h3><a href="#"> Tiêu đề album</a></h3>
-			                <h4><a href="#">@Html.DisplayFor(modelItem => modelItem.ArtistProduct.StageName)</a></h4>
+                            @if (@Html.DisplayFor(modelItem => modelItem.AlbumProducts.FirstOrDefault().AlbumId) == null)
+                            {
+			                    <h3><a href="/home/playalbum?albumId=@Model.AlbumProducts.FirstOrDefault().AlbumId">@Html.DisplayFor(modelItem => modelItem.AlbumProducts.FirstOrDefault().Album.Tittle)</a></h3>
+			                    <h4><a href="/artistproduct/viewartist?artistid=@Model.ArtistProductId">@Html.DisplayFor(modelItem => modelItem.ArtistProduct.StageName)</a></h4>
+                            }
+                            else
+                            {
+                                <h3><a href="#">@Html.DisplayFor(modelItem => modelItem.AlbumProducts.FirstOrDefault().Album.Tittle)</a></h3>
+			                    <h4><a href="/artistproduct/viewartist?artistid=@Model.ArtistProductId">@Html.DisplayFor(modelItem => modelItem.ArtistProduct.StageName)</a></h4>
+                            }
                         </div>
                 </li>
             @* }*@
@@ -177,7 +185,19 @@
 		<div class="title_box">
 			<a href="#">VIDEO | MV của @Html.DisplayFor(modelItem => modelItem.ArtistProduct.StageName)</a>
 		</div>
-		<ul>
+        <ul>
+			<li>
+				<a class="thumbnail video_thumbnail" href="">
+                    <span class="fa fa-play-circle play-icon"> </span>
+					<img src="/Images/@Model.Thumbnail">
+				</a>
+				<div class="description">
+					<h3><a href="">@Model.Name</a></h3>
+					<h4><a href="">@Model.ArtistProduct.StageName</a></h4>
+                </div>
+			</li>
+         </ul>
+		@*<ul>
 			<li>
 				<a class="thumbnail video_thumbnail" href="#">
                     <span class="fa fa-play-circle play-icon"> </span>
@@ -218,7 +238,7 @@
 					<h4><a href="">Karik</a></h4>
                 </div>
 			</li>
-		</ul>
+		</ul>*@
 	</div>
 </div>
 
