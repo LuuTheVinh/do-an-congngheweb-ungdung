@@ -30,7 +30,11 @@
                         
                         @Html.ActionLink(@Model.ElementAt(i).ArtistProduct.StageName, "ViewArtist", "ArtistProduct", new { artistId = @Model.ElementAt(i).ArtistProductId }, null)
                     </p> 
+                    <span id="playpausebtn_li_@i.ToString()" class="controlbtn playbtn" >
+                    </span>
+@*                    <script>
 
+                    </script>*@
                     <a href="~/Audio/@Model.ElementAt(i).URL.TrimEnd()" download="@Model.ElementAt(i).URL.TrimEnd()">
                         <div id="downloadbtn" 
                              class="controlbtn textbtn unselectable functionbtn embedbtn" style="float: left;margin-top: 5px;" title="Download bài hát">
