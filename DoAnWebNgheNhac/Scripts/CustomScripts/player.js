@@ -91,6 +91,8 @@ loopbtn.addEventListener("click", loopbtnClick);
 timelineLeft = getPos(timeline)[0];
 volumebarLeft = getPos(volumebar)[0];
 
+$('[id^="playpausebtn_li_"]').bind("click", playpausebtn_li_Click);
+
 window.addEventListener("load", function (args) {
     if ((document.getElementById('playlist')) ? true : false) {
         // Có playlist
@@ -142,7 +144,37 @@ music.addEventListener("canplaythrough", function () {
     high_current(); // highlight
     update_infospan();
     update_lyric()
+
+    updateplaypauseBtn()
+
 }, false);
+
+music.addEventListener("pause",
+    function musicPause() {
+        var current = document.getElementById("musicPlayer").dataset.currenttrack;
+        $('#playpausebtn_li_' + current).removeClass('pausebtn');
+        $('#playpausebtn_li_' + current).addClass('playbtn');
+    }
+    , false);
+
+music.addEventListener("playing",
+    function musicPause() {
+        var current = document.getElementById("musicPlayer").dataset.currenttrack;
+        $('#playpausebtn_li_' + current).removeClass('playbtn');
+        $('#playpausebtn_li_' + current).addClass('pausebtn');
+    }
+    , false);
+
+function updateplaypauseBtn() {
+    // Tất cả các nút btn trở về trạng thái play
+    $('[id^="playpausebtn_li_"]').removeClass('pausebtn');
+    $('[id^="playpausebtn_li_"]').addClass('playbtn');
+    // Nút được nhấn ở trạng thái pause
+
+    var current = document.getElementById("musicPlayer").dataset.currenttrack;
+    $('#playpausebtn_li_' + current).removeClass('playbtn');
+    $('#playpausebtn_li_' + current).addClass('pausebtn');
+}
 
 function high_current() {
     $('#playlist_ul li').css("background-color", "initial");
@@ -581,3 +613,22 @@ $('input:radio[name="report"]').change(function () {
         hide(contentreport);
     }
 });
+
+
+function playpausebtn_li_Click() {
+    var btn = $(this);
+    var listitem = btn.parent().parent();
+
+    // Lấy số id của item trong list
+    var tracknumber = listitem.attr('data-tracknumber');
+
+    // Gán current cho player.
+    document.getElementById("musicPlayer").dataset.currenttrack = tracknumber;
+
+    // gán source âm thanh cho trình phát nhạc
+    music.src = "../../Audio/" + listitem.attr('data-url');
+
+    setCurrentTime(0);
+    movePlayedLine(0);
+}
+

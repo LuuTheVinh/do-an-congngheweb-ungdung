@@ -16,11 +16,12 @@ namespace DoAnWebNgheNhac.Controllers
 
         private readonly IProductServices _iProductServices;
         private readonly IArtistProductServices _iArtistProductServices;
-
-        public ProductController(IProductServices iProductServices, IArtistProductServices iArtistProductServices)
+        private readonly IVideoProductServices _iVideoProductServices;
+        public ProductController(IProductServices iProductServices, IArtistProductServices iArtistProductServices, IVideoProductServices iVideoProductServices)
         {
             this._iProductServices = iProductServices;
             this._iArtistProductServices = iArtistProductServices;
+            this._iVideoProductServices = iVideoProductServices;
         }
 
         //
@@ -53,7 +54,7 @@ namespace DoAnWebNgheNhac.Controllers
 
             int pageSize = 4;
             int pageNumber = (page ?? 1);
-            return View(products);//.ToPagedList(pageNumber, pageSize));
+            return View(products.OrderBy(a => a.Name));//.ToPagedList(pageNumber, pageSize));
         }
 
         //
@@ -75,7 +76,7 @@ namespace DoAnWebNgheNhac.Controllers
         public ActionResult Create()
         {
             var artistproducts = _iArtistProductServices.GetAllArtistProducts();
-            ViewBag.ArtistProductId = new SelectList(artistproducts, "Id", "StageName");
+            ViewBag.ArtistProductId = new SelectList(artistproducts.OrderBy(a => a.StageName), "Id", "StageName");
             return View();
         }
 
@@ -160,5 +161,12 @@ namespace DoAnWebNgheNhac.Controllers
         {
             return PartialView(model);
         }
+
+        public ActionResult AllVideoProduct()
+        {
+            var allvideo = _iVideoProductServices.GetAllVideoProducts();
+            return PartialView("~/Views/Shared/_ListVideo.cshtml", allvideo.OrderByDescending(video => video.Product.Views).Take(8));
+        }
+
     }
 }

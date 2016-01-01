@@ -60,88 +60,63 @@
     }
 
     <div>
-        @* Cái này em lấy lại của th. Vinh thôi. Tại nó cũng giống nhau*@
-        @* Định làm cái server-end giống cái "Bài hát cùng Ca sĩ luôn mà không biết lấy dữ liệu nào *@
         <div class="list_album list_album_musicview">
 		    <div class="title_box">
 			    <a href="#">Album Của @Html.DisplayFor(modelItem => modelItem.ArtistProduct.StageName)</a>
 		    </div>
+
 		    <ul class="album-list">
-@*                @foreach (var item in Model.AlbumProducts.All())
+                @{
+                    var albumproducts = Model.AlbumProducts;
+                    int count = albumproducts.Count();
+                    var max = Math.Max(4, count);
+                    int index;
+                    Random rand = new Random();
+                    List<BusinessEntities.AlbumProductEntity> select = new List<BusinessEntities.AlbumProductEntity>(max);
+                    if (count < max)
+                    {
+                        select = Model.AlbumProducts.ToList();
+                    }
+                    else
+                    {
+                        for (int i = 0; i < max; )
+                        {
+                            index = rand.Next(0, count);
+                            if (select.Contains(@Model.AlbumProducts.ElementAt(index)) == false)
+                            {
+                                select.Add(@Model.AlbumProducts.ElementAt(index));
+                                if (select.Count == max)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                @foreach (var item in select)
                 {
-                    *@<li>
+                    <li>
                          <a class="thumbnail" href="#" onmouseover="">
                             <span class="fa fa-play-circle play-icon"> </span>
 			                <img src="../../Images/@Model.Thumbnail">
 		                 </a>
                          <div class="description">
-			                 <h3><a href="/home/playalbum?albumId=@Html.DisplayFor(modelItem => modelItem.AlbumProducts.First().AlbumId)">@Html.DisplayFor(modelItem => modelItem.AlbumProducts.First().Album.Tittle)</a></h3>
-			                 <h4><a href="#">@Html.DisplayFor(modelItem => modelItem.ArtistProduct.StageName)</a></h4>
+                            <h3>
+                                @Html.ActionLink(item.Album.Tittle, "PlayAlbum", "Home", new {albumId = item.AlbumId}, null)
+                            </h3>
+			                <h4>
+                                @Html.ActionLink(@Model.ArtistProduct.StageName, "ViewArtist", "ArtistProduct", new {artistId = @Model.ArtistProduct.Id}, null)
+			                </h4>
                          </div>
-                    </li>
-               @* }*@
+                    </li>              
+                }
              </ul>
         </div>
     </div>
-    <div class="list_video">
-		<div class="title_box">
-			<a href="#">VIDEO | MV của @Html.DisplayFor(modelItem => modelItem.ArtistProduct.StageName)</a>
-		</div>
-        <ul>
-			<li>
-				<a class="thumbnail video_thumbnail" href="#">
-                    <span class="fa fa-play-circle play-icon"> </span>
-					<img src="images/fe1be290d78713b68429c28181ae06d7_1443687046.jpg">
-				</a>
-				<div class="description">
-					<h3><a href="">Enjoy Your Life</a></h3>
-					<h4><a href="">Karik</a></h4>
-                </div>
-			</li>
-        </ul>
-		@*<ul>
-			<li>
-				<a class="thumbnail video_thumbnail" href="#">
-                    <span class="fa fa-play-circle play-icon"> </span>
-					<img src="images/fe1be290d78713b68429c28181ae06d7_1443687046.jpg">
-				</a>
-				<div class="description">
-					<h3><a href="">Enjoy Your Life</a></h3>
-					<h4><a href="">Karik</a></h4>
-                </div>
-			</li>
-			<li>
-				<a class="thumbnail video_thumbnail" href="#">
-                    <span class="fa fa-play-circle play-icon"> </span>
-					<img src="images/f680e73d65ab72f0f64e9eb03f4357de_1443785226.jpg">
-				</a>
-				<div class="description">
-					<h3><a href="">Enjoy Your Life</a></h3>
-					<h4><a href="">Karik</a></h4>
-                </div>
-			</li>
-			<li>
-				<a class="thumbnail video_thumbnail" href="#">
-                    <span class="fa fa-play-circle play-icon"> </span>
-					<img src="images/f680e73d65ab72f0f64e9eb03f4357de_1443785226.jpg">
-				</a>
-				<div class="description">
-					<h3><a href="">Enjoy Your Life</a></h3>
-					<h4><a href="">Karik</a></h4>
-                </div>
-			</li>
-			<li>
-				<a class="thumbnail video_thumbnail" href="#">
-                    <span class="fa fa-play-circle play-icon"> </span>
-					<img src="images/f680e73d65ab72f0f64e9eb03f4357de_1443785226.jpg">
-				</a>
-				<div class="description">
-					<h3><a href="">Enjoy Your Life</a></h3>
-					<h4><a href="">Karik</a></h4>
-                </div>
-			</li>
-		</ul>*@
-	</div>
+    @{
+        Html.RenderAction("Videos", "ArtistProduct", new { artistId = @Model.ArtistProduct.ArtistId });
+    }
+
 </div>
 
 <div class="box_right">

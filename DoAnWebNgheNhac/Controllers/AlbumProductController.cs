@@ -58,8 +58,8 @@ namespace DoAnWebNgheNhac.Controllers
         {
             var albums = _iAlbumServices.GetAllAlbums();
             var products = _iProductServices.GetAllProducts();
-            ViewBag.AlbumId = new SelectList(albums, "Id", "Tittle");
-            ViewBag.ProductId = new SelectList(products, "Id", "Name");
+            ViewBag.AlbumId = new SelectList(albums.Where(a => a.Level == 3).OrderBy(a => a.Tittle), "Id", "Tittle");
+            ViewBag.ProductId = new SelectList(products.Where(a => a.Category != "Video").OrderBy(a => a.Name), "Id", "Name");
             return View();
         }
 

@@ -54,7 +54,7 @@ namespace DoAnWebNgheNhac.Controllers
             homealbums.NhacVietMoi = _iServices.GetNhacVietMoi();
             homealbums.GetAlbum = _iServices.GetListAlbums().Where( a => a.ParentId == 69);
             homealbums.GetVideo = _iVideoProductServices.GetAllVideoProducts();
-            homealbums.BXH = _iProductServices.GetAllProducts().OrderByDescending(a => a.Views).Where(a => a.Category != "MV");
+            homealbums.BXH = _iProductServices.GetAllProducts().OrderByDescending(a => a.Views).Where(a => a.Category != "Video").Where(a => a.Views != 0);
             return View(homealbums);         
         }
 
@@ -125,7 +125,7 @@ namespace DoAnWebNgheNhac.Controllers
         /// <returns></returns>
         public ActionResult ArtistIndex(int? Id)
         {
-            var artists = _iArtistProductServices.GetAllArtistProducts().Where(a => a.Artist.ParentId == Id.Value);
+            var artists = _iArtistServices.GetAllArtists().Where(a => a.ParentId == Id.Value);
             return View(artists);
         }
         /// <summary>
@@ -184,7 +184,11 @@ namespace DoAnWebNgheNhac.Controllers
         /// <returns></returns>
         public ActionResult PlayMusic(int? id)
         {
-            var product = _iServices.GetProductById(id.Value); 
+            var product = _iServices.GetProductById(id.Value);
+            if (product == null)
+            {
+                return RedirectToAction("PageNotFound", "Home");
+            }
             return View(product);
         }
 
@@ -200,12 +204,13 @@ namespace DoAnWebNgheNhac.Controllers
                 _id = albumId.Value;
             }
             var all_product = _iAlbumProductServices.GetAllAlbumProducts();
-            var productsId = _iAlbumProductServices.GetAllAlbumProducts().Where(album => album.AlbumId == albumId)
+            var productsId = _iAlbumProductServices.GetAllAlbumProducts().Where(album => album.AlbumId == _id)
                 .Select(album => album.ProductId);
             if (productsId.Any() == false)
             {
-                return null;
+                return RedirectToAction("PageNotFound", "Home");
             }
+
             List<BusinessEntities.ProductEntity> products = new List<BusinessEntities.ProductEntity>();
             foreach (var id in productsId)
             {
@@ -230,6 +235,11 @@ namespace DoAnWebNgheNhac.Controllers
                 var videos = _iServices.GetProductById(Id); 
                 return View(videos);
             }
+        }
+
+        public ActionResult PageNotFound()
+        {
+            return View();
         }
 
         private BusinessEntities.ProductEntity getTestVideoValue()
@@ -257,7 +267,7 @@ namespace DoAnWebNgheNhac.Controllers
                 Id = -1,
                 Name = "Go Buster",
                 Thumbnail = "../../Videos/Shi jin.mp4",
-                URL = "../../Images/judithhill.jpg",
+                URL ="http://vjs.zencdn.net/v/oceans.mp4",
                 UserComments = null,
                 UserLikes = null,
                 VideoProducts = null,
