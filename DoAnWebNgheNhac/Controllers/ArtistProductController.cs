@@ -152,13 +152,12 @@ namespace DoAnWebNgheNhac.Controllers
         public ActionResult Songs(int artistId = -1)
         {
             // Lấy những bài hát của cùng môt ca sĩ
-            // Chưa test
             if (artistId == -1)
             {
                 ICollection<ProductEntity> products = getProductsTestValue();
                 ViewData["ArtistName"] = getTestArtistName();
                 System.Diagnostics.Debug.Write("artistId = -1");
-                return PartialView(products);
+                return PartialView(products.Where(product => product.Category != "Mv"));
             }
             var allartistproduct = _iArtistProductServices.GetAllArtistProducts();
 
@@ -167,17 +166,49 @@ namespace DoAnWebNgheNhac.Controllers
             if (allartistproduct.Any())
             {
                 var foundArtist = allartistproduct.Where(art => art.ArtistId == artistId);
-                ICollection<ProductEntity> products = null;
+                IEnumerable<ProductEntity> products = null;
                 if (foundArtist.Any())
                 {
                     products = foundArtist.First().Products;
+                    if (products != null)
+                    {
+                        products = products.Where(product => product.Category != "Mv");
+                    }
                     ViewData["ArtistName"] = foundArtist.First().StageName;
                     return PartialView(products);
                 }
             }
             return null;
-        }
 
+        }
+        public ActionResult Videos(int artistId = -1)
+        {
+            // Lất những video của một ca sĩ.
+            if (artistId == -1)
+            {
+                var products = getProductsTestValue();
+                return PartialView(products.Where(product => product.Category == "MV"));
+            }
+            else
+            {
+                var allartistproduct = _iArtistProductServices.GetAllArtistProducts();
+
+                var foundartist = allartistproduct.Where(artist => artist.ArtistId == artistId);
+                string artistname = String.Empty;
+                if (foundartist.Any())
+                {
+                    IEnumerable<ProductEntity> products = foundartist.First().Products;
+                    if (products != null)
+                    {
+                        products = products.Where(product => product.Category == "Mv");
+                    }
+                    ViewData["ArtistName"] = foundartist.First().StageName;
+
+                    return PartialView(products);
+                }
+            }
+            return null;
+        }
         private string getTestArtistName()
         {
             return getArtistTestValue().StageName;
@@ -185,20 +216,21 @@ namespace DoAnWebNgheNhac.Controllers
 
         private ICollection<ProductEntity> getProductsTestValue()
         {
+          
             return new List<ProductEntity>()
             {
-                new ProductEntity(){Name = "Nắng Và Mưa", Views =  2594599, ArtistProductId = -1, Id = 3},
-                new ProductEntity(){Name = "Đôi Khi Muốn", Views = 3943778, ArtistProductId = -1, Id = 3},
-                new ProductEntity(){Name = "Đàn Ông Là Thế (Remix)", Views = 180565, ArtistProductId = -1, Id = 3},
-                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405, ArtistProductId = -1, Id = 3},
-                new ProductEntity(){Name = "Trang Giấy Trắng", Views = 3329897, ArtistProductId = -1, Id = 3},
-                new ProductEntity(){Name = "Đừng Đánh Mất Hạnh Phúc", Views =  340335, ArtistProductId = -1, Id = 3},
-                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405, ArtistProductId = -1, Id = 3},
-                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405, ArtistProductId = -1, Id = 3},
-                new ProductEntity(){Name = "Người Dự Bị", Views = 1700114, ArtistProductId = -1, Id = 3},
-                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405, ArtistProductId = -1, Id = 3},
-                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405, ArtistProductId = -1, Id = 3},
-                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405, ArtistProductId = -1, Id = 3},
+                new ProductEntity(){Name = "Nắng Và Mưa",  Views =  2594599, ArtistProductId = -1, Id = 1},
+                new ProductEntity(){Name = "Đôi Khi Muốn",  Views = 3943778, ArtistProductId = -1, Id = 2},
+                new ProductEntity(){Name = "Đàn Ông Là Thế (Remix)",  Views = 180565, ArtistProductId = -1, Id = 3},
+                new ProductEntity(){Name = "Hai Ba Năm",Views = 6889405, ArtistProductId = -1, Id = 4},
+                new ProductEntity(){Name = "Trang Giấy Trắng", Views = 3329897, ArtistProductId = -1, Id = 5},
+                new ProductEntity(){Name = "Đừng Đánh Mất Hạnh Phúc", Views =  340335, ArtistProductId = -1, Id = 6},
+                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405, ArtistProductId = -1, Id = 7},
+                new ProductEntity(){Name = "Hai Ba Năm", Views = 6889405, ArtistProductId = -1, Id = 8},
+                new ProductEntity(){Name = "Người Dự Bị", Views = 1700114, ArtistProductId = -1, Id = 9},
+                new ProductEntity(){Name = "Siêu nhân đại chiến", Category = "MV", Views = 271, ArtistProductId = -1, Id = 10},
+                new ProductEntity(){Name = "Thuỷ Thủ Mặt Trăng",Category = "MV", Views = 6889405, ArtistProductId = -1, Id = 11},
+                new ProductEntity(){Name = "Kamen Raider OOO Full Hd", Category = "MV", Views = 6889405, ArtistProductId = -1, Id = 12},
             };
         }
 

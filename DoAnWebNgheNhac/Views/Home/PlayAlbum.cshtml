@@ -22,6 +22,7 @@
         <meta name="og:sitename"           content="Web Nghe Nhac" />
 }
 @{
+
     ViewBag.Title = currentProduct.Name + " - " + currentProduct.ArtistProduct.StageName;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -75,6 +76,14 @@
         <script type="text/javascript" src="~/Scripts/CustomScripts/player.js")" ></script>
     }
 
+	<div class="list_video">
+		<div class="title_box">
+			<a href="#">VIDEO | MV</a>
+		</div>
+        @{
+            Html.RenderAction("AllVideoProduct", "Product");
+        }
+    </div>
 </div>
 
 <div class="box_right">

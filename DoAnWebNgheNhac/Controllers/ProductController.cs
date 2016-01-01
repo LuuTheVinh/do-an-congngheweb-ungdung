@@ -16,11 +16,12 @@ namespace DoAnWebNgheNhac.Controllers
 
         private readonly IProductServices _iProductServices;
         private readonly IArtistProductServices _iArtistProductServices;
-
-        public ProductController(IProductServices iProductServices, IArtistProductServices iArtistProductServices)
+        private readonly IVideoProductServices _iVideoProductServices;
+        public ProductController(IProductServices iProductServices, IArtistProductServices iArtistProductServices, IVideoProductServices iVideoProductServices)
         {
             this._iProductServices = iProductServices;
             this._iArtistProductServices = iArtistProductServices;
+            this._iVideoProductServices = iVideoProductServices;
         }
 
         //
@@ -160,5 +161,12 @@ namespace DoAnWebNgheNhac.Controllers
         {
             return PartialView(model);
         }
+
+        public ActionResult AllVideoProduct()
+        {
+            var allvideo = _iVideoProductServices.GetAllVideoProducts();
+            return PartialView("~/Views/Shared/_ListVideo.cshtml", allvideo.OrderByDescending(video => video.Product.Views).Take(8));
+        }
+
     }
 }
