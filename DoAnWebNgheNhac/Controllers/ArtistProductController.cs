@@ -26,7 +26,7 @@ namespace DoAnWebNgheNhac.Controllers
 
         public ActionResult Index()
         {
-            var artistproducts = _iArtistProductServices.GetAllArtistProducts();
+            var artistproducts = _iArtistProductServices.GetAllArtistProducts().OrderBy(a => a.StageName);
             return View(artistproducts.ToList());
         }
 
@@ -49,7 +49,7 @@ namespace DoAnWebNgheNhac.Controllers
         public ActionResult Create()
         {
             var artists = _iArtistServices.GetAllArtists().Where(a => a.Level == 3);
-            ViewBag.ArtistId = new SelectList(artists, "Id", "Tittle");
+            ViewBag.ArtistId = new SelectList(artists.OrderBy(a => a.Tittle), "Id", "Tittle");
             return View();
         }
 

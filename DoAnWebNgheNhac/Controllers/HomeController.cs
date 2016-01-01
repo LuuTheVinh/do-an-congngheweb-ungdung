@@ -54,7 +54,7 @@ namespace DoAnWebNgheNhac.Controllers
             homealbums.NhacVietMoi = _iServices.GetNhacVietMoi();
             homealbums.GetAlbum = _iServices.GetListAlbums().Where( a => a.ParentId == 69);
             homealbums.GetVideo = _iVideoProductServices.GetAllVideoProducts();
-            homealbums.BXH = _iProductServices.GetAllProducts().OrderByDescending(a => a.Views).Where(a => a.Category != "MV");
+            homealbums.BXH = _iProductServices.GetAllProducts().OrderByDescending(a => a.Views).Where(a => a.Category != "Video").Where(a => a.Views != 0);
             return View(homealbums);         
         }
 
@@ -125,7 +125,7 @@ namespace DoAnWebNgheNhac.Controllers
         /// <returns></returns>
         public ActionResult ArtistIndex(int? Id)
         {
-            var artists = _iArtistProductServices.GetAllArtistProducts().Where(a => a.Artist.ParentId == Id.Value);
+            var artists = _iArtistServices.GetAllArtists().Where(a => a.ParentId == Id.Value);
             return View(artists);
         }
         /// <summary>

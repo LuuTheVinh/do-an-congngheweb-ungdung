@@ -53,7 +53,7 @@ namespace DoAnWebNgheNhac.Controllers
 
             int pageSize = 4;
             int pageNumber = (page ?? 1);
-            return View(products);//.ToPagedList(pageNumber, pageSize));
+            return View(products.OrderBy(a => a.Name));//.ToPagedList(pageNumber, pageSize));
         }
 
         //
@@ -75,7 +75,7 @@ namespace DoAnWebNgheNhac.Controllers
         public ActionResult Create()
         {
             var artistproducts = _iArtistProductServices.GetAllArtistProducts();
-            ViewBag.ArtistProductId = new SelectList(artistproducts, "Id", "StageName");
+            ViewBag.ArtistProductId = new SelectList(artistproducts.OrderBy(a => a.StageName), "Id", "StageName");
             return View();
         }
 

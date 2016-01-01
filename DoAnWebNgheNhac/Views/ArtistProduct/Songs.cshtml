@@ -35,7 +35,7 @@
                 <li>
                 <div class="chart_info_song">
                     <h3>
-                        @if(@product.Category != "MV")
+                        @if(@product.Category != "Video")
                         {
                             @*<a href="">@product.Name</a>*@
                             @Html.ActionLink(@product.Name,"PlayMusic","Home",new {id = @product.Id},null)

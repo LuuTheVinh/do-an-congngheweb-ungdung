@@ -24,14 +24,14 @@ namespace DoAnWebNgheNhac.Controllers
         public ActionResult Index()
         {
             //var products = new ProductEntity();
-            var bxh = _iProductSerices.GetAllProducts().OrderByDescending(a => a.Views).Where(a => a.Category != "MV");
+            var bxh = _iProductSerices.GetAllProducts().OrderByDescending(a => a.Views).Where(a => a.Category != "Video");
             return View(bxh);
         }
 
         public ActionResult ViewIndex()
         {
             //var products = new ProductEntity();
-            var bxh = _iProductSerices.GetAllProducts().OrderByDescending(a => a.Views).Where(a => a.Category != "MV");
+            var bxh = _iProductSerices.GetAllProducts().OrderByDescending(a => a.Views).Where(a => a.Category != "Video");
             return View(bxh);
         }
       

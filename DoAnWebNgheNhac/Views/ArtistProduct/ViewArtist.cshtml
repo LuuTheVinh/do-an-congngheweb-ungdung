@@ -31,8 +31,16 @@
 			            <img src="../../Images/@Model.Thumbnail">
 		                </a>
                         <div class="description">
-			                <h3><a href="/home/playalbum?albumId=@Model.Products.FirstOrDefault().AlbumProducts.FirstOrDefault().AlbumId">@Model.Products.FirstOrDefault().AlbumProducts.FirstOrDefault().Album.Tittle</a></h3>
-			                <h4><a href="">@Model.StageName</a></h4>
+                            @if(Model.Products.Any() == null)
+                            {
+			                    <h3><a href="/home/playalbum?albumId=@Model.Products.FirstOrDefault().AlbumProducts.FirstOrDefault().AlbumId">@Model.Products.FirstOrDefault().AlbumProducts.FirstOrDefault().Album.Tittle</a></h3>
+			                    <h4><a href="">@Model.StageName</a></h4>
+                            }
+                            else
+                            {
+                                <h3><a href="">Không Có Album</a></h3>
+			                    <h4><a href="">@Model.StageName</a></h4>
+                            }
                         </div>
                 </li>
             @* }*@

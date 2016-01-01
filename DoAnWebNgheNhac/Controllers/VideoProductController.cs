@@ -51,8 +51,8 @@ namespace DoAnWebNgheNhac.Controllers
         {
             var products = _iProductServices.GetAllProducts();
             var videos = _iVideoServices.GetAllVideos();
-            ViewBag.ProductId = new SelectList(products, "Id", "Name");
-            ViewBag.VideoId = new SelectList(videos, "Id", "Tittle");
+            ViewBag.ProductId = new SelectList(products.Where(a => a.Category == "Video"), "Id", "Name");
+            ViewBag.VideoId = new SelectList(videos.Where(a => a.Level == 2), "Id", "Tittle");
             return View();
         }
 
