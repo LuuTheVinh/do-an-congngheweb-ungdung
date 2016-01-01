@@ -82,7 +82,7 @@
 
 </fieldset>
 
-    <div class="editor-field">
-            @Html.ActionLink("Edit", "Edit", new { id=Model.Id }, new  { @class = "button"})
-            @Html.ActionLink("Quay lại", "Index", null, new { @class = "button "})
-    </div>
+<div class="setting-title">
+        @Html.ActionLink("Sửa", "Edit", new { id=Model.Id }, new  { @class = "button"})
+        @Html.ActionLink("Quay lại", "Index", null, new { @class = "button ", @style="margin-left: 10px;"})
+</div>
