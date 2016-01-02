@@ -4,7 +4,7 @@
         <div id="artistthumbnail"class="thumbnail-artist">
                 <a href="~/ArtistProduct/ViewArtist?artistId=@Model.ArtistProductId" 
                    title="@Html.DisplayFor(modelItem => modelItem.ArtistProduct.StageName))">
-                    <img src="/Images/@Model.ArtistProduct.Thumbnail.TrimEnd()" 
+                    <img src="@Model.ArtistProduct.Thumbnail.TrimEnd()" 
                          alt="@Html.DisplayFor(modelItem => modelItem.ArtistProduct.StageName)" 
                          class="thumbnail-artist"/>
                 </a>

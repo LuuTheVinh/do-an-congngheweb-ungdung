@@ -4,10 +4,10 @@
     <div id="musicPlayer" class="player unselectable" data-currenttrack="0">
 
         <audio id="playingsong" autoplay>
-            <source src="/Audio/@PageData["product"].URL.TrimEnd()" type="audio/mp3"/>
+            <source src="@PageData["product"].URL.TrimEnd()" type="audio/mp3"/>
         </audio>
 
-        <div class="player_background" style="background-image:url(/Images/@PageData["product"].Thumbnail.TrimEnd()); ">
+        <div class="player_background" style="background-image:url(@PageData["product"].Thumbnail.TrimEnd()); ">
             <div class="player_background_msk"></div>
         </div>
         <div class="player_lyric">
