@@ -20,7 +20,7 @@
         <meta name="og:sitename"           content="Web Nghe Nhac" />
 }
 @{
-    ViewBag.Title = @Html.DisplayFor(modelItem => modelItem.Name) + " - " + @Html.DisplayFor(modelItem => modelItem.ArtistProduct.StageName);
+    ViewBag.Title = Model.Name.TrimEnd() + " - " + Model.ArtistProduct.StageName.TrimEnd();
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -35,7 +35,10 @@
         Html.RenderAction("InfoSpan", "Product",Model);
     }
 
+
     @RenderPage("~/Views/Product/_MediaPlayer.cshtml", new { product = @Model })
+
+
     @RenderPage("~/Views/Product/_ComunityBar.cshtml", new { text="Lượt Nghe"})
 
     <div id="lyricbox" class="lyricbox">
@@ -45,7 +48,7 @@
         </div>
         <div id="lyric-content" class="lyric-content">
             @{
-                var lyric = Model.Description.Split('\n');
+                var lyric = Model.Description.Split('#');
                 foreach (var item in lyric)
 	            {
 		            <p>@item</p>
@@ -98,7 +101,7 @@
                     <li>
                          <a class="thumbnail" href="#" onmouseover="">
                             <span class="fa fa-play-circle play-icon"> </span>
-			                <img src="../../Images/@Model.Thumbnail">
+			                <img src="../../Images/@Model.Thumbnail.TrimEnd()">
 		                 </a>
                          <div class="description">
                             <h3>
@@ -124,6 +127,9 @@
     @*Lấy những bài hát cùng ca sĩ*@
     
     @{
-        Html.RenderAction("Songs", "ArtistProduct", new { artistId = @Model.ArtistProduct.ArtistId });
+        Html.RenderAction(
+            "Songs",
+            "ArtistProduct", 
+            new { artistId = @Model.ArtistProduct.ArtistId });
     } 
 </div>

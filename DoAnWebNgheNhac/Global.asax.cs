@@ -10,6 +10,7 @@ using System.Web.Routing;
 using AutoMapper;
 using DataModel;
 using BusinessEntities;
+using WebMatrix.WebData;
 
 namespace DoAnWebNgheNhac
 {
@@ -27,6 +28,7 @@ namespace DoAnWebNgheNhac
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+            //WebSecurity.InitializeDatabaseConnection("DefaultConnection", "User", "Id", "UserName", autoCreateTables: true);
             CreateMaps();
         }
 
@@ -82,6 +84,7 @@ namespace DoAnWebNgheNhac
 
             Mapper.CreateMap<UserLike, UserLikeEntity>();
             Mapper.CreateMap<UserLikeEntity, UserLike>();
+
         }
     }
 }

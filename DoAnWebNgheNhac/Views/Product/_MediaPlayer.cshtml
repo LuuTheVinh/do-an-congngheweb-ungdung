@@ -1,38 +1,16 @@
 ﻿
 
-@{
-    // Thời gian đã play của một đoạn nhạc, đơn vị phần trăm so với đoạn text. dùng để vẽ đoạn nhạc đã qua.
-    var karapercent = "17";
-
-    // Đoạn text kara lyric, được vẽ ở dòng trên.
-    var upperlyric = "Làm em cuồng điên vì khóc";
-
-    // Đoạn text kara lyric, được vẽ ở dòng dưới.
-    var lowerlyric = "Làm em cuồng điên vì yêu";    
-}
 
     <div id="musicPlayer" class="player unselectable" data-currenttrack="0">
-        <audio id="playingsong" autoplay>
 
+        <audio id="playingsong" autoplay>
             <source src="/Audio/@PageData["product"].URL.TrimEnd()" type="audio/mp3"/>
-            @*<source src="~/Audio/Pokemon_Season6.mp3" type="audio/mp3"/>*@
         </audio>
 
-        <div class="player_background" style="background-image:url(/Images/@PageData["product"].Thumbnail); ">
+        <div class="player_background" style="background-image:url(/Images/@PageData["product"].Thumbnail.TrimEnd()); ">
             <div class="player_background_msk"></div>
         </div>
         <div class="player_lyric">
-            <p class="lyric_item">
-                @upperlyric
-                <span> </span>
-            </p>
-            <br>
-            <p class="lyric_item">
-                @lowerlyric
-                <span class="span_kara" style="width:@karapercent%">
-                @lowerlyric
-                </span>
-            </p>
         </div>
         <div id="timelinecontrol" class="timeslide" >
             <div id="timeline" class="timeslideloaded">

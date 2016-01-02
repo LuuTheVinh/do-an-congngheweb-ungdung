@@ -207,15 +207,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountInfoController.cs" />
     <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\AlbumProductController.cs" />
     <Compile Include="Controllers\ArtistController.cs" />
     <Compile Include="Controllers\ArtistProductController.cs" />
+    <Compile Include="Controllers\BXHController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Controllers\VideoProductController.cs" />
-    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -417,6 +422,34 @@
     <Content Include="Views\Home\MenuAlbum.cshtml" />
     <Content Include="Views\Home\AlbumIndex.cshtml" />
     <Content Include="Views\Home\PlayAlbum.cshtml" />
+    <Content Include="Views\Product\InfoSpan.cshtml" />
+    <Content Include="Views\Product\_ComunityBar.cshtml" />
+    <Content Include="Views\Product\_MediaPlayer.cshtml" />
+    <Content Include="Views\Home\ArtistIndex.cshtml" />
+    <Content Include="Views\ArtistProduct\ViewArtist.cshtml" />
+    <Content Include="Views\Home\VideoIndex.cshtml" />
+    <Content Include="Views\Shared\_ListAlbum.cshtml" />
+    <Content Include="Views\Shared\_ListAlbumMusic.cshtml" />
+    <Content Include="Views\Shared\_ListMusic.cshtml" />
+    <Content Include="Views\Shared\_ListVideo.cshtml" />
+    <Content Include="Views\Home\MenuArtist.cshtml" />
+    <Content Include="Views\Home\MenuVideo.cshtml" />
+    <Content Include="Views\BXH\Index.cshtml" />
+    <Content Include="Views\BXH\ViewIndex.cshtml" />
+    <Content Include="Views\Shared\_BXH.cshtml" />
+    <Content Include="Views\AccountInfo\Index.cshtml" />
+    <Content Include="Views\AccountInfo\Details.cshtml" />
+    <Content Include="Views\AccountInfo\Create.cshtml" />
+    <Content Include="Views\AccountInfo\Edit.cshtml" />
+    <Content Include="Views\AccountInfo\Delete.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\LogIn.cshtml" />
+    <Content Include="Views\Home\PageNotFound.cshtml" />
+    <Content Include="Views\Shared\_ListProductVideo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj">

@@ -128,8 +128,8 @@ namespace DoAnWebNgheNhac.Controllers
         public ActionResult Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
+                message == ManageMessageId.ChangePasswordSuccess ? "Đã thay đổi mật khẩu"
+                : message == ManageMessageId.SetPasswordSuccess ? "Thiết lập mật khẩu thành công"
                 : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
                 : "";
             ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
@@ -168,7 +168,7 @@ namespace DoAnWebNgheNhac.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
+                        ModelState.AddModelError("", "Mật khẩu hiện tại không chính xác hoặc mật khẩu mới không hợp lệ");
                     }
                 }
             }
@@ -191,7 +191,7 @@ namespace DoAnWebNgheNhac.Controllers
                     }
                     catch (Exception)
                     {
-                        ModelState.AddModelError("", String.Format("Unable to create local account. An account with the name \"{0}\" may already exist.", User.Identity.Name));
+                        ModelState.AddModelError("", String.Format("Tạo mật khẩu thất bại. Mật khẩu với tên \"{0}\" có thể đã tồn tại", User.Identity.Name));
                     }
                 }
             }
@@ -280,7 +280,7 @@ namespace DoAnWebNgheNhac.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("UserName", "User name already exists. Please enter a different user name.");
+                        ModelState.AddModelError("UserName", "Tài khoản này đã tồn tại!");
                     }
                 }
             }
