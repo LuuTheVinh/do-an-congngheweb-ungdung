@@ -1064,10 +1064,14 @@ td.text-right {
 
 .editor-label {
     margin-bottom: 5px;
+    display: block;
+    overflow:hidden;
 }
 
 .editor-field {
     margin-bottom: 10px;
+    display: block;
+    overflow: hidden;
 }
 
 .item-song {
@@ -1099,4 +1103,76 @@ td.text-right {
 .thumb-small img {
     width: 100%;
     height: auto;
+}
+
+.progress {
+    height: 5px;
+    width: 100%;
+    background: #f1f1f1;
+}
+
+.progress-bar {
+    background: #00ff7a;
+    height: 100%;
+    width: 0;
+}
+
+.fileinput-button {
+    position: relative;
+    padding: 10px 20px;
+    background: #f1f1f1;
+    display: block;
+    float: left;
+}
+
+.fileinput-button i {
+    margin-left: -10px;
+    margin-right: 5px;
+}
+
+.success-button {
+    background: #00ff7a;
+}
+
+.fileinput-button input {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.imageinput-button {
+    background: #f1f1f1;
+    display: block;
+    float: left;
+    height: 200px;
+    width: 200px;
+    position: relative;
+}
+
+.imageinput-button i {
+    display: block;
+    font-size: 80px;
+    left: 34%;
+    opacity: 0.0;
+    position: absolute;
+    top: 32%;
+    transition: 200ms;
+}
+
+.imageinput-button:hover i {
+    opacity: .5;
+}
+
+.imageinput-button input {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
 }

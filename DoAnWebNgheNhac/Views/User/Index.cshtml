@@ -1,0 +1,70 @@
+﻿@model IEnumerable<BusinessEntities.UserEntity>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountInfo.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecQuest1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecAnswer1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecQuest2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecAnswer2)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountInfo.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecQuest1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecAnswer1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecQuest2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecAnswer2)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

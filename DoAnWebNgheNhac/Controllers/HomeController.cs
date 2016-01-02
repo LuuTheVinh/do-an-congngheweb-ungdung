@@ -19,6 +19,7 @@ namespace DoAnWebNgheNhac.Controllers
         private readonly IArtistProductServices _iArtistProductServices;
 
         private readonly IProductServices _iProductServices;
+        private readonly IUserServices _iUserServices;
         /// <summary>
         /// Home Constructor 
         /// </summary>
@@ -28,7 +29,7 @@ namespace DoAnWebNgheNhac.Controllers
         /// <param name="iMenuServices"></param>
 
         public HomeController(IServices iServices, IAlbumServices iAlbumServices, IAlbumProductServices iAlbumProductServices, IMenuServices iMenuServices, IProductServices iProductServices
-            , IVideoProductServices iVideoProductService, IVideoServices iVideoServices, IArtistServices iArtistServices, IArtistProductServices iArtistProductServices)
+            , IVideoProductServices iVideoProductService, IVideoServices iVideoServices, IArtistServices iArtistServices, IArtistProductServices iArtistProductServices, IUserServices iUserServices)
 
         {
             this._iServices = iServices;
@@ -40,7 +41,7 @@ namespace DoAnWebNgheNhac.Controllers
             this._iVideoServices = iVideoServices;
             this._iArtistServices = iArtistServices;
             this._iArtistProductServices = iArtistProductServices;
-
+            this._iUserServices = iUserServices;
         }
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace DoAnWebNgheNhac.Controllers
             homealbums.NhacVietHot = _iServices.GetNhacVietHot();
             homealbums.NhacVietMoi = _iServices.GetNhacVietMoi();
             homealbums.GetAlbum = _iServices.GetListAlbums().Where( a => a.ParentId == 69);
-            homealbums.GetVideo = _iVideoProductServices.GetAllVideoProducts();
+            homealbums.GetVideo = _iVideoProductServices.GetAllVideoProducts().Where(a => a.ProductId < 20);
             homealbums.BXH = _iProductServices.GetAllProducts().OrderByDescending(a => a.Views).Where(a => a.Category != "Video").Where(a => a.Views != 0);
             return View(homealbums);         
         }

@@ -16,9 +16,9 @@ namespace BusinessServices
         private readonly UnitOfWork _unitOfWork;
 
         public AlbumProductServices()
-        {
-            _unitOfWork = new UnitOfWork();
-        }
+       {
+           _unitOfWork = new UnitOfWork();
+       }
 
         public BusinessEntities.AlbumProductEntity GetAlbumProductById(int albumProductId)
         {

@@ -5,6 +5,8 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+@System.Web.Optimization.Styles.Render("~/backload/blueimp/bootstrap/BasicPlusUI/css")
+
 <div class="setting-title">
     <h2 class="title_box">Sửa @Html.DisplayFor(model => model.StageName)</h2>
 </div>
@@ -20,13 +22,19 @@
 
         <div class="editor-label">
             @*@Html.LabelFor(model => model.Thumbnail)*@
-            <img src="@Html.DisplayFor(model => model.Thumbnail)" width="100" height="100"/>
+            Ảnh
+            <br />
+            <div class="imageinput-button">
+                <i class="fa fa-plus"></i>
+                <img class="thumb-upload" src="@Html.DisplayFor(model => model.Thumbnail)" width="200" height="200" />
+                <input id="imageupload" type="file" accept="image/*">
+                <input type="hidden" class="object-context" value="thumbnails">
+                <input type="hidden" class="upload-context" value="artists">
+            </div>
         </div>
         <div class="editor-field">
-            from Url:
             @Html.EditorFor(model => model.Thumbnail)
             @Html.ValidationMessageFor(model => model.Thumbnail)
-            <input id="thumbnailPicker" type="file" accept="image/*" />
         </div>
 
         <div class="editor-label">
@@ -120,4 +128,12 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <!-- Scripts for the jQquery File Upload Plugin in Basic Plus UI style* -->
+    @Scripts.Render("~/backload/blueimp/bootstrap/Basic")
+    <!-- resize image -->
+    @Scripts.Render("~/bundles/jquery/resizeimage")
+
+
+    @Scripts.Render("~/Scripts/image.upload.js")
 }

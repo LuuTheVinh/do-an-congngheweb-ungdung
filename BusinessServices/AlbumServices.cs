@@ -67,7 +67,6 @@ namespace BusinessServices
         {
             using (var scope = new TransactionScope())
             {
-                Mapper.CreateMap<AlbumEntity, Album>();
                 var album = Mapper.Map<AlbumEntity, Album>(albumEntity);
                 _unitOfWork.AlbumRepository.Insert(album);
                 _unitOfWork.Save();
