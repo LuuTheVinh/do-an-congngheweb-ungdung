@@ -1,0 +1,22 @@
+﻿@model IEnumerable<BusinessEntities.AlbumProductEntity>
+@{
+    ViewBag.Title = "Albums";
+}
+
+@if(Model.Count() > 0)
+{
+
+foreach (var item in Model)
+{
+    <li>
+            <a class="thumbnail" href="#" onmouseover="">
+            <span class="fa fa-play-circle play-icon"> </span>
+			<img src="@item.Product.Thumbnail">
+		    </a>
+            <div class="description">
+                <h3><a href="">@item.Album.Tittle</a></h3>
+			    <h4><a href="">@item.Product.ArtistProduct.StageName</a></h4>
+            </div>
+    </li>
+}
+}

@@ -399,6 +399,11 @@ footer p {
         color: #fff;
     }
 
+.nav-account form {
+    float: right;
+    margin-left: 5px;
+}
+
 /* Login Popup */
 
 .centeredText  {
@@ -962,7 +967,7 @@ td.text-right {
     width: 100%;
 }
 
-.editor-field input[type="text"], .editor-field input[type="number"] {
+.editor-field input[type="text"], .editor-field input[type="number"], .editor-field input[type="password"] {
     padding: 10px;
     margin-bottom: 15px;
     width: 100%;
@@ -1204,3 +1209,19 @@ td.text-right {
     #fileupload .start:hover span,  #fileupload .cancel:hover span, #fileupload .delete:hover span {
         color: #fff;
     }
+
+.validation-summary-errors li {
+    color: red;
+}
+
+.field-validation-error span {
+    color: red;
+}
+
+.message-success {
+    color: #00ff7a;
+}
+
+.color-title {
+    color: #ff6a00;
+}

@@ -8,19 +8,18 @@
 <link rel="stylesheet" type="text/css" href="../../Content/CustomStyle/viewartist.css">
 
 <div id="banner" class="banner">
-    <img src="~/Images/artist_thumbnail/@Model.Thumbnail" alt="@Model.StageName" class="banner"/>
+    <img src="~/Images/artist_bacground.jpg" alt="@Model.StageName" />
     <div id="info-artist-img" class="info-artist-img ">
-        <img src="~/Images/@Model.Thumbnail" height="160" width="160"/>
+        <img src="@Model.Thumbnail" height="160" width="160"/>
         <h1 class="info-artist-img-h1">@Model.StageName</h1>
-        <p class="info-artist-img-p">@Model.Description 
-            Bảo Thy nổi tiếng sau khi lọt vào top 10 người đẹp nhất theo bình chọn của game Võ Lâm Truyền Kỳ 2006 và Bảo Thy cũng là thí sinh gây ấn tượng nhất trong đêm Gala Miss Audition 2007.</p>
+        <p class="info-artist-img-p">@Model.Description </p>
     </div>
 </div>
 
 <div class="box_left">
     <div class="list_album list_album_musicview">
-	    <div class="title_box">
-		    <a href="#">Album Của @Model.StageName</a>
+	    <div class="title_box color-title" >
+		    Album Của @Model.StageName
 	    </div>
 	    <ul class="album-list">
     @*      @foreach (var item in Model.AlbumProducts.All())
@@ -28,7 +27,7 @@
                 *@<li>
                         <a class="thumbnail" href="#" onmouseover="">
                         <span class="fa fa-play-circle play-icon"> </span>
-			            <img src="../../Images/@Model.Thumbnail">
+			            <img src="@Model.Thumbnail">
 		                </a>
                         <div class="description">
                             @if(Model.Products.Any() == null)
@@ -47,53 +46,11 @@
         </ul>
     </div>
 
-    <div class="list_video">
-		<div class="title_box">
-			<a href="#">VIDEO | MV của @Model.StageName</a>
-		</div>
-		<ul>
-			<li>
-				<a class="thumbnail video_thumbnail" href="#">
-                    <span class="fa fa-play-circle play-icon"> </span>
-					<img src="images/fe1be290d78713b68429c28181ae06d7_1443687046.jpg">
-				</a>
-				<div class="description">
-					<h3><a href="">Enjoy Your Life</a></h3>
-					<h4><a href="">Karik</a></h4>
-                </div>
-			</li>
-			<li>
-				<a class="thumbnail video_thumbnail" href="#">
-                    <span class="fa fa-play-circle play-icon"> </span>
-					<img src="images/f680e73d65ab72f0f64e9eb03f4357de_1443785226.jpg">
-				</a>
-				<div class="description">
-					<h3><a href="">Enjoy Your Life</a></h3>
-					<h4><a href="">Karik</a></h4>
-                </div>
-			</li>
-			<li>
-				<a class="thumbnail video_thumbnail" href="#">
-                    <span class="fa fa-play-circle play-icon"> </span>
-					<img src="images/f680e73d65ab72f0f64e9eb03f4357de_1443785226.jpg">
-				</a>
-				<div class="description">
-					<h3><a href="">Enjoy Your Life</a></h3>
-					<h4><a href="">Karik</a></h4>
-                </div>
-			</li>
-			<li>
-				<a class="thumbnail video_thumbnail" href="#">
-                    <span class="fa fa-play-circle play-icon"> </span>
-					<img src="images/f680e73d65ab72f0f64e9eb03f4357de_1443785226.jpg">
-				</a>
-				<div class="description">
-					<h3><a href="">Enjoy Your Life</a></h3>
-					<h4><a href="">Karik</a></h4>
-                </div>
-			</li>
-		</ul>
-	</div>
+    @{
+        //Html.RenderAction("Albums", "ArtistProduct", new { artistId = Model.Id });
+        
+        Html.RenderAction("Videos", "ArtistProduct", new { id = Model.Id });
+    }
 
     @*@{Html.RenderAction("SameParent", "Artist", new { parentId = @Model.ả});}*@
 
@@ -101,9 +58,8 @@
 
 
 <div id="songs"class="box_right" >
-        @{
-            Html.RenderAction("Songs", "ArtistProduct", new { artistId = @Model.ArtistId});
-} 
-</div>
+    @{
+        Html.RenderAction("Songs", "ArtistProduct", new { artistId = @Model.Id});
+    } 
 </div>
 

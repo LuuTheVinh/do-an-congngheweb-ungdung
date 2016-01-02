@@ -1,44 +1,46 @@
 ﻿@model DoAnWebNgheNhac.Models.LoginModel
 
 @{
+    ViewBag.Title = "Đăng nhập";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-</hgroup>
+<div class="setting-title">
+    <h2 class="title_box">Đăng nhập</h2>
+</div> 
 
-<section id="loginForm">
-<h2>Đăng Nhập</h2>
 @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <fieldset>
+    <fieldset class="border-box col-4" >
         <legend></legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(m => m.Password)
-            </li>
-            <li>
-                @Html.CheckBoxFor(m => m.RememberMe)
-                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
-            </li>
-        </ol>
-        <input type="submit" value="Log in" />
+        <div class="editor-label">
+            Tên tài khoản
+        </div>
+        <div class="editor-field">
+           @Html.TextBoxFor(m => m.UserName)
+        </div>
+
+        <div class="editor-label">
+            Mật khẩu
+        </div>
+        <div class="editor-field">
+           @Html.TextBoxFor(m => m.Password)
+        </div>
+
+        <div class="editor-field">
+            @Html.CheckBoxFor(m => m.RememberMe)
+            Ghi nhớ
+        </div>
+
+        <input class="button" type="submit" value="Đăng nhập" />
     </fieldset>
-    <p>
-        Không có Account? <span style ="color: blue">@Html.ActionLink("Đăng Ký", "Register")</span>
-    </p>
+    
+<div class="setting-title">
+        Không có Tài khoản? <span style ="color: blue">@Html.ActionLink("Đăng Ký", "Register")</span>
+</div>
 }
-</section>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
