@@ -60,23 +60,41 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.URL)
+            @*@Html.LabelFor(model => model.URL)*@
+            Sản phẩm
+            <br />
+            <div class="fileinput-button">
+                <i class="fa fa-plus"></i>
+                <span class="status-text">Upload...</span>
+                <input id="fileupload" type="file" accept="audio/*,video/*">
+                <input type="hidden" class="object-context" value="files">
+                <input type="hidden" class="upload-context" value="musics">
+            </div>
+            <br />
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.URL)
             @Html.ValidationMessageFor(model => model.URL)
-            <input type="file" accept="audio/*" />
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Thumbnail)
+            @*@Html.LabelFor(model => model.Thumbnail)*@
+            Ảnh
             <br />
-            <img src="../../Images/default_avatar.jpg" width="100" height="100"/>
+            <div class="imageinput-button">
+                <i class="fa fa-plus"></i>
+                <img class="thumb-upload" src="../../Images/default_thumbnail.jpg" width="200" height="200" />
+                <input id="imageupload" type="file" accept="image/*">
+                <input type="hidden" class="object-context" value="thumbnails">
+                <input type="hidden" class="upload-context" value="products">
+            </div>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Thumbnail)
             @Html.ValidationMessageFor(model => model.Thumbnail)
-            <input type="file" accept="image/*" />
         </div>
 
         <div class="editor-field">
@@ -88,4 +106,26 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <!-- Scripts for the jQquery File Upload Plugin in Basic Plus UI style* -->
+    @Scripts.Render("~/backload/blueimp/bootstrap/Basic")
+    <!-- resize image -->
+    @Scripts.Render("~/bundles/jquery/resizeimage")
+
+
+    @Scripts.Render("~/Scripts/image.upload.js")
+    @Scripts.Render("~/Scripts/file.upload.js")
+
+    <script type="text/javascript">
+        $('#Category').change(function () {
+            var v = $(this).val();
+
+            if (v == "Music") {
+                $('.fileinput-button .upload-context').attr("value", "musics");
+            } else {
+                $('.fileinput-button .upload-context').attr("value", "videos");
+            }
+        });
+
+    </script>
 }

@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using Backload.Bundles;
+using System.Web;
 using System.Web.Optimization;
 
 namespace DoAnWebNgheNhac
@@ -8,6 +9,9 @@ namespace DoAnWebNgheNhac
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
+            // Add or remove this line for the bundeling feature
+            BackloadBundles.RegisterBundles(bundles);
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -17,6 +21,12 @@ namespace DoAnWebNgheNhac
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
+
+            bundles.Add(new StyleBundle("~/bundles/jquery/resizeimage").Include(
+                        "~/Backload/Client/blueimp/loadimage/js/load-image.all.min.js",
+                        "~/Backload/Client/blueimp/blob/js/canvas-to-blob.min.js",
+                        "~/Backload/Client/blueimp/fileupload/js/jquery.fileupload-process.js",
+                        "~/Backload/Client/blueimp/fileupload/js/jquery.fileupload-image.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -38,6 +48,7 @@ namespace DoAnWebNgheNhac
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
         }
     }
 }
