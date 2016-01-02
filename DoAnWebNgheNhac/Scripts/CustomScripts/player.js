@@ -113,6 +113,10 @@ window.addEventListener("load", function (args) {
     }
 })
 
+window.addEventListener("beforeunload", function (args) {
+    setCookie("volume", music.volume, 2);
+})
+
 shufflebtn.addEventListener("click", function sufflebtnClick() {
 
     if ((document.getElementById('playlist')) ? true : false) {
@@ -124,9 +128,6 @@ shufflebtn.addEventListener("click", function sufflebtnClick() {
 })
 
 
-window.addEventListener("beforeunload", function (args) {
-    setCookie("volume", music.volume, 2);
-})
 
 // Tính độ dài bài hát khi bài hát hoàn thành load
 music.addEventListener("canplaythrough", function () {
