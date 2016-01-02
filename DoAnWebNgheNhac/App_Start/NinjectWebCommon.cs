@@ -79,6 +79,10 @@ namespace DoAnWebNgheNhac.App_Start
             kernel.Bind<IVideoProductServices>().To<VideoProductServices>();
 
             kernel.Bind<IMenuServices>().To<MenuServices>();
+
+            kernel.Bind<IAccountInforServices>().To<AccountInforServices>();
+
+            kernel.Bind<IUserServices>().To<UserServices>();
         }        
     }
 }

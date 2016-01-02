@@ -572,15 +572,15 @@ function isStringContains(str1, str2) {
 function fbshareClick() {
     
     var url = "http://www.facebook.com/sharer/sharer.php?u=";
-    url += "http://mp3.zing.vn/bai-hat/Nguoi-Dien-Yeu-Minh-Hang/ZWZ9Z699.html";
-    //url += document.URL;
+    //url += "http://mp3.zing.vn/bai-hat/Nguoi-Dien-Yeu-Minh-Hang/ZWZ9Z699.html";
+    url += document.URL;
     window.open(url, "_blank", "fullscreen=no, width=500, height=350px, top=100, left=150,");
     
 }
 
 function ggplusClick() {
     var url = "https://plusone.google.com/_/+1/confirm?hl=ru&url=_URL_&title=_TITLE_";
-    url = url.replace("_URL_", "http://mp3.zing.vn/bai-hat/Nguoi-Dien-Yeu-Minh-Hang/ZWZ9Z699.html");
+    //url = url.replace("_URL_", "http://mp3.zing.vn/bai-hat/Nguoi-Dien-Yeu-Minh-Hang/ZWZ9Z699.html");
     url = url.replace("_TITLE_", "Tên bài hát");
     //url += document.URL;
     var sharewindow = window.open(url, "_blank", "fullscreen=no, width=500, height=350px, top=100, left=150,");

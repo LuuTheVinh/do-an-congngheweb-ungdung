@@ -8,8 +8,13 @@
             <input type="button" class="submit-search fa fa-search" />
             <span class="icon fa fa-search"></span>
     </div>
-
-    <div class="nav-account">
+        <div class="float-right">
+        <section id="login">
+                            @Html.Partial("_LoginPartial")
+        </section>
+        </div>
+    </div>
+   @* <div class="nav-account">
 
         <!--http://andwecode.com/create-popup-login-and-signup-form-->
         
@@ -74,9 +79,9 @@
 				</form>
 			</div>
 		</section>
-	    </div>
+	    </div>*@
 
-<script type="text/javascript">
+@*<script type="text/javascript">
     $("#login-btn").leanModal({ top: 100, overlay: 0.6, closeButton: ".modal_close" });
 
     $("#register").leanModal({ top: 100, overlay: 0.6, closeButton: ".modal_close" });
@@ -110,7 +115,7 @@
 			return false;
 		});
 	})
-</script>
+</script>*@
 
 <script type="text/javascript">
     $(document).ready(function () {

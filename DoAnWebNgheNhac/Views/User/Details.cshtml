@@ -1,0 +1,64 @@
+﻿@model DataModel.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>User</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AccountInfo.FirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AccountInfo.FirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Password)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Password)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SecQuest1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SecQuest1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SecAnswer1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SecAnswer1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SecQuest2)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SecQuest2)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SecAnswer2)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SecAnswer2)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

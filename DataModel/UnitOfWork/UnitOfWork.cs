@@ -24,7 +24,11 @@ namespace DataModel.UnitOfWork
         private GenericRepository<VideoProduct> _videoProductRepository;
         private GenericRepository<Artist> _artistRepository;      
         private GenericRepository<ArtistProduct> _artistProductRepository;      
-        private GenericRepository<Product> _productRepository;     
+        private GenericRepository<Product> _productRepository;
+
+        private GenericRepository<AccountInfo> _AccountInfoRepository;
+        private GenericRepository<User> _UserRepository;
+
         #endregion
 
         #region Public Repository Create propoty...
@@ -119,6 +123,26 @@ namespace DataModel.UnitOfWork
                 if (this._productRepository == null)
                     this._productRepository = new GenericRepository<Product>(_context);
                 return _productRepository;
+            }
+        }
+
+        public GenericRepository<AccountInfo> AccountInfoRepository
+        {
+            get
+            {
+                if (this._AccountInfoRepository == null)
+                    this._AccountInfoRepository = new GenericRepository<AccountInfo>(_context);
+                return _AccountInfoRepository;
+            }
+        }
+
+        public GenericRepository<User> UserRepository
+        {
+            get
+            {
+                if (this._UserRepository == null)
+                    this._UserRepository = new GenericRepository<User>(_context);
+                return _UserRepository;
             }
         }
         #endregion

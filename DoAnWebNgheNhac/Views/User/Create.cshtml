@@ -1,0 +1,85 @@
+﻿@model DataModel.User
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>User</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AccountInfoId, "AccountInfo")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("AccountInfoId", String.Empty)
+            @Html.ValidationMessageFor(model => model.AccountInfoId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserName)
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SecQuest1)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SecQuest1)
+            @Html.ValidationMessageFor(model => model.SecQuest1)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SecAnswer1)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SecAnswer1)
+            @Html.ValidationMessageFor(model => model.SecAnswer1)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SecQuest2)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SecQuest2)
+            @Html.ValidationMessageFor(model => model.SecQuest2)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SecAnswer2)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SecAnswer2)
+            @Html.ValidationMessageFor(model => model.SecAnswer2)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
