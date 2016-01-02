@@ -6,7 +6,6 @@
     var folder = $('.imageinput-button .object-context').val();
     var subfolder = $('.imageinput-button .upload-context').val();
 
-    // Upload, get or delete files with the built-in Server side file handler. 
     if (folder == undefined || subfolder == undefined) {
         if (folder != undefined)
             handlerUrl = "/Backload/FileHandler?objectContext=" + folder;

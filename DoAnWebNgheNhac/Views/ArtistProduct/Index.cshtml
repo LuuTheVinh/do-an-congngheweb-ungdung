@@ -12,11 +12,11 @@
 
 <table>
     <tr>
-        <th class="col-1">
+        <th>
             @* @Html.DisplayNameFor(model => model.Thumbnail) *@
             Ảnh
         </th>
-        <th class="col-2">
+        <th class="col-3">
             @* @Html.DisplayNameFor(model => model.Artist.Tittle) *@
             Tên
         </th>
@@ -26,15 +26,15 @@
         </th>
         <th class="col-2">
             @* @Html.DisplayNameFor(model => model.Country) *@
-            Quốc tịch
+            Quốc gia
         </th>
-        <th class="col-2"></th>
+        <th class="col-3"></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td style="padding: 2px;">
-            <img src="/Images/@item.Thumbnail" style="display: block;" width="100" height="100"/>
+            <img src="@item.Thumbnail" style="display: block;" width="100" height="100"/>
         </td>
         <td>
             @Html.ActionLink(item.StageName, "Details", new {id = item.Id})

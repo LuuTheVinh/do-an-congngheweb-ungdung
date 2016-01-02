@@ -253,5 +253,9 @@ namespace DoAnWebNgheNhac.Controllers
             };
         }
 
+        public string GetNameById(int id)
+        {
+            return _iArtistServices.GetArtistById(id).Tittle;
+        }
     }
 }

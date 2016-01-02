@@ -5,6 +5,14 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+@{
+    var type = Request.QueryString["type"];
+    if (type != "videos" && type != "musics")
+    {
+        type = "musics";
+    }    
+}
+
 <div class="setting-title">
     <h2 class="title_box">Thêm sản phẩm</h2>
 </div>  
@@ -41,10 +49,16 @@
         </div>
         <div class="editor-field">
             @{
-                var items = new List<SelectListItem>{
-                    new SelectListItem() {Text = "Nhạc", Value = "Music", Selected = true},
-                    new SelectListItem() {Text = "Video", Value = "Video", Selected = false}
-                };
+                var items = new List<SelectListItem>();
+
+                if (type == "videos")
+                {
+                    items.Add(new SelectListItem() { Text = "Video", Value = "Video", Selected = true });
+                }
+                else
+                {
+                    items.Add(new SelectListItem() { Text = "Nhạc", Value = "Music", Selected = true });
+                }
                 
                  @Html.DropDownListFor(m => m.Category, new SelectList(items, "Value", "Text"));
             }
@@ -68,7 +82,7 @@
                 <span class="status-text">Upload...</span>
                 <input id="fileupload" type="file" accept="audio/*,video/*">
                 <input type="hidden" class="object-context" value="files">
-                <input type="hidden" class="upload-context" value="musics">
+                <input type="hidden" class="upload-context" value="@type">
             </div>
             <br />
         </div>
@@ -86,10 +100,18 @@
             <br />
             <div class="imageinput-button">
                 <i class="fa fa-plus"></i>
-                <img class="thumb-upload" src="../../Images/default_thumbnail.jpg" width="200" height="200" />
+
+                @if (type == "videos")
+                { 
+                    <img class="thumb-upload" src="../../Images/default_video_thumbnail.jpg" width="384" height="216" />
+                }
+                else {
+                    <img class="thumb-upload" src="../../Images/default_thumbnail.jpg" width="200" height="200" />
+                }
+                
                 <input id="imageupload" type="file" accept="image/*">
                 <input type="hidden" class="object-context" value="thumbnails">
-                <input type="hidden" class="upload-context" value="products">
+                <input type="hidden" class="upload-context" value="@type">
             </div>
         </div>
         <div class="editor-field">
@@ -99,7 +121,7 @@
 
         <div class="editor-field">
             <input class="button red-button" type="submit" value="Tạo" />
-            @Html.ActionLink("Quay lại", "Index", null, new { @class = "button"})
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "button" })
         </div>
     </fieldset>
 }
@@ -115,17 +137,4 @@
 
     @Scripts.Render("~/Scripts/image.upload.js")
     @Scripts.Render("~/Scripts/file.upload.js")
-
-    <script type="text/javascript">
-        $('#Category').change(function () {
-            var v = $(this).val();
-
-            if (v == "Music") {
-                $('.fileinput-button .upload-context').attr("value", "musics");
-            } else {
-                $('.fileinput-button .upload-context').attr("value", "videos");
-            }
-        });
-
-    </script>
 }

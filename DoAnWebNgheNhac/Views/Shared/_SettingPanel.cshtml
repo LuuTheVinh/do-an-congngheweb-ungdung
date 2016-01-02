@@ -11,7 +11,8 @@
             <li>@Html.ActionLink("Nhạc", "Index", "Product", new { @type = "music" }, null)</li>
             <li>@Html.ActionLink("Video", "Index", "Product", new { @type = "video" }, null)</li>
             <li>@Html.ActionLink("Tất cả", "Index", "Product")</li>
-            <li>@Html.ActionLink("Thêm mới", "Create", "Product")</li>
+            <li>@Html.ActionLink("Thêm nhạc mới", "Create", "Product", new { @type = "musics" }, null)</li>
+            <li>@Html.ActionLink("Thêm video mới", "Create", "Product", new { @type = "videos" }, null)</li>
         </ul>
     </li>
     <li>
@@ -40,7 +41,23 @@
             <li>@Html.ActionLink("Thêm mới", "Create", "ArtistProduct")</li>
         </ul>
     </li>
-    <li><a href="#">Thiết lập</a></li>
+    <li>@Html.ActionLink("Tài nguyên", "Index", "Resource")
+        <a href="#" class="expand-btn"><span class="fa fa-chevron-right"></span></a>
+        <ul>
+            <li>@Html.ActionLink("Hình nhạc", "Index", "Resource", new { type = "musics"}, null)</li>
+            <li>@Html.ActionLink("Hình video", "Index", "Resource", new { type = "videos"}, null)</li>
+            <li>@Html.ActionLink("Hình nghệ sĩ", "Index", "Resource", new { type = "artists"}, null)</li>
+            <li>@Html.ActionLink("File nhạc", "IndexFile", "Resource", new { type = "musics"}, null)</li>
+            <li>@Html.ActionLink("File video", "IndexFile", "Resource", new { type = "videos"}, null)</li>
+        </ul>
+    </li>
+    <li><a href="#">Thiết lập</a>
+        <a href="#" class="expand-btn"><span class="fa fa-chevron-right"></span></a>
+        <ul>
+            <li><a>Slider</a></li>
+            <li><a>Khác</a></li>
+        </ul>
+    </li>
     <li><a href="#">Tài khoản</a></li>
 </ul>
 
