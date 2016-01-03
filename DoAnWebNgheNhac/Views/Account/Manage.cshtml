@@ -1,33 +1,26 @@
 ﻿@model DoAnWebNgheNhac.Models.LocalPasswordModel
 @{
-    ViewBag.Title = "Manage Account";
+    ViewBag.Title = "Tài khoản";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-</hgroup>
+<div class="content-setting">
 
-<p class="message-success">@ViewBag.StatusMessage</p>
+    <div class="setting-title">
+        <h2 class="title_box">Xin chào, @User.Identity.Name</h2>
+    </div> 
 
-<p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
+    <p class="message-success">@ViewBag.StatusMessage</p>
 
-@if (ViewBag.HasLocalPassword)
-{
-    @Html.Partial("_ChangePasswordPartial")
-}
-else
-{ 
-    @Html.Partial("_SetPasswordPartial")
-}
-
-<section id="externalLogins">
-    @Html.Action("RemoveExternalLogins")
-
-    <h3>Add an external login</h3>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-</section>
-
+    @if (ViewBag.HasLocalPassword)
+    {
+        @Html.Partial("_ChangePasswordPartial")
+    }
+    else
+    { 
+        @Html.Partial("_SetPasswordPartial")
+    }
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

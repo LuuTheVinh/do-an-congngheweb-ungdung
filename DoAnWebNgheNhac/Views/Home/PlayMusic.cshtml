@@ -117,7 +117,7 @@
         </div>
     </div>
     @{
-        Html.RenderAction("Videos", "ArtistProduct", new { artistId = @Model.ArtistProduct.ArtistId });
+        Html.RenderAction("Videos", "ArtistProduct", new { artistId = @Model.ArtistProduct.Id });
     }
 
 </div>
@@ -130,6 +130,6 @@
         Html.RenderAction(
             "Songs",
             "ArtistProduct", 
-            new { artistId = @Model.ArtistProduct.ArtistId });
+            new { artistId = @Model.ArtistProductId });
     } 
 </div>

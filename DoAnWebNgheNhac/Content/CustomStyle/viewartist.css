@@ -4,13 +4,17 @@
 
 
 .banner{
+    height: 360px;
+    margin-bottom: 20px;
+    overflow: hidden;
     position: relative;
     width: 100%;
-    height: 360px;
-    margin-top: -20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
 }
+
+    .banner > img {
+        width: 100%;
+        height: auto;
+    }
 
 .box-top {
     width: 100%;
@@ -18,12 +22,11 @@
     margin-bottom: 20px;
 }
 .info-artist-img {
-    position: relative;
-    bottom: 100%;
-    width: 450px;
     left: 0;
-    margin-left: 15px;
-    font-family: consolas !important;
+    top: 0;
+    margin: 15px;
+    position: absolute;
+    width: 450px;
 }
 
 .info-artist-img-h1 {

@@ -160,7 +160,7 @@ namespace DoAnWebNgheNhac.Controllers
                 ICollection<ProductEntity> products = getProductsTestValue();
                 ViewData["ArtistName"] = getTestArtistName();
                 System.Diagnostics.Debug.Write("artistId = -1");
-                return PartialView(products.Where(product => product.Category != "Mv"));
+                return PartialView(products.Where(product => product.Category != "Video"));
             }
             var allartistproduct = _iArtistProductServices.GetAllArtistProducts();
 
@@ -168,14 +168,14 @@ namespace DoAnWebNgheNhac.Controllers
                 return null;
             if (allartistproduct.Any())
             {
-                var foundArtist = allartistproduct.Where(art => art.ArtistId == artistId);
+                var foundArtist = allartistproduct.Where(art => art.Id == artistId);
                 IEnumerable<ProductEntity> products = null;
                 if (foundArtist.Any())
                 {
                     products = foundArtist.First().Products;
                     if (products != null)
                     {
-                        products = products.Where(product => product.Category != "Mv");
+                        products = products.Where(product => product.Category != "Video");
                     }
                     ViewData["ArtistName"] = foundArtist.First().StageName;
                     return PartialView(products);
@@ -190,20 +190,20 @@ namespace DoAnWebNgheNhac.Controllers
             if (artistId == -1)
             {
                 var products = getProductsTestValue();
-                return PartialView(products.Where(product => product.Category == "MV"));
+                return PartialView(products.Where(product => product.Category == "Video"));
             }
             else
             {
                 var allartistproduct = _iArtistProductServices.GetAllArtistProducts();
 
-                var foundartist = allartistproduct.Where(artist => artist.ArtistId == artistId);
+                var foundartist = allartistproduct.Where(artist => artist.Id == artistId);
                 string artistname = String.Empty;
                 if (foundartist.Any())
                 {
                     IEnumerable<ProductEntity> products = foundartist.First().Products;
                     if (products != null)
                     {
-                        products = products.Where(product => product.Category == "Mv");
+                        products = products.Where(product => product.Category == "Video");
                     }
                     ViewData["ArtistName"] = foundartist.First().StageName;
 
@@ -212,6 +212,36 @@ namespace DoAnWebNgheNhac.Controllers
             }
             return null;
         }
+
+
+        public ActionResult Albums(int artistId = -1)
+        {
+            // Lất những video của một ca sĩ.
+            if (artistId == -1)
+            {
+                var products = getProductsTestValue();
+            }
+            else
+            {
+                var allartistproduct = _iArtistProductServices.GetAllArtistProducts();
+                var foundartist = allartistproduct.Where(artist => artist.Id == artistId);
+
+                if (foundartist.Any())
+                {
+                    IEnumerable<ProductEntity> products = foundartist.First().Products;
+                    if (products.Any())
+                    {
+                        var albums = products.Select(x => x.AlbumProducts);
+                    }
+
+                    ViewData["ArtistName"] = foundartist.First().StageName;
+
+                    return PartialView(null);
+                }
+            }
+            return null;
+        }
+
         private string getTestArtistName()
         {
             return getArtistTestValue().StageName;

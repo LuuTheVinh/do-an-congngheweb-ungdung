@@ -1,4 +1,4 @@
-﻿@if (Request.IsAuthenticated) {
+﻿@*@if (Request.IsAuthenticated) {
     <text>
         Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
@@ -11,4 +11,149 @@
         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
+}*@
+
+<div class="nav-account">
+    <!--http://andwecode.com/create-popup-login-and-signup-form-->
+
+    <span class="fa fa-user"></span>
+    @if (Request.IsAuthenticated) 
+    {
+        <text>
+            Xin chào, @Html.ActionLink(User.Identity.Name, "Manage", "Account", null, new { @class = "username", title = "Manage" })
+            <span>/</span>
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+                @Html.AntiForgeryToken()
+                <a href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a>
+            }
+        </text>
+    }
+    else
+    {
+        @Html.ActionLink("Đăng kí", "Register", "Account", null, new { id = "register", href = "#modal" })
+        <span>/</span>
+        @Html.ActionLink("Đăng nhập", "Login", "Account", null, new { id = "login-btn", href = "#modal" })
+    }
+
+</div>
+
+<div id="modal" class="popupContainer" style="display:none;">
+	<header class="popupHeader">
+		<span class="header_title">Đăng nhập</span>
+		<span class="modal_close"><i class="fa fa-times"></i></span>
+	</header>
+		
+	<section class="popupBody">
+		<!-- Username & Password Login form -->
+		<div class="user_login">
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { id = "loginForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                var model = new DoAnWebNgheNhac.Models.LoginModel();
+                
+				<label>Tên tài khoản</label>
+                @Html.TextBoxFor(m => model.UserName)
+				<br />
+
+				<label>Mật khẩu</label>
+                @Html.PasswordFor(m => model.Password, new { id = "login-password" })
+				<br />
+
+				<div class="checkbox">
+                    @Html.CheckBoxFor(m => model.RememberMe)
+                    <label for="remember">Ghi nhớ</label>
+				</div>
+
+				<div class="action_btns">
+					<div class="one_half"><a id="register-btn" href="#" class="btn"><i class=""></i>Đăng ký</a></div>
+                    <div class="one_half last"><a class="btn btn_red" href="javascript:document.getElementById('loginForm').submit()">Đăng nhập</a></div>
+				</div>
+			<a href="#" class="forgot_password">Quên mật khẩu?</a>
+            }
+		</div>
+
+		<!-- Register Form -->
+		<div class="user_register">
+			@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id = "registerForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+
+                var model = new DoAnWebNgheNhac.Models.RegisterModel();
+       
+				<label>Tài khoản</label>
+                @Html.TextBoxFor(m => model.UserName)
+				<br />
+
+				<label>Mật khẩu</label>
+                @Html.PasswordFor(m => model.Password)
+				<br />
+
+				<label>Nhập lại Mật khẩu</label>
+				@Html.PasswordFor(m => model.ConfirmPassword)
+				<br />
+
+				<div class="action_btns">
+					<div class="one_half"><a href="#" class="btn back_btn"><i class=""></i>Quay lại</a></div>
+					<div class="one_half last"><a href="javascript:document.getElementById('registerForm').submit()" class="btn btn_red">Đăng ký</a></div>
+				</div>
+            }
+		</div>
+	</section>
+	</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }
+
+<script type="text/javascript">
+
+
+    $("#login-btn").leanModal({ top: 100, overlay: 0.6, closeButton: ".modal_close" });
+
+    $("#register").leanModal({ top: 100, overlay: 0.6, closeButton: ".modal_close" });
+
+    $(function () {
+        $("#login-btn").click(function () {
+            $(".user_login").show();
+            $(".user_register").hide();
+            $(".header_title").text('Đăng nhập');
+        });
+
+        $("#register").click(function () {
+            $(".user_register").show();
+            $(".user_login").hide();
+            $(".header_title").text('Đăng ký');
+        });
+
+		// Calling Register Form
+		$("#register-btn").click(function () {
+		    $(".user_register").show();
+		    $(".user_login").hide();
+			$(".header_title").text('Đăng ký');
+			return false;
+		});
+
+		// Going back to Social Forms
+		$(".back_btn").click(function(){
+			$(".user_login").show();
+			$(".user_register").hide();
+			$(".header_title").text('Đăng nhập');
+			return false;
+		});
+    })
+
+    $('#login-password').keypress(function (e) {
+        if (e.which == 13 ) { 
+            $('#loginForm').submit(); 
+        }
+    });
+
+    $('#ConfirmPassword').keypress(function (e) {
+        if (e.which == 13) { 
+            $('#registerForm').submit(); 
+        }
+    });
+</script>
