@@ -11,6 +11,7 @@ using AutoMapper;
 using DataModel;
 using BusinessEntities;
 using WebMatrix.WebData;
+using DoAnWebNgheNhac.Models;
 
 namespace DoAnWebNgheNhac
 {
@@ -30,6 +31,9 @@ namespace DoAnWebNgheNhac
             AuthConfig.RegisterAuth();
             //WebSecurity.InitializeDatabaseConnection("DefaultConnection", "User", "Id", "UserName", autoCreateTables: true);
             CreateMaps();
+
+            RoleActions roleActions = new RoleActions();
+            roleActions.AddUserAndRole();
         }
 
         protected void CreateMaps()

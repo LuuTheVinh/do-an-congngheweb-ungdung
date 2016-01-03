@@ -10,6 +10,7 @@ using BusinessServices;
 
 namespace DoAnWebNgheNhac.Controllers
 {
+   // [Authorize(Roles = "admin")]
     public class VideoProductController : Controller
     {
         private readonly IVideoProductServices _iVideoProductServices;

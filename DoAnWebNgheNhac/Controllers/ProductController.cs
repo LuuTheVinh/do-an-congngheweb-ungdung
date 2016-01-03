@@ -11,6 +11,7 @@ using PagedList;
 
 namespace DoAnWebNgheNhac.Controllers
 {
+   // [Authorize(Roles = "admin")]
     public class ProductController : Controller
     {
 

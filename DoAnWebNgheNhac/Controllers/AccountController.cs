@@ -37,11 +37,16 @@ namespace DoAnWebNgheNhac.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
+                if (model.UserName == "admin")
+                {
+                    return RedirectToAction("Index", "Album");
+                }
+                else
                 return RedirectToLocal(returnUrl);
             }
 
             // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            ModelState.AddModelError("", "Sai tên tài khoản hoặc mật khẩu");
             return View(model);
         }
 
@@ -147,6 +152,7 @@ namespace DoAnWebNgheNhac.Controllers
             bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.HasLocalPassword = hasLocalAccount;
             ViewBag.ReturnUrl = Url.Action("Manage");
+      
             if (hasLocalAccount)
             {
                 if (ModelState.IsValid)
@@ -403,5 +409,7 @@ namespace DoAnWebNgheNhac.Controllers
             }
         }
         #endregion
+
+        
     }
 }

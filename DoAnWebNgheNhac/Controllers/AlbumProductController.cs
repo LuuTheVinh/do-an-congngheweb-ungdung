@@ -10,6 +10,7 @@ using BusinessServices;
 
 namespace DoAnWebNgheNhac.Controllers
 {
+   // [Authorize(Roles = "admin")]
     public class AlbumProductController : Controller
     {
         private readonly IAlbumProductServices _iAlbumProductServices;

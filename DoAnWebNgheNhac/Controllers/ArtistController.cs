@@ -10,6 +10,7 @@ using BusinessEntities;
 
 namespace DoAnWebNgheNhac.Controllers
 {
+   // [Authorize(Roles = "admin")]
     public class ArtistController : Controller
     {
         private readonly IArtistServices _iArtistServices;
@@ -28,6 +29,7 @@ namespace DoAnWebNgheNhac.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         public ActionResult ViewIndex()
         {
             var model = _iArtistServices.GetAllArtists();

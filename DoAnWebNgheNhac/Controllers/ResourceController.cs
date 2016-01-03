@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace DoAnWebNgheNhac.Controllers
 {
+   // [Authorize(Roles = "admin")]
     public class ResourceController : Controller
     {
         //

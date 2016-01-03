@@ -10,6 +10,7 @@ using BusinessEntities;
 
 namespace DoAnWebNgheNhac.Controllers
 {
+    //[Authorize(Roles="admin")]
     public class AlbumController : Controller
     {
         private readonly IAlbumServices _iAlbumServices;
@@ -18,6 +19,7 @@ namespace DoAnWebNgheNhac.Controllers
         {
             this._iAlbumServices = iAlbumServices;
         }
+
         //
         // GET: /Album/
 

@@ -10,6 +10,7 @@ using BusinessServices;
 
 namespace DoAnWebNgheNhac.Controllers
 {
+   // [Authorize(Roles = "admin")]
     public class ArtistProductController : Controller
     {
         private readonly IArtistProductServices _iArtistProductServices;
@@ -135,6 +136,7 @@ namespace DoAnWebNgheNhac.Controllers
             return RedirectToAction("Index");
         }
 
+        [AllowAnonymous]
         public ActionResult ViewArtist(int artistId = -1)
         {
             if (artistId == -1)
@@ -149,6 +151,7 @@ namespace DoAnWebNgheNhac.Controllers
             }
         }
 
+        [AllowAnonymous]
         public ActionResult Songs(int artistId = -1)
         {
             // Lấy những bài hát của cùng môt ca sĩ
