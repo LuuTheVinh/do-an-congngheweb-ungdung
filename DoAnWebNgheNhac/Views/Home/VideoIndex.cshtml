@@ -20,7 +20,7 @@
                 <li>
                      <a class="thumbnail thumb-small" href="#" onmouseover="">
                         <span class="fa fa-play-circle play-icon"> </span>
-			            <img src="../../Images/@Html.DisplayFor(modelItem => item.Product.Thumbnail)" />
+			            <img src="@Html.DisplayFor(modelItem => item.Product.Thumbnail)" />
 		             </a>
                      <div class="description">
 			             <h3><a href="/home/playvideo?id=@item.ProductId">@Html.DisplayFor(modelItem => item.Product.Name)</a></h3>

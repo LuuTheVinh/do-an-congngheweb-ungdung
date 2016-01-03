@@ -21,7 +21,7 @@
             <li>
                  <a class="thumbnail" href="#" onmouseover="">
                     <span class="fa fa-play-circle play-icon"> </span>
-			        <img src="../../Images/@Html.DisplayFor(modelItem => item.ArtistProducts.FirstOrDefault().Thumbnail)" />
+			        <img src="@Html.DisplayFor(modelItem => item.ArtistProducts.FirstOrDefault().Thumbnail)" />
 		         </a>
                  <div class="description">
 			         @*<h3><a href="/home/playalbum?id=@item.Id">@Html.DisplayFor(modelItem => item.Tittle)</a></h3>*@
