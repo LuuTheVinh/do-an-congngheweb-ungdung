@@ -285,7 +285,7 @@ function next_random_music() {
     var playlist_li = document.getElementById("playlist_li_" + next);
 
     document.getElementById("musicPlayer").dataset.currenttrack = next;
-    music.src = "../../Audio/" + playlist_li.dataset.url;
+    music.src = playlist_li.dataset.url;
     setCurrentTime(0);
     movePlayedLine(0);
     //$('#playlist_ul li').css("background-color", "initial");
@@ -298,7 +298,7 @@ function nextmusic() {
     var playlist_li = document.getElementById("playlist_li_" + next);
 
     document.getElementById("musicPlayer").dataset.currenttrack = next;
-    music.src = "../../Audio/" + playlist_li.dataset.url;
+    music.src = playlist_li.dataset.url;
     setCurrentTime(0);
     movePlayedLine(0);
     //$('#playlist_ul li').css("background-color", "initial");
